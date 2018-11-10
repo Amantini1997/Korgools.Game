@@ -4,9 +4,10 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 
 public class  Gui{
+    private JFrame frame;
 
     public Gui() {
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel main = new JPanel();
@@ -27,11 +28,21 @@ public class  Gui{
         int indexOfHole = ((Hole) e.getSource()).getIndex();
         System.out.println(indexOfHole); // TODO test
 
+        ((Hole) e.getSource()).makeTuz();
         //call backend, and tell them the index of the cell that has been clicked
-        
+
         //get necessary information from backend to update the state of the game/GUI
 
-        //update the information 
+        updateGUI();
+    }
+
+    private void updateGUI() {
+      //update the information
+        // update the holes
+        // update the score
+        // update the tuz location
+
+      frame.repaint();
     }
 
     private JPanel setCenter(Player pl1, Player pl2)
@@ -51,7 +62,7 @@ public class  Gui{
                 Gui gui = new Gui();
                 //createAndShowGUI();
 
-                
+
             }
         });
     }

@@ -10,24 +10,24 @@ public class  Player{
   private JLabel scoreLabel = new JLabel();
 
   private static final int NUMBER_OF_HOLES = 9;
-  
+
   private ArrayList<Hole> holes = new ArrayList<>();
   private static int lastIndexAssigned;
 
   public Player(String name, int numberOfBalls, ActionListener listener)
   {
     holesPanel.setLayout(new FlowLayout());
-    
+
     for(int i=0; i<NUMBER_OF_HOLES; i++)
     {
       Hole hole = new Hole(lastIndexAssigned + i, numberOfBalls, listener);
-      
+
       holes.add(hole);
       holesPanel.add(hole);
 
     }
     lastIndexAssigned+=NUMBER_OF_HOLES;
-    
+
     scoreLabel.setText(name);
     //Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
     //cell.setBorder(border);

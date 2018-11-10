@@ -1,6 +1,7 @@
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import java.awt.Color;
 
 public class Hole extends JButton{
     private int index;
@@ -16,6 +17,12 @@ public class Hole extends JButton{
 
     public int getIndex() {
         return this.index;
+    }
+
+    public void makeTuz() {
+      this.setBackground(Color.RED);
+      this.setOpaque(true);
+      this.setBorderPainted(false); // this is to make it work on mac
     }
 
     public void update(int number){
