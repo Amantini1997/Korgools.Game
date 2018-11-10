@@ -1,6 +1,6 @@
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class KazanTest{
+public class BoardTest{
 
 }
