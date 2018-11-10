@@ -5,45 +5,52 @@ public class KazanTest{
 
     @Test
     public void increaseKorgoolsByTest(){
-        Kazan k1 = new Kazan(true,0);
-        Kazan k2 = new Kazan(true,9);
-        Kazan k3 = new Kazan(false,5);
-        Kazan k4 = new Kazan(false,1000);
+        Kazan k1 = new Kazan(true);
+        Kazan k2 = new Kazan(true);
+        Kazan k3 = new Kazan(false);
+        Kazan k4 = new Kazan(false);
 
         k1.increaseKorgoolsBy(0);
         assertEquals(0,k1.getKorgools());
         k2.increaseKorgoolsBy(91);
-        assertEquals(100,k2.getKorgools());
+        assertEquals(91,k2.getKorgools());
         k3.increaseKorgoolsBy(1000);
-        assertEquals(1005,k3.getKorgools());
-        k4.increaseKorgoolsBy(1000000);
-        assertEquals(1001000,k4.getKorgools());
+        assertEquals(1000,k3.getKorgools());
+        k4.increaseKorgoolsBy(-10000);
+        assertEquals(-10000,k4.getKorgools());
     }
 
     @Test
     public void isWinningShouldReturnTrue(){
-        Kazan k1 = new Kazan(true,82);
-        Kazan k2 = new Kazan(true,83);
-        Kazan k3 = new Kazan(false,19283);
-        Kazan k4 = new Kazan(false,1000);
+        Kazan k1 = new Kazan(true);
+        Kazan k2 = new Kazan(true);
+        Kazan k3 = new Kazan(false);
+        Kazan k4 = new Kazan(false);
 
+        k1.increaseKorgoolsBy(82);
         assertEquals(true,k1.isWinning());
+        k2.increaseKorgoolsBy(100);
         assertEquals(true,k2.isWinning());
+        k3.increaseKorgoolsBy(234234);
         assertEquals(true,k3.isWinning());
+        k4.increaseKorgoolsBy(122);
         assertEquals(true,k4.isWinning());
   	}
 
     @Test
     public void isWinningShouldReturnFalse(){
-        Kazan k1 = new Kazan(true,81);
-        Kazan k2 = new Kazan(true,80);
-        Kazan k3 = new Kazan(false,-324222);
-        Kazan k4 = new Kazan(false,12);
+        Kazan k1 = new Kazan(true);
+        Kazan k2 = new Kazan(true);
+        Kazan k3 = new Kazan(false);
+        Kazan k4 = new Kazan(false);
 
+        k1.increaseKorgoolsBy(81);
         assertEquals(false,k1.isWinning());
+        k2.increaseKorgoolsBy(80);
         assertEquals(false,k2.isWinning());
+        k3.increaseKorgoolsBy(-3746);
         assertEquals(false,k3.isWinning());
+        k4.increaseKorgoolsBy(12);
         assertEquals(false,k4.isWinning());
   	}
 }
-
