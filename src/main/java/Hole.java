@@ -1,7 +1,10 @@
 public class Hole extends Cell{
 
+	private boolean isTuz;
+
 	public Hole(boolean isWhite,int korgools){
 		super(isWhite,korgools);
+		isTuz = false;
 	}
 
 	/**
@@ -16,5 +19,13 @@ public class Hole extends Cell{
 
 	public void KorgoolsPlusOne(){
 		korgools++;
+	}
+
+	public void setTuz(){
+		isTuz = false;
+	}
+
+	public boolean isTuz(){
+		return isTuz;
 	}
 }
