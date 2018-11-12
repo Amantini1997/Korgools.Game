@@ -34,17 +34,27 @@ public class Board {
     }
 
     /**
-    *Increases the Korgools of the Kazan of the given player. Checks if the player has won
-    *@param player the index corresponding to the player
+    *Increases the Korgools of the Kazan of the current player. Checks if the player has won
+    *@param korgools the number of korgools to add
     *@return if the player has won the game
     */
-    public boolean increaseKazanKorgools(int player){
+    public boolean increaseKazanKorgools(int korgools){
+      kazans[currentPlayer].increaseKorgoolsBy(korgools);
+      return kazans[currentPlayer].hasWon();
     }
     /**
     *Sets the current player based on the position of the last hole
     *@param endHole the last hole of a move
     */
     public void setPlayerTurn(int endHole){
+      currentPlayer = endHole/N_HOLES;
+    }
+    /**
+    *Checks current player
+    *@return currentPlayer
+    */
+    public int getCurrentPlayer(){
+      return currentPlayer;
     }
 
 }
