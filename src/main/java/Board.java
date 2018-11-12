@@ -1,8 +1,8 @@
 public class Board {
-    private static final N_HOLES = 9;
-    private static final N_PLAYERS = 2;
-    private static final PLAYER_ONE = 0;
-    private static final PLAYER_TWO = 1;
+    private static final int N_HOLES = 9;
+    private static final int N_PLAYERS = 2;
+    private static final int PLAYER_ONE = 0;
+    private static final int PLAYER_TWO = 1;
     private Hole[] holes;
     private Kazan[] kazans;
     private boolean[] tuzes;
@@ -14,6 +14,9 @@ public class Board {
     public Board(){
       holes = new Hole[N_HOLES*N_PLAYERS];
       kazans = new Kazan[N_PLAYERS];
+      for(int i =0; i < N_PLAYERS; i++){
+        kazans[i] = new Kazan(i==0);
+      }
       tuzes = new boolean[N_PLAYERS];
       currentPlayer = 0;
     }
@@ -39,6 +42,7 @@ public class Board {
     *@return if the player has won the game
     */
     public boolean increaseKazanKorgools(int korgools){
+      System.out.println("Korgools are" +kazans[currentPlayer].getKorgools());
       kazans[currentPlayer].increaseKorgoolsBy(korgools);
       return kazans[currentPlayer].hasWon();
     }
