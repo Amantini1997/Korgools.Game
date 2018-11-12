@@ -47,6 +47,9 @@ public class Player {
 	 public int moveKargools(int kargoolsLeft,int currentHole){
 		   while(kargoolsLeft>0){
 			      currentHole++;
+            if(currentHole.isTuz()){
+                //TO-DO implement Tuz features
+            }
 			      if(currentHole==N_HOLES){
 				          //the current player holes are terminated, let's switch player
 				          return kargoolsLeft;
@@ -56,7 +59,8 @@ public class Player {
 		   }
        if(hasTuzOption(currentHole)){
             if(playerWantsToTuz()){
-
+                  hole[currentHole].setTuz();
+                  tuz = false;
             }
        }
 		   return 0;
