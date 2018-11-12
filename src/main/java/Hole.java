@@ -1,8 +1,9 @@
 public class Hole extends Cell{
 	private boolean isTuz;
+	private static final STARTING_KARGOOLS = 9;
 
-	public Hole(boolean isWhite,int korgools){
-		super(isWhite,korgools);
+	public Hole(){
+		super(STARTING_KARGOOLS);
 		isTuz = false;
 	}
 
