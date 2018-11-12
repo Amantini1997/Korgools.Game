@@ -1,5 +1,4 @@
 public class Hole extends Cell{
-
 	private boolean isTuz;
 
 	public Hole(boolean isWhite,int korgools){
@@ -17,7 +16,7 @@ public class Hole extends Cell{
 		return temp;
 	}
 
-	public void KorgoolsPlusOne(){
+	public void korgoolsPlusOne(){
 		korgools++;
 	}
 
