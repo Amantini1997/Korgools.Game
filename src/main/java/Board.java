@@ -54,7 +54,10 @@ public class Board {
     return selectedHole;
   }
 
-
+ /**
+  * TO-DO implement this method, it's will be called
+  * when one of the player wins
+  */
   private void endGame(){
     System.out.println("Player x has won!!");
   }
