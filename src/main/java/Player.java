@@ -69,13 +69,22 @@ public class Player {
     public boolean hasWon(){
       return kazan.hasWon();
     }
-<<<<<<< HEAD
-
-    public void addKorgoolsToKazan(int currentHole){
-      int korgools = holes[currentHole].getKorgools();
-      holes[currentHole].setKorgoolsToZero();
-      kazan.increaseKorgoolsBy(korgools);
+     /**Empties the tuz and returns the number of korgools removed
+     @return korgools removed from tuz if there is one, 0 otherwise*
+     */
+    public void emptyTuz(){
+      for(Hole hole: holes){
+        if(hole.isTuz())
+          return hole.setKorgoolsToZero();
+      return 0;
     }
-=======
->>>>>>> e242cfa656e57b72e756ece52fd519901fe6c351
+    
+  /**
+  *Increases the number of korgools in the kazan.
+   @param numKorgools the number of korgools to add
+   @return the number of korgools added*/
+    public int addKorgoolsToKazan(int numKorgools){
+          kazan.increaseKorgoolsBy(numKorgools);
+          return numKorgools;
+    }
 }
