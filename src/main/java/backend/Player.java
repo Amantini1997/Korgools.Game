@@ -3,7 +3,7 @@ package backend;
 public class Player {
     private static final int N_HOLES = 9;
     private static final int UNTUZZABLE_HOLE = N_HOLES-1;//position in the array
-    public Hole[] holes;
+    private Hole[] holes;
     private Kazan kazan;
     private boolean tuzIsAvailable;
 
@@ -13,7 +13,7 @@ public class Player {
     public Player(){
       holes = new Hole[N_HOLES];
       for(int i = 0; i< N_HOLES;i++){
-			holes[i] = new Hole();      
+			     holes[i] = new Hole();
       }
       kazan = new Kazan();
       tuzIsAvailable = true;
@@ -39,6 +39,20 @@ public class Player {
       }
     }
 
+    public Hole[] getHoles(){
+      return holes;
+    }
+
+    public int getTuz() {
+      for(int i = 0; i < holes.length; i++) {
+        if(holes[i].isTuz()) {
+          return i;
+        }
+      }
+
+      return -1;
+    }
+
     /**
      * Take the number of a hole, empty it and move all the balls
      * into the next holes. A tuz can be called after a move.
@@ -47,10 +61,10 @@ public class Player {
      * otherwise return the remaining korgools;
      */
     public int act(int startHole){
+        if(holes[startHole].getKorgools()<=1)return 0;
     	  int movebleKorgools = holes[startHole].setKorgoolsToZero();
 		    return moveKorgools(movebleKorgools,startHole);
     }
-
 
 	 /**
 	  * When moveKorgools method is called from outside, it means it has to start from
@@ -59,7 +73,6 @@ public class Player {
 	  * @return 0 if all the korgools left have been moved,
     * otherwise return the remaining korgools;
     */
-
 	 public int moveKorgools(int korgoolsLeft){
 		   return moveKorgools(korgoolsLeft,0);
 	 }
@@ -71,15 +84,16 @@ public class Player {
     * @return 0 if all the korgools have been redistributed, otherwise
     * return the remaining korgools;
     */
-	 public int moveKorgools(int korgoolsLeft,int currentHole){
+	 private int moveKorgools(int korgoolsLeft,int currentHole){
 		   while(korgoolsLeft>0){
-		      holes[currentHole].korgoolsPlusOne();
+          holes[currentHole].korgoolsPlusOne();
 		      korgoolsLeft--;
-          if(currentHole == N_HOLES-1)
-            return korgoolsLeft;
-          currentHole++;
+          if(currentHole == N_HOLES-1){
+            return 0;
           }
-
+          currentHole++;
+       }
+       currentHole--;
        if(hasTuzOption(currentHole)){
             holes[currentHole].setTuz();
             tuzIsAvailable = false;
@@ -110,20 +124,10 @@ public class Player {
       return 0;
     }
 
-    public int getTuz() {
-      for(int i = 0; i < holes.length; i++) {
-        if(holes[i].isTuz()) {
-          return i;
-        }
-      }
-
-      return -1;
-    }
-
-  /**
-  *Increases the number of korgools in the kazan.
-   @param numKorgools the number of korgools to add
-   @return the number of korgools added*/
+    /**
+      *Increases the number of korgools in the kazan.
+       @param numKorgools the number of korgools to add
+       @return the number of korgools added*/
     public int addKorgoolsToKazan(int numKorgools){
           kazan.increaseKorgoolsBy(numKorgools);
           return numKorgools;

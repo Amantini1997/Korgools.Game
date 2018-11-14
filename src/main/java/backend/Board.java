@@ -28,6 +28,8 @@ public class Board {
 	/**
 	 * Move the korgools according to the pressed hole
 	 * @param pressedHole: the hole pressed
+   * @return True if the current player has won,
+   *    False otherwise
 	 */
   public boolean makeAMove(int pressedHole){
     int kargoolsLeft = 0;
@@ -40,7 +42,7 @@ public class Board {
       }else{
         currentPlayer = black;
       }
-      kargoolsLeft = currentPlayer.act(0);
+      kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft);
     }
 
     moveKorgoolsFromTuzzes();
@@ -66,8 +68,8 @@ public class Board {
 
   @Override
   public String toString() {
-    String line1 = white.toString();
-    String line2 = black.toString();
+    String line1 = black.toString();
+    String line2 = white.toString();
     String line3 = (isWhiteTurn? "w" : "b");
 
     return line1 + "\n" + line2 + "\n" + line3;

@@ -34,7 +34,6 @@ public class Hole extends Cell{
 	}
 
 	public boolean isTuz(){
-
 		return isTuz;
 	}
 
