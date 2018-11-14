@@ -10,7 +10,7 @@ public class Kazan extends Cell{
 		korgools+=n;
 	}
 
-	public boolean isWinning(){
+	public boolean hasWon(){
 		return korgools >= KORGOOLS_TO_WIN;
 	}
 }

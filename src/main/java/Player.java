@@ -1,8 +1,9 @@
 public class Player {
     private static final int N_HOLES = 9;
+    private static final int UNTUZZABLE_HOLE = N_HOLES-1;//position in the array
     private Hole[] holes;
     private Kazan kazans;
-    private boolean tuz;
+    private boolean tuzIsAvailable;
 
     /**
      * Public constructor for Board game
@@ -10,7 +11,7 @@ public class Player {
     public Player(){
       holes = new Hole[N_HOLES];
       kazans = new Kazan();
-      tuz = true;
+      tuzIsAvailable = true;
     }
 
     /**
@@ -47,21 +48,13 @@ public class Player {
 	 public int moveKargools(int kargoolsLeft,int currentHole){
 		   while(kargoolsLeft>0){
 			      currentHole++;
-            if(currentHole.isTuz()){
-                //TO-DO implement Tuz features
-            }
-			      if(currentHole==N_HOLES){
-				          //the current player holes are terminated, let's switch player
-				          return kargoolsLeft;
-			      }
+            tuzIsAvailable = false;
 			      holes[currentHole].korgoolsPlusOne();
 			      kargoolsLeft--;
 		   }
        if(hasTuzOption(currentHole)){
-            if(playerWantsToTuz()){
-                  hole[currentHole].setTuz();
-                  tuz = false;
-            }
+            hole[currentHole].setTuz();
+            tuzIsAvailable = false;
        }
 		   return 0;
 	 }
@@ -70,13 +63,16 @@ public class Player {
      * @param n : The player who wants to set the tuz
      */
     public boolean hasTuzOption(int currentHole){
-      return (tuz && holes[currentHole].isTuzzable());
+      return (tuzIsAvailable && holes[currentHole].isTuzzable() && currentHole != UNTUZZABLE_HOLE);
     }
 
-    public boolean playerWantsToTuz(){
-      //TO-DO: implement this method so that the actual player
-      //is asked if they want to set the hole as a tuz
-      return true;
+    public boolean hasWon(){
+      return kazan.hasWon();
     }
 
+    public void addKorgoolsToKazan(int currentHole){
+      int korgools = holes[currentHole].getKorgools();
+      holes[currentHole].setKorgoolsToZero();
+      kazan.increaseKorgoolsBy(korgools);
+    }
 }

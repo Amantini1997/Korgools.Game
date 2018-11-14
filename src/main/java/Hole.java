@@ -8,12 +8,6 @@ public class Hole extends Cell{
 		isTuz = false;
 	}
 
-	/**Constructor for Test*/
-	public Hole(int startingKargools){
-		super(startingKargools);
-		isTuz = false;
-	}
-
 	/**
 	 * Return the korgools contained and then set them to 0.
 	 * @return The number of korgools
