@@ -50,13 +50,12 @@ public class Player {
     */
 	 public int moveKorgools(int korgoolsLeft,int currentHole){
 		   while(korgoolsLeft>0){
-			      currentHole++;
-            tuzIsAvailable = false;
-			      holes[currentHole].korgoolsPlusOne();
-			      korgoolsLeft--;
-            if(holes[currentHole].isTuz())
-             return korgoolsLeft;
-           }
+		      holes[currentHole].korgoolsPlusOne();
+		      korgoolsLeft--;
+          if(currentHole == N_HOLES-1)
+            return korgoolsLeft;
+          currentHole++;
+          }
 
        if(hasTuzOption(currentHole)){
             holes[currentHole].setTuz();
@@ -64,6 +63,7 @@ public class Player {
        }
 		   return 0;
 	 }
+	 
     /**
      * Check if the player can still set a tuz,
      * @param n : The player who wants to set the tuz

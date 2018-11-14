@@ -10,30 +10,27 @@ public class Board {
     white = new Player();
     black = new Player();
     isWhiteTurn = WHITE_MOVES_FIRST;
-    start();
   }
 
-  public void start(){
-    int hole = 0;
+	/**
+	 * Move the korgools according to the pressed hole
+	 * @param pressedHole: the hole pressed
+	 */
+  public boolean makeAMove(int pressedHole){
+    int kargoolsLeft = 0;
     Player currentPlayer = (isWhiteTurn)?white:black;
-    while(true){
-       hole = callAMove();
-       hole = currentPlayer.act(hole);
-       while(hole>0){
-         if(isWhiteTurn){
-           currentPlayer = white;
-         }else{
-           currentPlayer = black;
-         }
-         isWhiteTurn = !isWhiteTurn;
-         hole = currentPlayer.act(hole);
-       }
-       if(currentPlayer.hasWon()){
-         endGame();
-         return;
-       }
-       moveKorgoolsFromTuzzes();
+    kargoolsLeft = currentPlayer.act(pressedHole);
+    while(kargoolsLeft>0){
+      isWhiteTurn = !isWhiteTurn;
+      if(isWhiteTurn){
+        currentPlayer = white;
+      }else{
+        currentPlayer = black;
+      }
+      kargoolsLeft = currentPlayer.act(0);
     }
+    moveKorgoolsFromTuzzes();
+    return currentPlayerHasWon(currentPlayer);
   }
 
   /**
@@ -46,21 +43,10 @@ public class Board {
   }
 
   /**
-   * Ask the current player what hole they want to empty to move its balls
-   * and return the associated number.
-   * @return The position of the hole to empty
-   */
-  public int callAMove(){
-    //GUI function selecting a hole
-    int selectedHole = 0;//remove me
-    return selectedHole;
-  }
-
- /**
   * TO-DO implement this method, it's will be called
   * when one of the player wins
   */
-  private void endGame(){
-    System.out.println("Player x has won!!");
+  private boolean currentPlayerHasWon(Player currentPlayer){
+    return currentPlayer.hasWon();
   }
 }
