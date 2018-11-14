@@ -11,7 +11,7 @@ public class HoleTest{
   {
     Hole hole = new Hole(1,9,null);
     assertEquals(hole.getIndex(),1);
-    assertEquals(hole.getNumberOfBalls(),9);
+    assertEquals(hole.getNumberOfKorgools(),9);
     assertEquals(hole.getText(),"9");
   }
 
