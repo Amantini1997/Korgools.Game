@@ -2,15 +2,15 @@ public class Player {
     private static final int N_HOLES = 9;
     private static final int UNTUZZABLE_HOLE = N_HOLES-1;//position in the array
     private Hole[] holes;
-    private Kazan kazans;
+    private Kazan kazan;
     private boolean tuzIsAvailable;
 
     /**
      * Public constructor for Board game
-     */();
+     */
     public Player(){
       holes = new Hole[N_HOLES];
-      kazans = new Kazan();
+      kazan = new Kazan();
       tuzIsAvailable = true;
     }
 
@@ -33,10 +33,12 @@ public class Player {
 	  * @param kargoolsLeft: The left kargools to be distributed on board
 	  * @return 0 if all the kargools left have been moved,
     * otherwise return the remaining kargools;
-    */
+    */ame or password.
+
 	 public int moveKargools(int kargoolsLeft){
 		   return moveKargools(kargoolsLeft,0);
 	 }
+ame or password.
 
 	 /**
     * Distribute the kargools taken from a hole into the following holes.
@@ -51,9 +53,12 @@ public class Player {
             tuzIsAvailable = false;
 			      holes[currentHole].korgoolsPlusOne();
 			      kargoolsLeft--;
-		   }
+            if(holes[currentHole].isTuz())
+             return kargoolsLeft;
+           }
+
        if(hasTuzOption(currentHole)){
-            hole[currentHole].setTuz();
+            holes[currentHole].setTuz();
             tuzIsAvailable = false;
        }
 		   return 0;
@@ -69,6 +74,7 @@ public class Player {
     public boolean hasWon(){
       return kazan.hasWon();
     }
+<<<<<<< HEAD
      /**Empties the tuz and returns the number of korgools removed
      @return korgools removed from tuz if there is one, 0 otherwise*
      */
@@ -87,4 +93,14 @@ public class Player {
           kazan.increaseKorgoolsBy(numKorgools);
           return numKorgools;
     }
+=======
+
+
+    public void addKorgoolsToKazan(int currentHole){
+      int korgools = holes[currentHole].getKorgools();
+      holes[currentHole].setKorgoolsToZero();
+      kazan.increaseKorgoolsBy(korgools);
+    }
+
+>>>>>>> 96ba9e3d4c1f5dd3f18fd053e24cdd68b356dde1
 }

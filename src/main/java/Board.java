@@ -30,7 +30,17 @@ public class Board {
          endGame();
          return;
        }
+       moveKargoolsFromTuzzes();
     }
+  }
+
+  /**
+   * Remove the kargools from the tuz hole
+   * in the kazan they belong to
+   */
+  private void moveKargoolsFromTuzzes(){
+    white.addKorgoolsToKazan(black.emptyTuz());
+    black.addKorgoolsToKazan(white.emptyTuz());
   }
 
   /**
@@ -40,6 +50,7 @@ public class Board {
    */
   public int callAMove(){
     //GUI function selecting a hole
+    int selectedHole = 0;//remove me
     return selectedHole;
   }
 
