@@ -1,9 +1,16 @@
 public class Hole extends Cell{
 	private boolean isTuz;
-	private static final STARTING_KARGOOLS = 9;
+	private static final int STARTING_KARGOOLS = 9;
+	private static final int KORGOOLS_TO_TUZ = 3;
 
 	public Hole(){
 		super(STARTING_KARGOOLS);
+		isTuz = false;
+	}
+
+	/**Constructor for Test*/
+	public Hole(int startingKargools){
+		super(startingKargools);
 		isTuz = false;
 	}
 
@@ -22,10 +29,14 @@ public class Hole extends Cell{
 	}
 
 	public void setTuz(){
-		isTuz = false;
+		isTuz = true;
 	}
 
 	public boolean isTuz(){
 		return isTuz;
+	}
+
+	public boolean isTuzzable(){
+		return(!isTuz && korgools==KORGOOLS_TO_TUZ);
 	}
 }

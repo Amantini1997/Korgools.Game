@@ -5,10 +5,10 @@ public class KazanTest{
 
     @Test
     public void increaseKorgoolsByTest(){
-        Kazan k1 = new Kazan(true);
-        Kazan k2 = new Kazan(true);
-        Kazan k3 = new Kazan(false);
-        Kazan k4 = new Kazan(false);
+        Kazan k1 = new Kazan();
+        Kazan k2 = new Kazan();
+        Kazan k3 = new Kazan();
+        Kazan k4 = new Kazan();
 
         k1.increaseKorgoolsBy(0);
         assertEquals(0,k1.getKorgools());
@@ -22,10 +22,10 @@ public class KazanTest{
 
     @Test
     public void isWinningShouldReturnTrue(){
-        Kazan k1 = new Kazan(true);
-        Kazan k2 = new Kazan(true);
-        Kazan k3 = new Kazan(false);
-        Kazan k4 = new Kazan(false);
+        Kazan k1 = new Kazan();
+        Kazan k2 = new Kazan();
+        Kazan k3 = new Kazan();
+        Kazan k4 = new Kazan();
 
         k1.increaseKorgoolsBy(82);
         assertEquals(true,k1.isWinning());
@@ -39,10 +39,10 @@ public class KazanTest{
 
     @Test
     public void isWinningShouldReturnFalse(){
-        Kazan k1 = new Kazan(true);
-        Kazan k2 = new Kazan(true);
-        Kazan k3 = new Kazan(false);
-        Kazan k4 = new Kazan(false);
+        Kazan k1 = new Kazan();
+        Kazan k2 = new Kazan();
+        Kazan k3 = new Kazan();
+        Kazan k4 = new Kazan();
 
         k1.increaseKorgoolsBy(81);
         assertEquals(false,k1.isWinning());

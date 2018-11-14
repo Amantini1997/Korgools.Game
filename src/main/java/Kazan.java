@@ -1,6 +1,6 @@
 public class Kazan extends Cell{
 	private static final int KORGOOLS_TO_WIN = 82;
-	private static final STARTING_KARGOOLS = 0;
+	private static final int STARTING_KARGOOLS = 0;
 
 	public Kazan(){
 		super(0);

@@ -5,10 +5,10 @@ public class HoleTest{
 
     @Test
     public void setKorgoolsToZeroTest(){
-        Hole h1 = new Hole(true,0);
-        Hole h2 = new Hole(true,9);
-        Hole h3 = new Hole(false,-5);
-        Hole h4 = new Hole(false,1000);
+        Hole h1 = new Hole(0);
+        Hole h2 = new Hole(9);
+        Hole h3 = new Hole(-5);
+        Hole h4 = new Hole(1000);
 
         h1.setKorgoolsToZero();
         assertEquals(0,h1.getKorgools());
@@ -22,18 +22,18 @@ public class HoleTest{
 
     @Test
     public void KorgoolsPlusOneTest(){
-        Hole h1 = new Hole(true,0);
-        Hole h2 = new Hole(true,-1);
-        Hole h3 = new Hole(false,-11);
-        Hole h4 = new Hole(false,1000);
+        Hole h1 = new Hole(0);
+        Hole h2 = new Hole(-1);
+        Hole h3 = new Hole(-11);
+        Hole h4 = new Hole(1000);
 
-        h1.KorgoolsPlusOne();
+        h1.korgoolsPlusOne();
         assertEquals(1,h1.getKorgools());
-        h2.KorgoolsPlusOne();
+        h2.korgoolsPlusOne();
         assertEquals(-0,h2.getKorgools());
-        h3.KorgoolsPlusOne();
+        h3.korgoolsPlusOne();
         assertEquals(-10,h3.getKorgools());
-        h4.KorgoolsPlusOne();
+        h4.korgoolsPlusOne();
         assertEquals(1001,h4.getKorgools());
   	}
 

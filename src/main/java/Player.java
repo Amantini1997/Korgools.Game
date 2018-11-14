@@ -1,13 +1,13 @@
 public class Player {
-    private static final N_HOLES = 9;
-    private Hole holes;
+    private static final int N_HOLES = 9;
+    private Hole[] holes;
     private Kazan kazans;
     private boolean tuz;
 
     /**
      * Public constructor for Board game
      */
-    public Board(){
+    public Player(){
       holes = new Hole[N_HOLES];
       kazans = new Kazan();
       tuz = true;
@@ -16,41 +16,67 @@ public class Player {
     /**
      * Take the number of a hole, empty it and move all the balls
      * into the next holes. A tuz can be called after a move.
-     * @param n : The position of the hole you want to empty
+     * @param startHole : The position of the hole you want to empty
+     * @return 0 if all the kargools moveble from the starting hole have been moved,
+     * otherwise return the remaining kargools;
      */
-    public void move(int n){
-    	
+    public int act(int startHole){
+    	  int movebleKargools = holes[startHole].setKorgoolsToZero();
+		    return moveKargools(movebleKargools,startHole);
     }
 
+
+	 /**
+	  * When moveKargools method is called from outside, it means it has to start from
+	  * the first hole, it only needs to know the kargoolsLeft
+	  * @param kargoolsLeft: The left kargools to be distributed on board
+	  * @return 0 if all the kargools left have been moved,
+    * otherwise return the remaining kargools;
+    */
+	 public int moveKargools(int kargoolsLeft){
+		   return moveKargools(kargoolsLeft,0);
+	 }
+
+	 /**
+    * Distribute the kargools taken from a hole into the following holes.
+    * @param kargoolsLeft: the kargools to redistribute.
+    * @param currentHole: the hole to start from to redistribute
+    * @return 0 if all the kargools have been redistributed, otherwise
+    * return the remaining kargools;
+    */
+	 public int moveKargools(int kargoolsLeft,int currentHole){
+		   while(kargoolsLeft>0){
+			      currentHole++;
+            if(currentHole.isTuz()){
+                //TO-DO implement Tuz features
+            }
+			      if(currentHole==N_HOLES){
+				          //the current player holes are terminated, let's switch player
+				          return kargoolsLeft;
+			      }
+			      holes[currentHole].korgoolsPlusOne();
+			      kargoolsLeft--;
+		   }
+       if(hasTuzOption(currentHole)){
+            if(playerWantsToTuz()){
+                  hole[currentHole].setTuz();
+                  tuz = false;
+            }
+       }
+		   return 0;
+	 }
     /**
-      * Check if the player can still set a tuz,
-      * @param n : The player who wants to set the tuz
-      */
-    public void hasTuzOption(int player){
+     * Check if the player can still set a tuz,
+     * @param n : The player who wants to set the tuz
+     */
+    public boolean hasTuzOption(int currentHole){
+      return (tuz && holes[currentHole].isTuzzable());
     }
 
-    /**
-    *Increases the Korgools of the Kazan of the current player. Checks if the player has won
-    *@param korgools the number of korgools to add
-    *@return if the player has won the game
-    */
-    public boolean increaseKazanKorgools(int korgools){
-      kazans[currentPlayer].increaseKorgoolsBy(korgools);
-      return kazans[currentPlayer].hasWon();
-    }
-    /**
-    *Sets the current player based on the position of the last hole
-    *@param endHole the last hole of a move
-    */
-    public void setPlayerTurn(int endHole){
-      currentPlayer = endHole/N_HOLES;
-    }
-    /**
-    *Checks current player
-    *@return currentPlayer
-    */
-    public int getCurrentPlayer(){
-      return currentPlayer;
+    public boolean playerWantsToTuz(){
+      //TO-DO: implement this method so that the actual player
+      //is asked if they want to set the hole as a tuz
+      return true;
     }
 
 }
