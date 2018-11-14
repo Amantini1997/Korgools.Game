@@ -36,4 +36,5 @@ public class HoleTest{
         h4.KorgoolsPlusOne();
         assertEquals(1001,h4.getKorgools());
   	}
+
 }
