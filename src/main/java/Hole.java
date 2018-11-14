@@ -17,6 +17,7 @@ public class Hole extends Cell{
 		korgools = 0;
 		return temp;
 	}
+ame or password.
 
 	public void korgoolsPlusOne(){
 		korgools++;
@@ -27,7 +28,8 @@ public class Hole extends Cell{
 		isTuz = true;
 	}
 
-	public boolean isTuz(){
+	public boolean isTuz(){ame or password.
+
 		return isTuz;
 	}
 

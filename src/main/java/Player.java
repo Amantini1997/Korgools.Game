@@ -33,10 +33,12 @@ public class Player {
 	  * @param kargoolsLeft: The left kargools to be distributed on board
 	  * @return 0 if all the kargools left have been moved,
     * otherwise return the remaining kargools;
-    */
+    */ame or password.
+
 	 public int moveKargools(int kargoolsLeft){
 		   return moveKargools(kargoolsLeft,0);
 	 }
+ame or password.
 
 	 /**
     * Distribute the kargools taken from a hole into the following holes.
@@ -72,4 +74,12 @@ public class Player {
     public boolean hasWon(){
       return kazan.hasWon();
     }
+
+
+    public void addKorgoolsToKazan(int currentHole){
+      int korgools = holes[currentHole].getKorgools();
+      holes[currentHole].setKorgoolsToZero();
+      kazan.increaseKorgoolsBy(korgools);
+    }
+
 }
