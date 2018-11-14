@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import java.util.Collections;
 public class  Player{
   private JPanel holesPanel =  new JPanel();
   private JLabel scoreLabel = new JLabel();
@@ -12,7 +12,7 @@ public class  Player{
   private static final int NUMBER_OF_HOLES = 9;
 
   private ArrayList<Hole> holes = new ArrayList<>();
-  private static int lastIndexAssigned;
+  private static boolean reverse=true;
 
   public Player(String name, int numberOfBalls, ActionListener listener)
   {
@@ -20,14 +20,21 @@ public class  Player{
 
     for(int i=0; i<NUMBER_OF_HOLES; i++)
     {
-      Hole hole = new Hole(lastIndexAssigned + i, numberOfBalls, listener);
-
+      Hole hole = new Hole(i, numberOfBalls, listener);
       holes.add(hole);
-      holesPanel.add(hole);
-
     }
-    lastIndexAssigned+=NUMBER_OF_HOLES;
 
+    if(reverse)
+    {
+      Collections.reverse(holes);
+    }
+
+    for(Hole hole: holes)
+    {
+      holesPanel.add(hole);
+    }
+
+    reverse = !reverse;
     scoreLabel.setText(name);
     //Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
     //cell.setBorder(border);
