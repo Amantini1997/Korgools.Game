@@ -2,11 +2,11 @@ package backend;
 
 public class Hole extends Cell{
 	private boolean isTuz;
-	private static final int STARTING_KARGOOLS = 9;
+	private static final int STARTING_KORGOOLS = 9;
 	private static final int KORGOOLS_TO_TUZ = 3;
 
 	public Hole(){
-		super(STARTING_KARGOOLS);
+		super(STARTING_KORGOOLS);
 		isTuz = false;
 	}
 

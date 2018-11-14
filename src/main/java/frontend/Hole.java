@@ -6,13 +6,13 @@ import java.awt.Color;
 
 public class Hole extends JButton{
     private int index;
-    private int numberOfBalls;
+    private int numberOfKorgools;
 
-    public Hole(int index, int numberOfBalls, ActionListener listener){
+    public Hole(int index, int numberOfKorgools, ActionListener listener){
         this.index = index;
-        this.numberOfBalls = numberOfBalls;
+        this.numberOfKorgools = numberOfKorgools;
 
-        this.setText(numberOfBalls+"");
+        this.setText(numberOfKorgools+"");
         this.addActionListener(listener);
     }
 
@@ -20,9 +20,9 @@ public class Hole extends JButton{
         return this.index;
     }
 
-    public int getNumberOfBalls()
+    public int getNumberOfKorgools()
     {
-      return this.numberOfBalls;
+      return this.numberOfKorgools;
     }
 
     public void makeTuz()

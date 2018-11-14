@@ -15,13 +15,13 @@ public class  Player{
   private ArrayList<Hole> holes = new ArrayList<>();
   private static boolean reverse=true;
 
-  public Player(String name, int numberOfBalls, ActionListener listener)
+  public Player(String name, int numberOfKorgools, ActionListener listener)
   {
     holesPanel.setLayout(new FlowLayout());
 
     for(int i=0; i<NUMBER_OF_HOLES; i++)
     {
-      Hole hole = new Hole(i, numberOfBalls, listener);
+      Hole hole = new Hole(i, numberOfKorgools, listener);
       holes.add(hole);
     }
 

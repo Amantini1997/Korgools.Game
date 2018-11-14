@@ -20,42 +20,42 @@ public class Player {
      * Take the number of a hole, empty it and move all the balls
      * into the next holes. A tuz can be called after a move.
      * @param startHole : The position of the hole you want to empty
-     * @return 0 if all the kargools moveble from the starting hole have been moved,
-     * otherwise return the remaining kargools;
+     * @return 0 if all the korgools moveble from the starting hole have been moved,
+     * otherwise return the remaining korgools;
      */
     public int act(int startHole){
-    	  int movebleKargools = holes[startHole].setKorgoolsToZero();
-		    return moveKargools(movebleKargools,startHole);
+    	  int movebleKorgools = holes[startHole].setKorgoolsToZero();
+		    return moveKorgools(movebleKorgools,startHole);
     }
 
 
 	 /**
-	  * When moveKargools method is called from outside, it means it has to start from
-	  * the first hole, it only needs to know the kargoolsLeft
-	  * @param kargoolsLeft: The left kargools to be distributed on board
-	  * @return 0 if all the kargools left have been moved,
-    * otherwise return the remaining kargools;
+	  * When moveKorgools method is called from outside, it means it has to start from
+	  * the first hole, it only needs to know the korgoolsLeft
+	  * @param korgoolsLeft: The left korgools to be distributed on board
+	  * @return 0 if all the korgools left have been moved,
+    * otherwise return the remaining korgools;
     */
 
-	 public int moveKargools(int kargoolsLeft){
-		   return moveKargools(kargoolsLeft,0);
+	 public int moveKorgools(int korgoolsLeft){
+		   return moveKorgools(korgoolsLeft,0);
 	 }
 
 	 /**
-    * Distribute the kargools taken from a hole into the following holes.
-    * @param kargoolsLeft: the kargools to redistribute.
+    * Distribute the korgools taken from a hole into the following holes.
+    * @param korgoolsLeft: the korgools to redistribute.
     * @param currentHole: the hole to start from to redistribute
-    * @return 0 if all the kargools have been redistributed, otherwise
-    * return the remaining kargools;
+    * @return 0 if all the korgools have been redistributed, otherwise
+    * return the remaining korgools;
     */
-	 public int moveKargools(int kargoolsLeft,int currentHole){
-		   while(kargoolsLeft>0){
+	 public int moveKorgools(int korgoolsLeft,int currentHole){
+		   while(korgoolsLeft>0){
 			      currentHole++;
             tuzIsAvailable = false;
 			      holes[currentHole].korgoolsPlusOne();
-			      kargoolsLeft--;
+			      korgoolsLeft--;
             if(holes[currentHole].isTuz())
-             return kargoolsLeft;
+             return korgoolsLeft;
            }
 
        if(hasTuzOption(currentHole)){

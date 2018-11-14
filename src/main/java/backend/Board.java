@@ -32,15 +32,15 @@ public class Board {
          endGame();
          return;
        }
-       moveKargoolsFromTuzzes();
+       moveKorgoolsFromTuzzes();
     }
   }
 
   /**
-   * Remove the kargools from the tuz hole
+   * Remove the korgools from the tuz hole
    * in the kazan they belong to
    */
-  private void moveKargoolsFromTuzzes(){
+  private void moveKorgoolsFromTuzzes(){
     white.addKorgoolsToKazan(black.emptyTuz());
     black.addKorgoolsToKazan(white.emptyTuz());
   }
