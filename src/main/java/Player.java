@@ -2,15 +2,15 @@ public class Player {
     private static final int N_HOLES = 9;
     private static final int UNTUZZABLE_HOLE = N_HOLES-1;//position in the array
     private Hole[] holes;
-    private Kazan kazans;
+    private Kazan kazan;
     private boolean tuzIsAvailable;
 
     /**
      * Public constructor for Board game
-     */();
+     */
     public Player(){
       holes = new Hole[N_HOLES];
-      kazans = new Kazan();
+      kazan = new Kazan();
       tuzIsAvailable = true;
     }
 
@@ -51,9 +51,12 @@ public class Player {
             tuzIsAvailable = false;
 			      holes[currentHole].korgoolsPlusOne();
 			      kargoolsLeft--;
-		   }
+            if(holes[currentHole].isTuz())
+             return kargoolsLeft;
+           }
+
        if(hasTuzOption(currentHole)){
-            hole[currentHole].setTuz();
+            holes[currentHole].setTuz();
             tuzIsAvailable = false;
        }
 		   return 0;

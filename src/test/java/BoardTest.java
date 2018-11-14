@@ -18,7 +18,7 @@ public class BoardTest{
       /*Initially increases player 2's korgools by 56, checks if it returns false.
       Then, it increases them by 16, enough for the player to win the game
       */
-
+/*
       //Sets player to two
       b2.setPlayerTurn(10);
       boolean t2 = b2.increaseKazanKorgools(56);

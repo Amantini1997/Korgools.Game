@@ -28,13 +28,13 @@ public class KazanTest{
         Kazan k4 = new Kazan();
 
         k1.increaseKorgoolsBy(82);
-        assertEquals(true,k1.isWinning());
+        assertEquals(true,k1.hasWon());
         k2.increaseKorgoolsBy(100);
-        assertEquals(true,k2.isWinning());
+        assertEquals(true,k2.hasWon());
         k3.increaseKorgoolsBy(234234);
-        assertEquals(true,k3.isWinning());
+        assertEquals(true,k3.hasWon());
         k4.increaseKorgoolsBy(122);
-        assertEquals(true,k4.isWinning());
+        assertEquals(true,k4.hasWon());
   	}
 
     @Test
@@ -45,12 +45,12 @@ public class KazanTest{
         Kazan k4 = new Kazan();
 
         k1.increaseKorgoolsBy(81);
-        assertEquals(false,k1.isWinning());
+        assertEquals(false,k1.hasWon());
         k2.increaseKorgoolsBy(80);
-        assertEquals(false,k2.isWinning());
+        assertEquals(false,k2.hasWon());
         k3.increaseKorgoolsBy(-3746);
-        assertEquals(false,k3.isWinning());
+        assertEquals(false,k3.hasWon());
         k4.increaseKorgoolsBy(12);
-        assertEquals(false,k4.isWinning());
+        assertEquals(false,k4.hasWon());
   	}
 }

@@ -40,6 +40,7 @@ public class Board {
    */
   public int callAMove(){
     //GUI function selecting a hole
+    int selectedHole = 0;//remove me
     return selectedHole;
   }
 

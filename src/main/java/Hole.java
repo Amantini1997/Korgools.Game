@@ -8,18 +8,11 @@ public class Hole extends Cell{
 		isTuz = false;
 	}
 
-	/**Constructor for Test*/
-	public Hole(){
-		super(STARTING_KARGOOLS);
-		isTuz = false;
-	}
-
 	/**
 	 * Return the korgools contained and then set them to 0.
 	 * @return The number of korgools
 	 */
-	public int setKorgoolsToZero(){  hole[currentHole].setTuz();
-            tuzIsAvailable = false;
+	public int setKorgoolsToZero(){
 		int temp = korgools;
 		korgools = 0;
 		return temp;
@@ -27,6 +20,7 @@ public class Hole extends Cell{
 
 	public void korgoolsPlusOne(){
 		korgools++;
+		System.out.println(korgools);
 	}
 
 	public void setTuz(){
