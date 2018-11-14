@@ -2,7 +2,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class BoardTest{
-
+/*
     @Test
     public void increaseKazanKorgoolsTest(){
       Board b1 = new Board();
@@ -58,5 +58,5 @@ public class BoardTest{
       for(int i = 9; i < 18; i++)
         b2.setPlayerTurn(i);
         assertEquals(1,b2.getCurrentPlayer());
-    }
+    }*/
 }
