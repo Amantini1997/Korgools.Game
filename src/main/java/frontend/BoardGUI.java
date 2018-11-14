@@ -1,4 +1,6 @@
 package frontend;
+
+import backend.Board;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -9,8 +11,10 @@ import java.awt.event.ActionEvent;
 **/
 public class BoardGUI extends JPanel
 {
+  private Board board;
   public BoardGUI()
   {
+    board = new Board();
     this.setLayout(new BorderLayout());
     Player pl1 = new Player("PLAYER 1",9, e -> onButtonClick(e));
     this.add(pl1.showHoles(), BorderLayout.NORTH);
@@ -38,6 +42,7 @@ public class BoardGUI extends JPanel
       //get necessary information from backend to update the state of the game/GUI
 
       updateGUI();
+      System.out.println(board);
   }
 
   private void updateGUI() {

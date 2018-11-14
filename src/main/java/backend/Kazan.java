@@ -8,6 +8,10 @@ public class Kazan extends Cell{
 		super(0);
 	}
 
+	public Kazan(int korgools) {
+		super(korgools);
+	}
+
 	public void increaseKorgoolsBy(int n){
 		korgools+=n;
 	}

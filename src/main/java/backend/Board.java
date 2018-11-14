@@ -12,6 +12,19 @@ public class Board {
     isWhiteTurn = WHITE_MOVES_FIRST;
   }
 
+  public Board(String boardString) {
+    String[] lines = boardString.split("\n");
+    white = new Player(lines[0]);
+    black = new Player(lines[1]);
+
+    if (lines[2].equals("w")) {
+      isWhiteTurn = true;
+    }
+    else {
+      isWhiteTurn = false;
+    }
+  }
+
 	/**
 	 * Move the korgools according to the pressed hole
 	 * @param pressedHole: the hole pressed
@@ -48,5 +61,14 @@ public class Board {
   */
   private boolean currentPlayerHasWon(Player currentPlayer){
     return currentPlayer.hasWon();
+  }
+
+  @Override
+  public String toString() {
+    String line1 = white.toString();
+    String line2 = black.toString();
+    String line3 = (isWhiteTurn? "w" : "b");
+
+    return line1 + "\n" + line2 + "\n" + line3;
   }
 }

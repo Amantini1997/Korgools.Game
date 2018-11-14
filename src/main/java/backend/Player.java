@@ -16,6 +16,26 @@ public class Player {
       tuzIsAvailable = true;
     }
 
+    public Player(String playerString) {
+      holes = new Hole[N_HOLES];
+
+      String[] tokens = playerString.split(",");
+
+      for (int i = 0; i < N_HOLES; i++) {
+        holes[i] = new Hole(Integer.parseInt(tokens[i]));
+      }
+
+      kazan = new Kazan(Integer.parseInt(tokens[N_HOLES]));
+
+      if (Integer.parseInt(tokens[tokens.length - 1]) != -1) {
+        holes[Integer.parseInt(tokens[tokens.length - 1])].setTuz();
+        tuzIsAvailable = false;
+      }
+      else {
+        tuzIsAvailable = true;
+      }
+    }
+
     /**
      * Take the number of a hole, empty it and move all the balls
      * into the next holes. A tuz can be called after a move.
@@ -63,7 +83,7 @@ public class Player {
        }
 		   return 0;
 	 }
-	 
+
     /**
      * Check if the player can still set a tuz,
      * @param n : The player who wants to set the tuz
@@ -87,6 +107,16 @@ public class Player {
       return 0;
     }
 
+    public int getTuz() {
+      for(int i = 0; i < holes.length; i++) {
+        if(holes[i].isTuz()) {
+          return i;
+        }
+      }
+
+      return -1;
+    }
+
   /**
   *Increases the number of korgools in the kazan.
    @param numKorgools the number of korgools to add
@@ -94,5 +124,20 @@ public class Player {
     public int addKorgoolsToKazan(int numKorgools){
           kazan.increaseKorgoolsBy(numKorgools);
           return numKorgools;
+    }
+
+    @Override
+    public String toString() {
+      String stringToReturn = "";
+
+      for (Hole hole : holes) {
+        stringToReturn += hole.getKorgools() + ",";
+      }
+
+      stringToReturn += kazan.getKorgools() + ",";
+
+      stringToReturn += getTuz();
+
+      return stringToReturn;
     }
 }

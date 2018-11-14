@@ -10,6 +10,11 @@ public class Hole extends Cell{
 		isTuz = false;
 	}
 
+	public Hole(int korgools) {
+		super(korgools);
+		isTuz = true;
+	}
+
 	/**
 	 * Return the korgools contained and then set them to 0.
 	 * @return The number of korgools
