@@ -1,12 +1,20 @@
+// plugins {
+//   'com.github.sherter.google-java-format' version '0.7.1'
+// }
 
 apply plugin: 'java'
 apply plugin: 'application'
+
 mainClassName = 'Gui'
 
 dependencies {
   testCompile 'junit:junit:4.12'
+  // compile 'com.google.googlejavaformat:google-java-format:1.6'
 }
 repositories {
   mavenCentral()
 }
 
+// googleJavaFormat {
+//   options style: 'AOSP'
+// }
