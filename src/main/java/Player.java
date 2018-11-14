@@ -7,7 +7,7 @@ public class Player {
 
     /**
      * Public constructor for Board game
-     */
+     */();
     public Player(){
       holes = new Hole[N_HOLES];
       kazans = new Kazan();
@@ -69,10 +69,13 @@ public class Player {
     public boolean hasWon(){
       return kazan.hasWon();
     }
+<<<<<<< HEAD
 
     public void addKorgoolsToKazan(int currentHole){
       int korgools = holes[currentHole].getKorgools();
       holes[currentHole].setKorgoolsToZero();
       kazan.increaseKorgoolsBy(korgools);
     }
+=======
+>>>>>>> e242cfa656e57b72e756ece52fd519901fe6c351
 }
