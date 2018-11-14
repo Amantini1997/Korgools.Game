@@ -3,7 +3,7 @@ package backend;
 public class Player {
     private static final int N_HOLES = 9;
     private static final int UNTUZZABLE_HOLE = N_HOLES-1;//position in the array
-    private Hole[] holes;
+    public Hole[] holes;
     private Kazan kazan;
     private boolean tuzIsAvailable;
 
@@ -12,6 +12,9 @@ public class Player {
      */
     public Player(){
       holes = new Hole[N_HOLES];
+      for(int i = 0; i< N_HOLES;i++){
+			holes[i] = new Hole();      
+      }
       kazan = new Kazan();
       tuzIsAvailable = true;
     }

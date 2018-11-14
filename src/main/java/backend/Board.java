@@ -42,6 +42,7 @@ public class Board {
       }
       kargoolsLeft = currentPlayer.act(0);
     }
+
     moveKorgoolsFromTuzzes();
     return currentPlayerHasWon(currentPlayer);
   }
