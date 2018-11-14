@@ -15,13 +15,13 @@ public class HoleTest{
     assertEquals(hole.getText(),"9");
   }
 
-  @Test
-  public void testTuzColoring()
-  {
-    Hole hole = new Hole(1,9,null);
-    hole.makeTuz();
-    assertEquals(hole.getBackground(),Color.RED);
-  }
+  // @Test
+  // public void testTuzColoring()
+  // {
+  //   Hole hole = new Hole(1,9,null);
+  //   hole.makeTuz();
+  //   assertEquals(hole.getBackground(),Color.RED);
+  // }
 
   @Test
   public void testTuzColoringFalse()

@@ -27,7 +27,6 @@ public class Hole extends Cell{
 
 	public void korgoolsPlusOne(){
 		korgools++;
-		System.out.println(korgools);
 	}
 
 	public void setTuz(){

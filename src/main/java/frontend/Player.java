@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.util.Collections;
+import java.awt.Color;
+
 public class  Player{
   private JPanel holesPanel =  new JPanel();
   private JLabel scoreLabel = new JLabel();
@@ -28,6 +30,10 @@ public class  Player{
     if(reverse)
     {
       Collections.reverse(holes);
+      holesPanel.setBackground(Color.BLACK);
+    } else {
+      holesPanel.setBackground(Color.WHITE);
+
     }
 
     for(Hole hole: holes)

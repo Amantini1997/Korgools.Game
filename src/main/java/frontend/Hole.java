@@ -27,9 +27,9 @@ public class Hole extends JButton{
 
     public void makeTuz()
     {
-      this.setBackground(Color.RED);
-      this.setOpaque(true);
-      this.setBorderPainted(false); // this is to make it work on mac
+      // this.setBackground(Color.RED);
+      // this.setOpaque(true);
+      // this.setBorderPainted(false); // this is to make it work on mac
     }
 
     public void update(int number){

@@ -34,8 +34,9 @@ public class BoardGUI extends JPanel
   }
 
   private void onButtonClick(ActionEvent e) {
+		System.out.println("\n This is the board before the move:");
+		  System.out.println(board);
       int indexOfHole = ((Hole) e.getSource()).getIndex();
-      System.out.println(indexOfHole); // TODO test
 
       ((Hole) e.getSource()).makeTuz();
       //call backend, and tell them the index of the cell that has been clicked
@@ -43,6 +44,7 @@ public class BoardGUI extends JPanel
       //get necessary information from backend to update the state of the game/GUI
 		board.makeAMove(indexOfHole);
       updateGUI();
+			System.out.println("This is the board after the move:");
       System.out.println(board);
   }
 
