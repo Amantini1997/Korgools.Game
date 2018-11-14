@@ -33,12 +33,11 @@ public class Player {
 	  * @param kargoolsLeft: The left kargools to be distributed on board
 	  * @return 0 if all the kargools left have been moved,
     * otherwise return the remaining kargools;
-    */ame or password.
+    */
 
 	 public int moveKargools(int kargoolsLeft){
 		   return moveKargools(kargoolsLeft,0);
 	 }
-ame or password.
 
 	 /**
     * Distribute the kargools taken from a hole into the following holes.
@@ -74,17 +73,18 @@ ame or password.
     public boolean hasWon(){
       return kazan.hasWon();
     }
-<<<<<<< HEAD
+
      /**Empties the tuz and returns the number of korgools removed
      @return korgools removed from tuz if there is one, 0 otherwise*
      */
-    public void emptyTuz(){
+    public int emptyTuz(){
       for(Hole hole: holes){
         if(hole.isTuz())
           return hole.setKorgoolsToZero();
+        }
       return 0;
     }
-    
+
   /**
   *Increases the number of korgools in the kazan.
    @param numKorgools the number of korgools to add
@@ -93,14 +93,4 @@ ame or password.
           kazan.increaseKorgoolsBy(numKorgools);
           return numKorgools;
     }
-=======
-
-
-    public void addKorgoolsToKazan(int currentHole){
-      int korgools = holes[currentHole].getKorgools();
-      holes[currentHole].setKorgoolsToZero();
-      kazan.increaseKorgoolsBy(korgools);
-    }
-
->>>>>>> 96ba9e3d4c1f5dd3f18fd053e24cdd68b356dde1
 }
