@@ -3,14 +3,17 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
+import backend.*;
 
 /**
 * Panel with the board game
 **/
 public class BoardGUI extends JPanel
 {
+	private Board board;
   public BoardGUI()
   {
+  	board = new Board();
     this.setLayout(new BorderLayout());
     Player pl1 = new Player("PLAYER 1",9, e -> onButtonClick(e));
     this.add(pl1.showHoles(), BorderLayout.NORTH);
@@ -36,7 +39,7 @@ public class BoardGUI extends JPanel
       //call backend, and tell them the index of the cell that has been clicked
 
       //get necessary information from backend to update the state of the game/GUI
-
+		board.makeAMove(indexOfHole);	
       updateGUI();
   }
 

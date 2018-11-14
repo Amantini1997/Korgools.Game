@@ -5,7 +5,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'frontend.Gui'
+mainClass = 'frontend.Gui'
 
 dependencies {
   testCompile 'junit:junit:4.12'

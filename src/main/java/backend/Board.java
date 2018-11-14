@@ -29,6 +29,16 @@ public class Board {
       }
       kargoolsLeft = currentPlayer.act(0);
     }
+    //FOR TESTS
+    System.out.println();
+    for(int i = 8; i>=0;i--){
+		System.out.print(black.holes[i] .getKorgools()+ " ");
+    }
+    System.out.println("\n");
+    for(Cell c : white.holes){
+		System.out.print(c.getKorgools() + " ");
+	 }
+	 
     moveKorgoolsFromTuzzes();
     return currentPlayerHasWon(currentPlayer);
   }
