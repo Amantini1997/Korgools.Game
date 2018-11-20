@@ -58,6 +58,7 @@ public class Player {
      * otherwise return the remaining korgools;
      */
     public int act(int startHole){
+<<<<<<< HEAD
       if(holes[startHole].getKorgools()==1){
         moveOneKorgool(startHole);
       }
@@ -75,6 +76,10 @@ public class Player {
       if (startHole==N_HOLES-1)return 1;
       else holes[startHole+1].korgoolsPlusOne();
       return 0;
+=======
+    	  int movebleKorgools = holes[startHole].setKorgoolsToZero();
+		    return moveKorgools(movebleKorgools,startHole);
+>>>>>>> 97c61d5a42a92365082e01edf8edd8ad8bc5fcb5
     }
 
 
@@ -97,7 +102,8 @@ public class Player {
     * return the remaining korgools;
     */
 	 private int moveKorgools(int korgoolsLeft,int currentHole){
-		   while(korgoolsLeft>0){
+
+       while(korgoolsLeft>0){
           holes[currentHole].korgoolsPlusOne();
 		      korgoolsLeft--;
           if(currentHole == N_HOLES-1){
