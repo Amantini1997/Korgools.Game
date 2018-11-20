@@ -32,14 +32,17 @@ public class Board {
    *    False otherwise
 	 */
   public boolean makeAMove(int pressedHole){
+    System.out.println("MAKE A MOVE");
     int kargoolsLeft = 0;
     Player currentPlayer = (isWhiteTurn)?white:black;
     kargoolsLeft = currentPlayer.act(pressedHole);
+    System.out.println("KARGOOLS LEFT: "+ kargoolsLeft + "\n");
     while(kargoolsLeft>0){
       isWhiteTurn = !isWhiteTurn;
       if(isWhiteTurn){
         currentPlayer = white;
       }else{
+        System.out.println("BLACK TURN");
         currentPlayer = black;
       }
       kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft);
@@ -59,10 +62,14 @@ public class Board {
   }
 
   /**
-  * TO-DO implement this method, it's will be called
+  * TO-DO implement this method, it will be called
   * when one of the player wins
   */
   private boolean currentPlayerHasWon(Player currentPlayer){
+    if(currentPlayer.hasWon()){
+      System.out.println("\nCONGRATS YOU WON");
+      System.exit(0);
+    }
     return currentPlayer.hasWon();
   }
 

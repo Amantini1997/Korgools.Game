@@ -15,6 +15,7 @@ public class PlayerTest{
     return Arrays.toString(list);
   }
 
+  /*
   @Test
   public void actTest(){
     Player p = new Player();
@@ -38,7 +39,7 @@ public class PlayerTest{
     p.act(6);
     list = new int[]{1,10,10,2,11,11,1,2,13};
     assertEquals(Arrays.toString(list),getHolesList(p.getHoles()));
-  }
+  }*/
 
   @Test
   public void hasTuzOptionTest(){
