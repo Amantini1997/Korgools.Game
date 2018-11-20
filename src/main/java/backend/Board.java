@@ -32,17 +32,14 @@ public class Board {
    *    False otherwise
 	 */
   public boolean makeAMove(int pressedHole){
-    System.out.println("MAKE A MOVE");
     int kargoolsLeft = 0;
     Player currentPlayer = (isWhiteTurn)?white:black;
     kargoolsLeft = currentPlayer.act(pressedHole);
-    System.out.println("KARGOOLS LEFT: "+ kargoolsLeft + "\n");
     while(kargoolsLeft>0){
       isWhiteTurn = !isWhiteTurn;
       if(isWhiteTurn){
         currentPlayer = white;
       }else{
-        System.out.println("BLACK TURN");
         currentPlayer = black;
       }
       kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft);
