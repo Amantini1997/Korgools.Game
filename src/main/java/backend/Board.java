@@ -3,6 +3,7 @@ package backend;
 public class Board {
   protected Player white;
   protected Player black;
+  protected Player currentPlayer;
   protected boolean isWhiteTurn;
   protected static final boolean WHITE_MOVES_FIRST = true;
 
@@ -10,6 +11,7 @@ public class Board {
     white = new Player();
     black = new Player();
     isWhiteTurn = WHITE_MOVES_FIRST;
+    setCurrentPlayer();
   }
 
   public Board(String boardString) {
@@ -23,8 +25,12 @@ public class Board {
     else {
       isWhiteTurn = false;
     }
+    setCurrentPlayer();
   }
 
+  private void setCurrentPlayer(){
+    currentPlayer = (isWhiteTurn)?white:black;
+  }
 	/**
 	 * Move the korgools according to the pressed hole
 	 * @param pressedHole: the hole pressed
@@ -32,19 +38,17 @@ public class Board {
    *    False otherwise
 	 */
   public boolean makeAMove(int pressedHole){
-    int kargoolsLeft = 0;
-    Player currentPlayer = (isWhiteTurn)?white:black;
-    kargoolsLeft = currentPlayer.act(pressedHole);
+    //if the player presses a hole containing 0 korgools nothing happens
+    if(currentPlayer.getHoles()[pressedHole].getKorgools()==0){
+      return false;
+    }
+    int kargoolsLeft = currentPlayer.act(pressedHole);
     while(kargoolsLeft>0){
-      isWhiteTurn = !isWhiteTurn;
-      if(isWhiteTurn){
-        currentPlayer = white;
-      }else{
-        currentPlayer = black;
-      }
+      currentPlayer = (currentPlayer == black)?white:black;
       kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft);
     }
-
+    isWhiteTurn = !isWhiteTurn;
+    setCurrentPlayer();
     moveKorgoolsFromTuzzes();
     return currentPlayerHasWon(currentPlayer);
   }
