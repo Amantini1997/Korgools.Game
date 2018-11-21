@@ -34,9 +34,6 @@ public class Player {
         holes[Integer.parseInt(tokens[tokens.length - 1])].setTuz();
         tuzIsAvailable = false;
       }
-      else {
-        tuzIsAvailable = true;
-      }
     }
 
     public Hole[] getHoles(){
@@ -61,10 +58,28 @@ public class Player {
      * otherwise return the remaining korgools;
      */
     public int act(int startHole){
-        if(holes[startHole].getKorgools()<=1)return 0;
-    	  int movebleKorgools = holes[startHole].setKorgoolsToZero();
-		    return moveKorgools(movebleKorgools,startHole);
+      if(holes[startHole].getKorgools()<=1){
+        return moveOneKorgool(startHole);
+      }
+      int movebleKorgools = holes[startHole].setKorgoolsToZero();
+		  return moveKorgools(movebleKorgools,startHole);
     }
+
+    /**
+     * Special case where is just one korgool contained in a holes
+     * @param startHole: the hole to empty
+     * @return 1 if the hole is the last of the line,
+     * 0 otherwise
+     */
+    private int moveOneKorgool(int startHole){
+      if(holes[startHole].getKorgools()==0)return 0;
+      else if(startHole<N_HOLES-1){
+        holes[startHole].setKorgoolsToZero();
+        holes[startHole+1].korgoolsPlusOne();
+        return 0;
+      }else return 1;
+    }
+
 
 	 /**
 	  * When moveKorgools method is called from outside, it means it has to start from
@@ -85,11 +100,12 @@ public class Player {
     * return the remaining korgools;
     */
 	 private int moveKorgools(int korgoolsLeft,int currentHole){
-		   while(korgoolsLeft>0){
+
+       while(korgoolsLeft>0){
           holes[currentHole].korgoolsPlusOne();
 		      korgoolsLeft--;
           if(currentHole == N_HOLES-1){
-            return 0;
+            return korgoolsLeft;
           }
           currentHole++;
        }

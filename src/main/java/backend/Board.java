@@ -59,10 +59,14 @@ public class Board {
   }
 
   /**
-  * TO-DO implement this method, it's will be called
+  * TO-DO implement this method, it will be called
   * when one of the player wins
   */
   private boolean currentPlayerHasWon(Player currentPlayer){
+    if(currentPlayer.hasWon()){
+      System.out.println("\nCONGRATS YOU WON");
+      System.exit(0);
+    }
     return currentPlayer.hasWon();
   }
 
