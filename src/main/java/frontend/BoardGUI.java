@@ -5,6 +5,12 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
 import backend.*;
 
 /**
@@ -22,9 +28,14 @@ public class BoardGUI extends JPanel
     pl1 = new Player(9, e -> onButtonClick(e));
     this.add(pl1.showHoles());
     pl2 = new Player(9,e -> onButtonClick(e));
-		this.add(setCenter(pl1,pl2));
+    this.add(setCenter(pl1,pl2));
     this.add(pl2.showHoles());
+  }
 
+  public BoardGUI(String boardString) {
+      this();
+      this.board = new Board(boardString);
+      updateGUI(board.toString());
   }
 
   private JPanel setCenter(Player pl1, Player pl2)
@@ -50,7 +61,7 @@ public class BoardGUI extends JPanel
       System.out.println(board);
   }
 
-  private void updateGUI(String boardState) {
+  public void updateGUI(String boardState) {
     //update the information
 		String[] info = boardState.split("\n");
 		pl1.update(info[0],true);
@@ -60,6 +71,10 @@ public class BoardGUI extends JPanel
       // update the tuz location
 
     this.repaint();
+  }
+
+  public Board getBoardDisplayed() {
+      return board;
   }
 
 }
