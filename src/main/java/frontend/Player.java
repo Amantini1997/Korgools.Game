@@ -12,14 +12,14 @@ import java.awt.GridLayout;
 
 public class  Player{
   private JPanel holesPanel =  new JPanel();
-  private JLabel scoreLabel = new JLabel();
+  private JPanel scoreLabel = new scoreGUI();
 
   private static final int NUMBER_OF_HOLES = 9;
 
   private ArrayList<Hole> holes = new ArrayList<>();
   private static boolean reverse=true;
 
-  public Player(String name, int numberOfKorgools, ActionListener listener)
+  public Player(int numberOfKorgools, ActionListener listener)
   {
     holesPanel.setLayout(new GridLayout(1,9));
     holesPanel.setBorder(new EmptyBorder(10,10,10,10));
@@ -34,9 +34,10 @@ public class  Player{
     {
       Collections.reverse(holes);
       holesPanel.setBackground(Color.BLACK);
+      scoreLabel.setBackground(Color.BLACK);
     } else {
       holesPanel.setBackground(Color.WHITE);
-
+      scoreLabel.setBackground(Color.WHITE);
     }
 
     for(Hole hole: holes)
@@ -45,7 +46,6 @@ public class  Player{
     }
 
     reverse = !reverse;
-    scoreLabel.setText(name);
     //Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
     //cell.setBorder(border);
   }
@@ -54,7 +54,7 @@ public class  Player{
   {
     return holesPanel;
   }
-  public JLabel showScoreLabel()
+  public JPanel showScoreLabel()
   {
     return scoreLabel;
   }
