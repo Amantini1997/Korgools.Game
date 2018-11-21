@@ -4,6 +4,7 @@ import backend.Board;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import backend.*;
 
@@ -16,7 +17,7 @@ public class BoardGUI extends JPanel
   public BoardGUI()
   {
   	board = new Board();
-    this.setLayout(new BorderLayout());
+    this.setLayout(new GridLayout(3,1));
     Player pl1 = new Player("PLAYER 1",9, e -> onButtonClick(e));
     this.add(pl1.showHoles(), BorderLayout.NORTH);
     Player pl2 = new Player("PLAYER 2",9,e -> onButtonClick(e));
@@ -27,7 +28,7 @@ public class BoardGUI extends JPanel
   private JPanel setCenter(Player pl1, Player pl2)
   {
     JPanel center = new JPanel();
-    center.setLayout(new FlowLayout());
+    center.setLayout(new GridLayout(1,2));
     center.add(pl1.showScoreLabel());
     center.add(pl2.showScoreLabel());
     return center;

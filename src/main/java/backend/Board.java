@@ -1,10 +1,10 @@
 package backend;
 
 public class Board {
-  private Player white;
-  private Player black;
-  private boolean isWhiteTurn;
-  private static final boolean WHITE_MOVES_FIRST = true;
+  protected Player white;
+  protected Player black;
+  protected boolean isWhiteTurn;
+  protected static final boolean WHITE_MOVES_FIRST = true;
 
   public Board(){
     white = new Player();
@@ -53,7 +53,7 @@ public class Board {
    * Remove the korgools from the tuz hole
    * in the kazan they belong to
    */
-  private void moveKorgoolsFromTuzzes(){
+  protected void moveKorgoolsFromTuzzes(){
     white.addKorgoolsToKazan(black.emptyTuz());
     black.addKorgoolsToKazan(white.emptyTuz());
   }
@@ -62,7 +62,7 @@ public class Board {
   * TO-DO implement this method, it will be called
   * when one of the player wins
   */
-  private boolean currentPlayerHasWon(Player currentPlayer){
+  protected boolean currentPlayerHasWon(Player currentPlayer){
     if(currentPlayer.hasWon()){
       System.out.println("\nCONGRATS YOU WON");
       System.exit(0);
