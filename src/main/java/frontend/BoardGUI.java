@@ -1,9 +1,8 @@
 package frontend;
-
+import tools.*;
 import backend.Board;
 import javax.swing.*;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import backend.*;
@@ -14,15 +13,18 @@ import backend.*;
 public class BoardGUI extends JPanel
 {
 	private Board board;
+	private Player pl1;
+	private Player pl2;
   public BoardGUI()
   {
   	board = new Board();
     this.setLayout(new GridLayout(3,1));
-    Player pl1 = new Player("PLAYER 1",9, e -> onButtonClick(e));
-    this.add(pl1.showHoles(), BorderLayout.NORTH);
-    Player pl2 = new Player("PLAYER 2",9,e -> onButtonClick(e));
-    this.add(pl2.showHoles(), BorderLayout.SOUTH);
-    this.add(setCenter(pl1,pl2), BorderLayout.CENTER);
+    pl1 = new Player(9, e -> onButtonClick(e));
+    this.add(pl1.showHoles());
+    pl2 = new Player(9,e -> onButtonClick(e));
+		this.add(setCenter(pl1,pl2));
+    this.add(pl2.showHoles());
+
   }
 
   private JPanel setCenter(Player pl1, Player pl2)
@@ -44,13 +46,15 @@ public class BoardGUI extends JPanel
 
       //get necessary information from backend to update the state of the game/GUI
 		board.makeAMove(indexOfHole);
-      updateGUI();
+      updateGUI(board.toString());
 			System.out.println("This is the board after the move:");
+			System.out.println("BUTTON PRESSED: " +  indexOfHole);
       System.out.println(board);
   }
 
-  private void updateGUI() {
+  private void updateGUI(String boardState) {
     //update the information
+		board=BoardParser.convertStringToBoard(boardState);
       // update the holes
       // update the score
       // update the tuz location
