@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import java.util.Collections;
 import java.awt.Color;
+import java.awt.GridLayout;
 
 public class  Player{
   private JPanel holesPanel =  new JPanel();
@@ -19,7 +21,8 @@ public class  Player{
 
   public Player(String name, int numberOfKorgools, ActionListener listener)
   {
-    holesPanel.setLayout(new FlowLayout());
+    holesPanel.setLayout(new GridLayout(1,9));
+    holesPanel.setBorder(new EmptyBorder(10,10,10,10));
 
     for(int i=0; i<NUMBER_OF_HOLES; i++)
     {

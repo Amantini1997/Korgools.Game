@@ -19,6 +19,7 @@ public class  Gui
         frame.setContentPane(main);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     /**
