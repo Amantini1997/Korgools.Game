@@ -53,4 +53,10 @@ public class  Gui
             }
         });
     }
+
+    // TODO this is for testing, maybe make the class extend jframe so we dont
+    // need this method
+    public JFrame getFrame() {
+        return frame;
+    }
 }
