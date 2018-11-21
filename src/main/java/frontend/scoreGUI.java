@@ -39,7 +39,6 @@ public class scoreGUI extends JPanel{
   public void setColor(Color c)
   {
     this.setBackground(c);
-
   }
 
   public JPanel showScore()

@@ -12,7 +12,7 @@ import java.awt.GridLayout;
 
 public class  Player{
   private JPanel holesPanel =  new JPanel();
-  private JPanel scoreLabel = new scoreGUI();
+  private scoreGUI scoreLabel = new scoreGUI();
 
   private static final int NUMBER_OF_HOLES = 9;
 
@@ -58,9 +58,39 @@ public class  Player{
   {
     return scoreLabel;
   }
-  public void updateHoles(ArrayList<Integer> holeValues) {
+
+  public void update(String playerState,boolean reverse)
+  {
+    String[] player = playerState.split(",");
+    int[] holes = new int[NUMBER_OF_HOLES];
+    for(int i=0; i< NUMBER_OF_HOLES; i++)
+    {
+      holes[i]=Integer.parseInt(player[i]);
+    }
+    updateHoles(holes,reverse);
+    updateScore(player[9]);
+    if(Integer.parseInt(player[10])!=-1)
+    {
+      this.holes.get(Integer.parseInt(player[10])).makeTuz();
+    }
+  }
+
+  public void updateScore(String score)
+  {
+    scoreLabel.updateScore(score);
+  }
+
+  public void updateHoles(int[] holeValues,boolean reverse) {
+    if(reverse)
+    {
+      Collections.reverse(holes);
+    }
     for (int i = 0; i < NUMBER_OF_HOLES; i ++ ) {
-      holes.get(i).update(holeValues.get(i));
+      holes.get(i).update(holeValues[i]);
+    }
+    if(reverse)
+    {
+      Collections.reverse(holes);
     }
   }
 

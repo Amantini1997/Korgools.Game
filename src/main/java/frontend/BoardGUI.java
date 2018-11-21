@@ -1,5 +1,5 @@
 package frontend;
-import tools.*;
+
 import backend.Board;
 import javax.swing.*;
 import java.awt.BorderLayout;
@@ -40,8 +40,6 @@ public class BoardGUI extends JPanel
 		System.out.println("\n This is the board before the move:");
 		  System.out.println(board);
       int indexOfHole = ((Hole) e.getSource()).getIndex();
-
-      ((Hole) e.getSource()).makeTuz();
       //call backend, and tell them the index of the cell that has been clicked
 
       //get necessary information from backend to update the state of the game/GUI
@@ -54,7 +52,9 @@ public class BoardGUI extends JPanel
 
   private void updateGUI(String boardState) {
     //update the information
-		board=BoardParser.convertStringToBoard(boardState);
+		String[] info = boardState.split("\n");
+		pl1.update(info[0],true);
+		pl2.update(info[1],false);
       // update the holes
       // update the score
       // update the tuz location
