@@ -28,9 +28,13 @@ public class Board {
     setCurrentPlayer();
   }
 
+  /**
+   * Sets the currentPlayer according to isWhiteTurn
+   */
   private void setCurrentPlayer(){
     currentPlayer = (isWhiteTurn)?white:black;
   }
+
 	/**
 	 * Move the korgools according to the pressed hole
 	 * @param pressedHole: the hole pressed
@@ -39,7 +43,11 @@ public class Board {
 	 */
   public boolean makeAMove(int pressedHole){
     //if the player presses a hole containing 0 korgools nothing happens
-    if(currentPlayer.getHoles()[pressedHole].getKorgools()==0){
+    int initKorgools = currentPlayer.getHoles()[pressedHole].getKorgools();
+    if(initKorgools > 1){
+      initKorgools--;
+    }
+    if(initKorgools==0){
       return false;
     }
     int kargoolsLeft = currentPlayer.act(pressedHole);
@@ -47,12 +55,30 @@ public class Board {
       currentPlayer = (currentPlayer == black)?white:black;
       kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft);
     }
+    //checking that the ending hole is an opponent's one
+    if((currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
+      int finalHole = (pressedHole+initKorgools)%9;
+      if(currentPlayer.getHoles()[finalHole].getKorgools()%2==0){
+        stealKorgools(finalHole);
+      }
+    }
     isWhiteTurn = !isWhiteTurn;
     setCurrentPlayer();
     moveKorgoolsFromTuzzes();
     return currentPlayerHasWon(currentPlayer);
   }
 
+   /**
+    * The ending hole is an opponent's one
+    * and the number of korgools is now even so, the current player
+    * steal them.
+    * @param hole: the hole to steal korgools from 
+    */
+    private void stealKorgools(int hole){
+      int stolenKorgools = currentPlayer.getHoles()[hole].setKorgoolsToZero();
+      setCurrentPlayer();
+      currentPlayer.addKorgoolsToKazan(stolenKorgools);
+    }
   /**
    * Remove the korgools from the tuz hole
    * in the kazan they belong to
