@@ -10,7 +10,8 @@ import java.util.Collections;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.*;
-
+import java.util.concurrent.*;
+import javax.swing.Timer;
 public class  Player{
   private JPanel holesPanel =  new JPanel();
   private ScoreGUI scoreLabel = new ScoreGUI();
@@ -19,15 +20,16 @@ public class  Player{
   private Color background = Color.WHITE;
   private ArrayList<Hole> holes = new ArrayList<>();
   private static boolean reverse=true;
+  private final static int playerDelay = 2000;
 
-  public Player(int numberOfKorgools, ActionListener listener)
+  public Player(int kargools,ActionListener listener)
   {
     holesPanel.setLayout(new GridLayout(1,NUMBER_OF_HOLES));
     holesPanel.setBorder(new EmptyBorder(10,10,10,10));
 
     for(int i=0; i<NUMBER_OF_HOLES; i++)
     {
-      Hole hole = new Hole(i, numberOfKorgools, listener);
+      Hole hole = new Hole(i, kargools, listener);
       holes.add(hole);
     }
     if(reverse)
@@ -40,29 +42,20 @@ public class  Player{
 
     for(Hole hole: holes)
     {
-      JPanel holeInfo = new JPanel();
-      holeInfo.setLayout(new GridLayout(2,1));
-      JLabel holeNumber = new JLabel(hole.getIndex()+1 + "", SwingConstants.CENTER);
-      holeNumber.setOpaque(true);
       if(reverse)
       {
-        holeNumber.setForeground(Color.WHITE);
-        holeInfo.add(holeNumber);
-        holeInfo.add(hole);
+        holesPanel.add(hole.showHoleWithLabel(Color.WHITE,background));
       }
       else
       {
-        holeNumber.setForeground(Color.BLACK);
-        holeInfo.add(hole);
-        holeInfo.add(holeNumber);
+        holesPanel.add(hole.showHoleWithLabel(Color.BLACK,background));
       }
-      holeNumber.setBackground(background);
-      holesPanel.add(holeInfo);
     }
-
+    if(reverse)
+    {
+      Collections.reverse(holes);
+    }
     reverse = !reverse;
-    //Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-    //cell.setBorder(border);
   }
 
   public JPanel showHoles()
@@ -74,17 +67,20 @@ public class  Player{
     return scoreLabel;
   }
 
-  public void update(String playerState)
+  public synchronized void update(String playerState, int move)
   {
+    ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    scheduler.schedule((new Runnable(){public void run(){
+      update(playerState);
+    }}),playerDelay*move,TimeUnit.MILLISECONDS);
+    scheduler.shutdown();
+  }
+
+  private void update(String playerState){
     String[] player = playerState.split(",");
     int[] holes = getHolesInfo(player);
-    updateHoles(holes);
+    updateHoles(holes, Integer.parseInt(player[10]));
     updateScore(player[9]);
-    int tuz = Integer.parseInt(player[10]);
-    if(tuz !=-1)
-    {
-      updateTuz(tuz);
-    }
   }
 
   private int[] getHolesInfo(String[] player)
@@ -102,28 +98,28 @@ public class  Player{
     scoreLabel.updateScore(score);
   }
 
-  private void updateTuz(int tuz)
-  {
-    for(Hole hole: holes)
-    {
-        if(hole.getIndex()==tuz)
-        {
-          hole.makeTuz();
-        }
-    }
-  }
-
-  private void updateHoles(int[] holeValues) {
-    for (Hole hole: holes) {
-      hole.update(holeValues[hole.getIndex()]);
+  private void updateHoles(int[] holeValues, int tuz) {
+    int delay = playerDelay/NUMBER_OF_HOLES;
+    for(Hole hole: holes){
+      if(hole.getIndex()==tuz)
+      {
+        hole.update(holeValues[hole.getIndex()],true,delay);
+      }
+      else{
+        hole.update(holeValues[hole.getIndex()],false,delay);
+      }
+      delay+=playerDelay/NUMBER_OF_HOLES;
     }
   }
 
   public void unblockHoles(){
     for(Hole hole: holes)
     {
-      if(Integer.parseInt(hole.getText())!=0)
-      {hole.setEnabled(true);}
+      if(!hole.getText().equals("")){
+        if(Integer.parseInt(hole.getText())!=0){
+          hole.setEnabled(true);
+        }
+      }
     }
   }
 
