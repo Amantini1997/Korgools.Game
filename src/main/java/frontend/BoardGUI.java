@@ -13,26 +13,27 @@ import backend.*;
 public class BoardGUI extends JPanel
 {
 	private Board board;
-	private Player pl1;
-	private Player pl2;
+	private Player black;
+	private Player white;
+
   public BoardGUI()
   {
   	board = new Board();
     this.setLayout(new GridLayout(3,1));
-    pl1 = new Player(9, e -> onButtonClick(e));
-    this.add(pl1.showHoles());
-    pl2 = new Player(9,e -> onButtonClick(e));
-		this.add(setCenter(pl1,pl2));
-    this.add(pl2.showHoles());
-
+    black = new Player(9, e -> onButtonClick(e));
+    this.add(black.showHoles());
+    white = new Player(9,e -> onButtonClick(e));
+		this.add(setCenter());
+    this.add(white.showHoles());
+		updateGUI(board.toString());
   }
 
-  private JPanel setCenter(Player pl1, Player pl2)
+  private JPanel setCenter()
   {
     JPanel center = new JPanel();
     center.setLayout(new GridLayout(1,2));
-    center.add(pl1.showScoreLabel());
-    center.add(pl2.showScoreLabel());
+    center.add(black.showScoreLabel());
+    center.add(white.showScoreLabel());
     return center;
   }
 
@@ -43,7 +44,7 @@ public class BoardGUI extends JPanel
       //call backend, and tell them the index of the cell that has been clicked
 
       //get necessary information from backend to update the state of the game/GUI
-		board.makeAMove(indexOfHole);
+			board.makeAMove(indexOfHole);
       updateGUI(board.toString());
 			System.out.println("This is the board after the move:");
 			System.out.println("BUTTON PRESSED: " +  indexOfHole);
@@ -53,13 +54,28 @@ public class BoardGUI extends JPanel
   private void updateGUI(String boardState) {
     //update the information
 		String[] info = boardState.split("\n");
-		pl1.update(info[0],true);
-		pl2.update(info[1],false);
-      // update the holes
-      // update the score
-      // update the tuz location
-
+		black.update(info[0]);
+		white.update(info[1]);
+		blockPlayer(info[2]);
     this.repaint();
+		this.revalidate();
+		if(SwingUtilities.getRoot(this)!=null){
+			JFrame frame = (JFrame) SwingUtilities.getRoot(this);
+			frame.pack();
+		}
   }
 
+	private void blockPlayer(String player)
+	{
+		if(player.equals("w"))
+		{
+			black.blockHoles();
+			white.unblockHoles();
+		}
+		else
+		{
+			white.blockHoles();
+			black.unblockHoles();
+		}
+	}
 }
