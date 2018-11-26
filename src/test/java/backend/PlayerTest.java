@@ -19,7 +19,6 @@ public class PlayerTest{
   /*
   @Test
   public void actTest(){
-    Player p = new Player();
 
     p.act(3);
     int[] list = new int[]{9,9,9,1,10,10,10,10,10};

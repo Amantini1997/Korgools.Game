@@ -133,9 +133,10 @@ public class Player {
       return kazan.hasWon();
     }
 
-     /**Empties the tuz and returns the number of korgools removed
-     @return korgools removed from tuz if there is one, 0 otherwise*
-     */
+     /**
+      * Empties the tuz and returns the number of korgools removed
+      * @return korgools removed from tuz if any, 0 otherwise*
+      */
     public int emptyTuz(){
       for(Hole hole: holes){
         if(hole.isTuz())
@@ -145,9 +146,10 @@ public class Player {
     }
 
     /**
-      *Increases the number of korgools in the kazan.
-       @param numKorgools the number of korgools to add
-       @return the number of korgools added*/
+     * Increases the number of korgools in the kazan.
+     * @param numKorgools the number of korgools to add
+     * @return the number of korgools added
+     */
     public int addKorgoolsToKazan(int numKorgools){
           kazan.increaseKorgoolsBy(numKorgools);
           return numKorgools;

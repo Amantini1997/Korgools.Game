@@ -72,7 +72,7 @@ public class Board {
     * The ending hole is an opponent's one
     * and the number of korgools is now even so, the current player
     * steal them.
-    * @param hole: the hole to steal korgools from 
+    * @param hole: the hole to steal korgools from
     */
     private void stealKorgools(int hole){
       int stolenKorgools = currentPlayer.getHoles()[hole].setKorgoolsToZero();
