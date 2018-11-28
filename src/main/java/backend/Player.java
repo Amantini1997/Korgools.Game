@@ -8,7 +8,7 @@ public class Player {
     private boolean tuzIsAvailable;
 
     /**
-     * Public constructor for Board game 
+     * Public constructor for Board game
      */
     public Player(){
       holes = new Hole[N_HOLES];
@@ -155,6 +155,21 @@ public class Player {
           return numKorgools;
     }
 
+    /**
+        * If the player has no korgools left in their holes
+        * they can't make a move
+        * @return True if the player has at least one possible move,
+        *  False otherwise.
+        */
+       public boolean hasAMove(){
+         for(Hole hole : holes){
+           if(hole.getKorgools() != 0)
+             return true;
+         }
+         return false;
+       }
+
+       
     @Override
     public String toString() {
       String stringToReturn = "";
