@@ -18,8 +18,15 @@ public class AIBoard extends Board{
    * @return True if the current player has won,
    *    False otherwise
    */
+  @Override
   public boolean makeAMove(int pressedHole){
-    if(!isWhiteTurn){
+    super.makeAMove(pressedHole);
+    int randomHole = evaluate();
+    while(!isValidMove(randomHole)){
+      randomHole = evaluate();
+    }
+    return super.makeAMove(evaluate());
+    /*if(!isWhiteTurn){
       pressedHole = evaluate();
     }
     int kargoolsLeft = 0;
@@ -35,12 +42,17 @@ public class AIBoard extends Board{
       kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft);
     }
 
+    setCurrentPlayer();
     moveKorgoolsFromTuzzes();
     currentPlayerHasWon(currentPlayer);
     if(!isWhiteTurn){
       makeAMove(0);
     }
-    return false;
+    return false;*/
+  }
+
+  private boolean isValidMove(int pressedHole){
+    return getPlayerHole(pressedHole).getKorgools() != 0;
   }
 
   /**

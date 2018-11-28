@@ -44,6 +44,7 @@ public class BoardGUI extends JPanel
 	};
   public BoardGUI()
   {
+  	board = new AIBoard(2);
     this.setLayout(new GridLayout(3,1));
     black = new ReversedPlayer(9,mouseClick);
     this.add(black.showHoles());
@@ -53,7 +54,7 @@ public class BoardGUI extends JPanel
 		this.setName("boardGUI");
 		updateGUI(board.toString());
   }
-  
+
   public BoardGUI(String boardString) {
       this();
       this.board = new Board(boardString);
@@ -82,7 +83,7 @@ public class BoardGUI extends JPanel
 			frame.pack();
 		}
   }
-  
+
   public Board getBoardDisplayed() {
       return board;
   }
