@@ -20,7 +20,8 @@ public class AIBoard extends Board{
    */
   @Override
   public void makeAMove(int pressedHole){
-    super.makeAMove(pressedHole);
+    if(isWhiteTurn)
+      super.makeAMove(pressedHole);
     makeAIMove();
   }
 
@@ -42,6 +43,6 @@ public class AIBoard extends Board{
    * @return The hole selected
    */
   private int evaluate(){
-    return (int)Math.random()*8;
+    return (int)(Math.random()*8);
   }
 }
