@@ -42,8 +42,6 @@ public class Board {
    *    False otherwise
 	 */
     public void makeAMove(int pressedHole){
-    if(! currentPlayer.hasAMove())
-      return;
     //if the player presses a hole containing 0 korgools nothing happens
     int initKorgools = getPlayerHole(pressedHole).getKorgools();
     if(initKorgools > 1){
@@ -67,7 +65,12 @@ public class Board {
     isWhiteTurn = !isWhiteTurn;
     setCurrentPlayer();
     moveKorgoolsFromTuzzes();
-   currentPlayerHasWon(currentPlayer);
+    currentPlayerHasWon(currentPlayer);
+    if(!currentPlayer.hasAMove()){
+      isWhiteTurn = !isWhiteTurn;
+      setCurrentPlayer();
+      return;
+    }
   }
 
    /**
