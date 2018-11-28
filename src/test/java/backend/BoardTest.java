@@ -119,4 +119,27 @@ public class BoardTest{
     assertEquals(board.toString(),"13,12,1,3,2,15,12,12,11,14,-1\n"+
                                   "2,12,12,1,0,2,2,13,13,10,4\nb");
   }
+
+  @Test
+  public void makeAMoveShouldNotCreateAtuzOnLastHole(){
+  board.makeAMove(8);
+  board.makeAMove(0);
+  board.makeAMove(1);
+  board.makeAMove(6);
+  board.makeAMove(1);
+  board.makeAMove(8);
+  assertEquals(board.toString(),"1,11,11,11,11,11,1,2,1,10,-1\n"+
+                                "2,2,13,12,12,12,12,12,3,12,-1\nw");
+
+  }
+
+  @Test
+  /*public void makeAMove(){
+    board = new Board("0,0,0,0,0,0,0,0,0,13,0\n"+
+                      "0,0,1,0,0,0,0,0,0,20,0\nw");
+    board.makeAMove(2);
+    assertEquals(board.toString(),"0,0,0,0,0,0,0,0,0,13,0\n"+
+                                  "0,0,1,0,0,0,0,0,0,20,0\nw");
+  }*/
+
 }

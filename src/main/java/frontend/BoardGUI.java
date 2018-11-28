@@ -18,7 +18,8 @@ public class BoardGUI extends JPanel
 
   public BoardGUI()
   {
-  	board = new AIBoard(2);
+  	board = new Board("0,0,1,0,0,0,0,0,0,20,0\n"+
+                      "0,0,0,0,0,0,0,0,0,13,0\nw");
     this.setLayout(new GridLayout(3,1));
     black = new Player(9, e -> onButtonClick(e));
     this.add(black.showHoles());
