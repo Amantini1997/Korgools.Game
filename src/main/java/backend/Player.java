@@ -71,13 +71,15 @@ public class Player {
      * @return 1 if the hole is the last of the line,
      * 0 otherwise
      */
-    private int moveOneKorgool(int startHole){
-      if(holes[startHole].getKorgools()==0)return 0;
-      else if(startHole<N_HOLES-1){
-        holes[startHole].setKorgoolsToZero();
-        holes[startHole+1].korgoolsPlusOne();
-        return 0;
-      }else return 1;
+    private int moveOneKorgool(int pressedHole){
+      if(holes[pressedHole].getKorgools()==0)return 0;
+      else{
+        holes[pressedHole].setKorgoolsToZero();
+        if(pressedHole<N_HOLES-1){
+          holes[pressedHole+1].korgoolsPlusOne();
+          return 0;
+        }else return 1;
+      }
     }
 
 
@@ -118,8 +120,10 @@ public class Player {
 	 }
 
     /**
-     * Check if the player can still set a tuz,
-     * @param n : The player who wants to set the tuz
+     * Check if the player can set a tuz on a hole,
+     * @param currentHole : The hole to be tuzzed
+     * @return True if the player can tuz such hole, False
+     * otherwise.
      */
     public boolean hasTuzOption(int currentHole){
       return (tuzIsAvailable && holes[currentHole].isTuzzable() && currentHole != UNTUZZABLE_HOLE);
@@ -129,9 +133,10 @@ public class Player {
       return kazan.hasWon();
     }
 
-     /**Empties the tuz and returns the number of korgools removed
-     @return korgools removed from tuz if there is one, 0 otherwise*
-     */
+     /**
+      * Empties the tuz and returns the number of korgools removed
+      * @return korgools removed from tuz if any, 0 otherwise*
+      */
     public int emptyTuz(){
       for(Hole hole: holes){
         if(hole.isTuz())
@@ -141,9 +146,10 @@ public class Player {
     }
 
     /**
-      *Increases the number of korgools in the kazan.
-       @param numKorgools the number of korgools to add
-       @return the number of korgools added*/
+     * Increases the number of korgools in the kazan.
+     * @param numKorgools the number of korgools to add
+     * @return the number of korgools added
+     */
     public int addKorgoolsToKazan(int numKorgools){
           kazan.increaseKorgoolsBy(numKorgools);
           return numKorgools;

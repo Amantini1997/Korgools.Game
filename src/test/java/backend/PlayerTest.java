@@ -3,10 +3,11 @@ package backend;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import org.junit.Test;
+import org.junit.Before;
 import java.util.Arrays;
 
 public class PlayerTest{
-
+  private Player p;
   private String getHolesList(Hole[] holes){
     int[] list = new int[holes.length];
     for(int i = 0; i<holes.length;i++){
@@ -18,7 +19,6 @@ public class PlayerTest{
   /*
   @Test
   public void actTest(){
-    Player p = new Player();
 
     p.act(3);
     int[] list = new int[]{9,9,9,1,10,10,10,10,10};
@@ -41,15 +41,24 @@ public class PlayerTest{
     assertEquals(Arrays.toString(list),getHolesList(p.getHoles()));
   }*/
 
+  @Before
+  public void setUp(){
+     p = new Player();
+  }
+
+  /*no hasTuzOptionShouldReturnTrue tests exists because in very same
+   *a hole is possibly tuzzable, it set as such and after that the method
+   *is called*/
   @Test
-  public void hasTuzOptionTest(){
-      Player p = new Player();
+  public void hasTuzOptionTestShouldReturnFalse1(){
       p.act(8);// 9 9 9 9 9 9 9 9 1
       p.act(7);// 9 9 9 9 9 9 9 1 2
       p.act(0);// 1 x x x x x x 2 3
       assertEquals(false,p.hasTuzOption(8));//last hole can't be tuz
+  }
 
-
+  @Test
+  public void hasTuzOptionTestShouldReturnFalse2(){
                // 0 1 2 3 4 5 6 7 8
       p.act(5);// 1 x x x x 1 e 3 4
       p.act(6);// 1 x x x x 1 1 4 5
@@ -57,7 +66,10 @@ public class PlayerTest{
       p.act(4);// 1 x x x 1 2 2 2 7
       p.act(5);// 1 x x x 1 1 3 2 7
       assertEquals(false,p.hasTuzOption(6));
+  }
 
+  @Test
+  public void hasTuzOptionTestShouldReturnFalse3(){
                // 0 1 2 3 4 5 6 7 8
       p.act(2);// 1 x 1 x 2 2 4 3 8
       p.act(7);// 1 x 1 x 2 2 4 1 9
