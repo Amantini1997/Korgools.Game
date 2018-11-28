@@ -51,20 +51,6 @@ public class Player {
     }
 
     /**
-     * If the player has no korgools left in their holes
-     * they can't make a move
-     * @return True if the player has at least one possible move,
-     *  False otherwise.
-     */
-    public boolean hasAMove(){
-      for(Hole hole : holes){
-        if(hole.getKorgools() != 0)
-          return true;
-      }
-      return false;
-    }
-
-    /**
      * Take the number of a hole, empty it and move all the balls
      * into the next holes. A tuz can be called after a move.
      * @param startHole : The position of the hole you want to empty

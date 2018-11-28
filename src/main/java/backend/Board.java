@@ -41,16 +41,14 @@ public class Board {
    * @return True if the current player has won,
    *    False otherwise
 	 */
-  public void makeAMove(int pressedHole){
-    if(! currentPlayer.hasAMove())
-      return;
+  public boolean makeAMove(int pressedHole){
     //if the player presses a hole containing 0 korgools nothing happens
     int initKorgools = getPlayerHole(pressedHole).getKorgools();
     if(initKorgools > 1){
       initKorgools--;
     }
     if(initKorgools==0){
-      return;
+      return false;
     }
     int kargoolsLeft = currentPlayer.act(pressedHole);
     while(kargoolsLeft>0){
@@ -67,7 +65,7 @@ public class Board {
     isWhiteTurn = !isWhiteTurn;
     setCurrentPlayer();
     moveKorgoolsFromTuzzes();
-    currentPlayerHasWon(currentPlayer);
+    return currentPlayerHasWon(currentPlayer);
   }
 
    /**
@@ -94,12 +92,12 @@ public class Board {
   * TO-DO implement this method, it will be called
   * when one of the player wins
   */
-  protected void currentPlayerHasWon(Player currentPlayer){
+  protected boolean currentPlayerHasWon(Player currentPlayer){
     if(currentPlayer.hasWon()){
-      String cPlayer = (isWhiteTurn)? "WHITE" : "BLACK";
-      System.out.println("\nCONGRATS "+cPlayer+" PLAYER, YOU WON");
+      System.out.println("\nCONGRATS YOU WON");
       System.exit(0);
     }
+    return currentPlayer.hasWon();
   }
 
   @Override
