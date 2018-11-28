@@ -10,61 +10,33 @@ import java.util.Collections;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.*;
+import java.util.*;
+import java.awt.event.MouseAdapter;
 
-public class  Player{
-  private JPanel holesPanel =  new JPanel();
-  private ScoreGUI scoreLabel = new ScoreGUI();
+public class  Player {
+  protected JPanel holesPanel =  new JPanel();
+  protected ScoreGUI scoreLabel;
 
-  private static final int NUMBER_OF_HOLES = 9;
-  private Color background = Color.WHITE;
-  private ArrayList<Hole> holes = new ArrayList<>();
-  private static boolean reverse=true;
+  protected static final int NUMBER_OF_HOLES = 9;
+  protected ArrayList<Hole> holes = new ArrayList<>();
 
-  public Player(int numberOfKorgools, ActionListener listener)
+  public Player(int numberOfKorgools, MouseAdapter listener)
   {
+    scoreLabel = new ScoreGUILabel();
     holesPanel.setLayout(new GridLayout(1,NUMBER_OF_HOLES));
     holesPanel.setBorder(new EmptyBorder(10,10,10,10));
-
     for(int i=0; i<NUMBER_OF_HOLES; i++)
     {
       Hole hole = new Hole(i, numberOfKorgools, listener);
       holes.add(hole);
     }
-    if(reverse)
-    {
-      Collections.reverse(holes);
-      background = Color.BLACK;
-    }
-    holesPanel.setBackground(background);
-    scoreLabel.setBackground(background);
-
-    for(Hole hole: holes)
-    {
-      JPanel holeInfo = new JPanel();
-      holeInfo.setLayout(new GridLayout(2,1));
-      JLabel holeNumber = new JLabel(hole.getIndex()+1 + "", SwingConstants.CENTER);
-      holeNumber.setOpaque(true);
-      if(reverse)
-      {
-        holeNumber.setForeground(Color.WHITE);
-        holeInfo.add(holeNumber);
-        holeInfo.add(hole);
-      }
-      else
-      {
-        holeNumber.setForeground(Color.BLACK);
-        holeInfo.add(hole);
-        holeInfo.add(holeNumber);
-      }
-      holeNumber.setBackground(background);
-      holesPanel.add(holeInfo);
-    }
-
-    reverse = !reverse;
-    //Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-    //cell.setBorder(border);
   }
 
+  public void setBackground(Color color)
+  {
+    holesPanel.setBackground(color);
+    scoreLabel.setBackground(color);
+  }
   public JPanel showHoles()
   {
     return holesPanel;
@@ -73,7 +45,10 @@ public class  Player{
   {
     return scoreLabel;
   }
-
+  public ArrayList<Hole> getHoles()
+  {
+    return holes;
+  }
   public void update(String playerState)
   {
     String[] player = playerState.split(",");
@@ -81,10 +56,7 @@ public class  Player{
     updateHoles(holes);
     updateScore(player[9]);
     int tuz = Integer.parseInt(player[10]);
-    if(tuz !=-1)
-    {
-      updateTuz(tuz);
-    }
+    updateTuz(tuz);
   }
 
   private int[] getHolesInfo(String[] player)
