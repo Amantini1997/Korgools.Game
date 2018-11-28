@@ -8,7 +8,7 @@ public class Player {
     private boolean tuzIsAvailable;
 
     /**
-     * Public constructor for Board game
+     * Public constructor for Board game 
      */
     public Player(){
       holes = new Hole[N_HOLES];
