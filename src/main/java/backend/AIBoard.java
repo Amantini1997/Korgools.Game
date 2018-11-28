@@ -19,36 +19,18 @@ public class AIBoard extends Board{
    *    False otherwise
    */
   @Override
-  public boolean makeAMove(int pressedHole){
+  public void makeAMove(int pressedHole){
     super.makeAMove(pressedHole);
+    makeAIMove();
+  }
+
+  private void makeAIMove(){
     int randomHole = evaluate();
     while(!isValidMove(randomHole)){
+      System.out.println(randomHole);
       randomHole = evaluate();
     }
-    return super.makeAMove(evaluate());
-    /*if(!isWhiteTurn){
-      pressedHole = evaluate();
-    }
-    int kargoolsLeft = 0;
-    Player currentPlayer = (isWhiteTurn)?white:black;
-    kargoolsLeft = currentPlayer.act(pressedHole);
-    while(kargoolsLeft>0){
-      isWhiteTurn = !isWhiteTurn;
-      if(isWhiteTurn){
-        currentPlayer = white;
-      }else{
-        currentPlayer = black;
-      }
-      kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft);
-    }
-
-    setCurrentPlayer();
-    moveKorgoolsFromTuzzes();
-    currentPlayerHasWon(currentPlayer);
-    if(!isWhiteTurn){
-      makeAMove(0);
-    }
-    return false;*/
+    super.makeAMove(evaluate());
   }
 
   private boolean isValidMove(int pressedHole){
