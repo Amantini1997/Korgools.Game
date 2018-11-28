@@ -19,11 +19,13 @@ public class AIBoard extends Board{
    *    False otherwise
    */
   @Override
-  public void makeAMove(int pressedHole){
+  public boolean makeAMove(int pressedHole){
     super.makeAMove(pressedHole);
-    makeAIMove();
-  }
-
+    int randomHole = evaluate();
+    while(!isValidMove(randomHole)){
+      randomHole = evaluate();
+    }
+    return super.makeAMove(evaluate());
     /*if(!isWhiteTurn){
       pressedHole = evaluate();
     }
@@ -47,17 +49,7 @@ public class AIBoard extends Board{
       makeAMove(0);
     }
     return false;*/
-
-
-  private void makeAIMove(){
-    int randomHole = evaluate();
-    while(!isValidMove(randomHole)){
-      System.out.println(randomHole);
-      randomHole = evaluate();
-    }
-    super.makeAMove(evaluate());
   }
-
 
   private boolean isValidMove(int pressedHole){
     return getPlayerHole(pressedHole).getKorgools() != 0;
@@ -68,6 +60,6 @@ public class AIBoard extends Board{
    * @return The hole selected
    */
   private int evaluate(){
-    return (int)(Math.random()*8);
+    return (int)Math.random()*8;
   }
 }
