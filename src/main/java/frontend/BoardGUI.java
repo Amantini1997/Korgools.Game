@@ -6,8 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import backend.*;
-import java.util.concurrent.*;
-import java.lang.Process.*;
+
 /**
 * Panel with the board game
 **/
@@ -16,11 +15,12 @@ public class BoardGUI extends JPanel
 	private Board board;
 	private Player black;
 	private Player white;
+
   public BoardGUI()
   {
   	board = new Board();
     this.setLayout(new GridLayout(3,1));
-    black = new Player(9,e -> onButtonClick(e));
+    black = new Player(9, e -> onButtonClick(e));
     this.add(black.showHoles());
     white = new Player(9,e -> onButtonClick(e));
 		this.add(setCenter());
@@ -52,27 +52,30 @@ public class BoardGUI extends JPanel
   }
 
   private void updateGUI(String boardState) {
+    //update the information
 		String[] info = boardState.split("\n");
-		updateBoard(info);
-		repaint();
-		revalidate();
+		black.update(info[0]);
+		white.update(info[1]);
+		blockPlayer(info[2]);
+    this.repaint();
+		this.revalidate();
+		if(SwingUtilities.getRoot(this)!=null){
+			JFrame frame = (JFrame) SwingUtilities.getRoot(this);
+			frame.pack();
+		}
   }
 
-	private void updateBoard(String[] info)
+	private void blockPlayer(String player)
 	{
-		if(info[2].equals("w"))
+		if(player.equals("w"))
 		{
-			black.update(info[0],1);
- 			white.update(info[1],2);
-			white.unblockHoles();
 			black.blockHoles();
+			white.unblockHoles();
 		}
 		else
 		{
-			black.update(info[0],2);
- 			white.update(info[1],1);
-			black.unblockHoles();
 			white.blockHoles();
+			black.unblockHoles();
 		}
 	}
 }
