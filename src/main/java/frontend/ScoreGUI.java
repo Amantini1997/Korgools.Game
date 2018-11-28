@@ -14,10 +14,10 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class scoreGUI extends JPanel{
+public class ScoreGUI extends JPanel{
   private JLabel scoreLabel;
 
-  public scoreGUI()
+  public ScoreGUI()
   {
     this.setLayout(new GridLayout());
     scoreLabel = new JLabel("0");
