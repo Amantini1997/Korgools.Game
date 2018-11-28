@@ -43,7 +43,7 @@ public class Board {
 	 */
   public boolean makeAMove(int pressedHole){
     //if the player presses a hole containing 0 korgools nothing happens
-    int initKorgools = currentPlayer.getHoles()[pressedHole].getKorgools();
+    int initKorgools = getPlayerHole(pressedHole).getKorgools();
     if(initKorgools > 1){
       initKorgools--;
     }
@@ -58,7 +58,7 @@ public class Board {
     //checking that the ending hole is an opponent's one
     if((currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
       int finalHole = (pressedHole+initKorgools)%9;
-      if(currentPlayer.getHoles()[finalHole].getKorgools()%2==0){
+      if(getPlayerHole(finalHole).getKorgools()%2==0){
         stealKorgools(finalHole);
       }
     }
@@ -75,7 +75,7 @@ public class Board {
     * @param hole: the hole to steal korgools from
     */
     private void stealKorgools(int hole){
-      int stolenKorgools = currentPlayer.getHoles()[hole].setKorgoolsToZero();
+      int stolenKorgools = getPlayerHole(hole).setKorgoolsToZero();
       setCurrentPlayer();
       currentPlayer.addKorgoolsToKazan(stolenKorgools);
     }
@@ -107,5 +107,9 @@ public class Board {
     String line3 = (isWhiteTurn? "w" : "b");
 
     return line1 + "\n" + line2 + "\n" + line3;
+  }
+
+  protected Hole getPlayerHole(int hole){
+    return currentPlayer.getHoles()[hole];
   }
 }

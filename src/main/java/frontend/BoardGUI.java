@@ -18,7 +18,7 @@ public class BoardGUI extends JPanel
 
   public BoardGUI()
   {
-  	board = new Board();
+  	board = new AIBoard(2);
     this.setLayout(new GridLayout(3,1));
     black = new Player(9, e -> onButtonClick(e));
     this.add(black.showHoles());
