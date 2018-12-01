@@ -16,8 +16,8 @@ public class Board {
 
   public Board(String boardString) {
     String[] lines = boardString.split("\n");
-    white = new Player(lines[1]);
     black = new Player(lines[0]);
+    white = new Player(lines[1]);
 
     if (lines[2].equals("w")) {
       isWhiteTurn = true;
@@ -42,15 +42,15 @@ public class Board {
    *    False otherwise
 	 */
     public void makeAMove(int pressedHole){
-        System.out.println("making move " + pressedHole);
-        System.out.println(this);
+        //System.out.println("making move " + pressedHole);
+        //System.out.println(this);
     //if the player presses a hole containing 0 korgools nothing happens
     int initKorgools = getPlayerHole(pressedHole).getKorgools();
     if(initKorgools > 1){
       initKorgools--;
     }
     if(initKorgools==0){
-        System.out.println("Not legal move, kerg empty");
+        //System.out.println("Not legal move, kerg empty");
       return ;
     }
     int kargoolsLeft = currentPlayer.act(pressedHole);
@@ -74,8 +74,6 @@ public class Board {
         System.out.println(this + "\n");
       setCurrentPlayer();
       return;
-    } else {
-        System.out.println("player has no move");
     }
 
   }
@@ -114,8 +112,8 @@ public class Board {
 
   @Override
   public String toString() {
-    String line1 = white.toString();
-    String line2 = black.toString();
+    String line1 = black.toString();
+    String line2 = white.toString();
     String line3 = (isWhiteTurn? "w" : "b");
 
     return line1 + "\n" + line2 + "\n" + line3;
