@@ -42,12 +42,15 @@ public class Board {
    *    False otherwise
 	 */
     public void makeAMove(int pressedHole){
+        System.out.println("making move " + pressedHole);
+        System.out.println(this);
     //if the player presses a hole containing 0 korgools nothing happens
     int initKorgools = getPlayerHole(pressedHole).getKorgools();
     if(initKorgools > 1){
       initKorgools--;
     }
     if(initKorgools==0){
+        System.out.println("Not legal move, kerg empty");
       return ;
     }
     int kargoolsLeft = currentPlayer.act(pressedHole);
@@ -68,9 +71,13 @@ public class Board {
     currentPlayerHasWon(currentPlayer);
     if(!currentPlayer.hasAMove()){
       isWhiteTurn = !isWhiteTurn;
+        System.out.println(this + "\n");
       setCurrentPlayer();
       return;
+    } else {
+        System.out.println("player has no move");
     }
+
   }
 
    /**
@@ -107,8 +114,8 @@ public class Board {
 
   @Override
   public String toString() {
-    String line1 = black.toString();
-    String line2 = white.toString();
+    String line1 = white.toString();
+    String line2 = black.toString();
     String line3 = (isWhiteTurn? "w" : "b");
 
     return line1 + "\n" + line2 + "\n" + line3;
@@ -116,5 +123,9 @@ public class Board {
 
   protected Hole getPlayerHole(int hole){
     return currentPlayer.getHoles()[hole];
+  }
+
+  public boolean gameHasEnded() {
+    return white.hasWon() || black.hasWon();
   }
 }
