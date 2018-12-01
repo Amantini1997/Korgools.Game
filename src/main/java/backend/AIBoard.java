@@ -46,6 +46,8 @@ public class AIBoard extends Board{
 
   private boolean isValidMove(int pressedHole){
     Player currentPlayer = (isWhiteTurn? white : black);
+    //System.out.println(this);
+    //System.out.println("is " + pressedHole + " valid? " + (currentPlayer.getHoles()[pressedHole].getKorgools() != 0));
     return currentPlayer.getHoles()[pressedHole].getKorgools() != 0;
   }
 
@@ -62,11 +64,11 @@ public class AIBoard extends Board{
   //
 
   public static void main(String[] s) {
-    String testBoard = "9,9,9,9,9,9,9,9,0,13,0\n" +
-            "0,1,1,3,0,1,3,0,0,20,0\n" +
+    String testBoard = "10,10,10,10,10,10,10,0,9,0,-1\n" +
+            "9,9,9,9,9,9,9,9,1,10,-1\n" +
             "b";
 
-    System.out.println(getBestMoveForBlack(testBoard));
+    System.out.println("move to Do: " + getBestMoveForBlack(testBoard));
   }
 
 
@@ -80,7 +82,7 @@ public class AIBoard extends Board{
     String bestBoard = "";
     if (isBlackTurn) { // maximize
       for (String newBoard : possibleBoards) {
-        int newAlpha = alphabeta(newBoard, depth-1, alpha, beta, !isBlackTurn).getKey();
+        int newAlpha = alphabeta(newBoard, depth-1, alpha, beta, false).getKey();
         if (alpha < newAlpha) {
           alpha = newAlpha;
           bestBoard = newBoard;
@@ -89,18 +91,22 @@ public class AIBoard extends Board{
         }
         if (beta <= alpha) break; // prune
       }
+      //System.out.println("max from black ?" + isBlackTurn + "\n" + bestBoard);
       return new Pair<>(alpha, bestBoard);
     }
     else { // minimize
       for (String newBoard : possibleBoards) {
-        int newBeta = alphabeta(newBoard, depth-1, alpha, beta, !isBlackTurn).getKey();
-        if (beta < newBeta) {
+        int newBeta = alphabeta(newBoard, depth-1, alpha, beta, true).getKey();
+        //System.out.println("comparing " + beta + " and " + newBeta);
+        if (beta > newBeta) {
+          //System.out.println("resetting");
           beta = newBeta;
           bestBoard = newBoard;
           //System.out.println("switching to " + newBoard);
         }
         if (beta <= alpha) break; // prune
       }
+      //System.out.println("min to " + bestBoard + "\n");
       return new Pair<>(beta, bestBoard);
     }
   }
@@ -131,34 +137,33 @@ public class AIBoard extends Board{
   private static ArrayList<String> getPossibleMoves(String boardString) {
     ArrayList<String> reachableBoards = new ArrayList<>();
     for (int i = 0; i < 9; i++) {
-      if ((new AIBoard(0)).isValidMove(i)) {
+      if ((new AIBoard(boardString, 0)).isValidMove(i)) {
         Board board = new Board(boardString);
         board.makeAMove(i);
+        //System.out.println("Pressing " + i);
+        //System.out.println(board);
         reachableBoards.add(board.toString());
       }
     }
 
-    for (String bs : reachableBoards) {
-      System.out.println(bs);
-    }
     return reachableBoards;
   }
 
   private static int getBestMoveForBlack(String boardString) {
-    System.out.println("starting: " + boardString);
-    System.out.println(heuristicValue(boardString) + "\n");
+    //System.out.println("starting: " + boardString);
+    //System.out.println(heuristicValue(boardString) + "\n");
 
     String desiredBoard = alphabeta(boardString, 1, Integer.MIN_VALUE, Integer.MAX_VALUE, true).getValue();
 
     System.out.println("desired: " + desiredBoard);
-    System.out.println(heuristicValue(desiredBoard) + "\n");
+    //System.out.println(heuristicValue(desiredBoard) + "\n");
 
 
     for (int i = 0; i < 9; i++) {
       Board newBoard = new Board(boardString);
       newBoard.makeAMove(i);
 
-      if (newBoard.toString() == desiredBoard) return i;
+      if (newBoard.toString().equals(desiredBoard)) return i;
     }
 
     try {
