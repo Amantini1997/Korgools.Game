@@ -60,6 +60,7 @@ public class ChoiceGUI extends JPanel
   private JButton creatOptionButton(String text)
   {
     JButton button = new JButton(text);
+    button.setName(text);
     button.addActionListener(e -> getNewScreen(e));
     return button;
   }

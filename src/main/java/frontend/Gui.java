@@ -32,4 +32,9 @@ public class  Gui
             }
         });
     }
+
+    public JFrame getFrame(){
+        return this.frame;
+    }
+
 }

@@ -19,6 +19,9 @@ public class ReversedPlayer extends Player{
     Collections.reverse(holes);
     super.setBackground(Color.BLACK);
     addHoles();
+
+    this.scoreLabel.setName("blackScore");
+
     Collections.reverse(holes);
   }
  private void addHoles()
@@ -34,6 +37,8 @@ public class ReversedPlayer extends Player{
      holeInfo.add(hole);
      holeNumber.setBackground(Color.BLACK);
      holesPanel.add(holeInfo);
+
+     hole.setName("blackHole" + hole.getIndex());
    }
  }
 }
