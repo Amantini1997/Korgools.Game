@@ -64,11 +64,11 @@ public class AIBoard extends Board{
   //
 
   public static void main(String[] s) {
-    String testBoard = "10,10,10,10,10,10,10,0,9,0,-1\n" +
-            "9,9,9,9,9,9,9,9,1,10,-1\n" +
+    String testBoard = "5,8,5,26,0,1,1,2,0,55,4\n" +
+            "3,2,5,1,3,2,2,0,1,40,7\n" +
             "b";
 
-    System.out.println("move to Do: " + getBestMoveForBlack(testBoard));
+    System.out.println("move to Do: " + (getBestMoveForBlack(testBoard) + 1));
   }
 
 
@@ -153,7 +153,7 @@ public class AIBoard extends Board{
     //System.out.println("starting: " + boardString);
     //System.out.println(heuristicValue(boardString) + "\n");
 
-    String desiredBoard = alphabeta(boardString, 1, Integer.MIN_VALUE, Integer.MAX_VALUE, true).getValue();
+    String desiredBoard = alphabeta(boardString, 6, Integer.MIN_VALUE, Integer.MAX_VALUE, true).getValue();
 
     System.out.println("desired: " + desiredBoard);
     //System.out.println(heuristicValue(desiredBoard) + "\n");
