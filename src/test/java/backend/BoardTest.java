@@ -133,7 +133,7 @@ public class BoardTest{
 
   }
 
-  @Test
+  //@Test
   /*public void makeAMove(){
     board = new Board("0,0,0,0,0,0,0,0,0,13,0\n"+
                       "0,0,1,0,0,0,0,0,0,20,0\nw");

@@ -56,7 +56,7 @@ public class Board {
     }
     if(initKorgools==0){
         //System.out.println("Not legal move, kerg empty");
-      return ;
+      return ; //TO DO
     }
     int kargoolsLeft = currentPlayer.act(pressedHole, hasMoveStartedFromThisPlayer());
     while(kargoolsLeft>0){
@@ -69,18 +69,16 @@ public class Board {
       if(getPlayerHole(finalHole).getKorgools()%2==0){
         stealKorgools(finalHole);
       }
-    }
-    isWhiteTurn = !isWhiteTurn;
-    setCurrentPlayer();
-    moveKorgoolsFromTuzzes();
-    currentPlayerHasWon(currentPlayer);
-    if(!currentPlayer.hasAMove()){
       isWhiteTurn = !isWhiteTurn;
         System.out.println(this + "\n");
       setCurrentPlayer();
-      return;
-    }
-
+      moveKorgoolsFromTuzzes();
+      currentPlayerHasWon(currentPlayer);
+      if(!currentPlayer.hasAMove()){
+        isWhiteTurn = !isWhiteTurn;
+        setCurrentPlayer();
+        return;
+      }
   }
 
    /**
@@ -110,7 +108,7 @@ public class Board {
   protected void currentPlayerHasWon(Player currentPlayer){
     if(currentPlayer.hasWon()){
       String cPlayer = (isWhiteTurn)? "WHITE" : "BLACK";
-     System.out.println("\nCONGRATS "+cPlayer+" PLAYER, YOU WON");
+      System.out.println("\nCONGRATS "+cPlayer+" PLAYER, YOU WON");
       System.exit(0);
     }
   }

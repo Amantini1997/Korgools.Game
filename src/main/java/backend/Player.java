@@ -66,6 +66,10 @@ public class Player {
 		  return moveKorgools(movebleKorgools,startHole,moveStartedFromThisPlayer);
     }
 
+    public int act(int startHole){
+      return act(startHole,true);
+    }
+
     /**
      * Special case where is just one korgool contained in a holes
      * @param startHole: the hole to empty
