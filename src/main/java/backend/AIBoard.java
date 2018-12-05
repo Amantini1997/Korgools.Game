@@ -18,26 +18,17 @@ public class AIBoard extends Board{
     level = hardness;
   }
 
-<<<<<<< HEAD
   public AIBoard(String board, int hardness) {
     super(board);
     level = hardness;
   }
-
-=======
-  private AIBoard(String board, int hardness) {
-    super(board);
-    level = hardness;
-  }
->>>>>>> b683f88f9944848802be33098fda87387deec293
-  /**
+/**
    * Move the korgools according to the pressed hole
    * @param pressedHole: the hole pressed
    * @return True if the current player has won,
    *    False otherwise
    */
   @Override
-<<<<<<< HEAD
   public boolean makeAMove(int pressedHole){
     if(isWhiteTurn)
       if(super.makeAMove(pressedHole))
@@ -62,45 +53,23 @@ public class AIBoard extends Board{
       default:
         System.err.println("Hardness level not Allowed");
         return true;
-=======
-  public void makeAMove(int pressedHole){
-    if(isWhiteTurn)
-      super.makeAMove(pressedHole);
-    makeAIMove();
-  }
 
-  private void makeAIMove(){
-    switch(level){
-      case 1:
-        easyMove();
-        break;
-      case 2:
-        mediumMove();
-        break;
-      case 3:
-        hardMove();
-        break;
->>>>>>> b683f88f9944848802be33098fda87387deec293
     }
   }
 
   /**
    * AI makes a move based on randomness
    */
-<<<<<<< HEAD
+
   private boolean easyMove(){
-=======
-  private void easyMove(){
->>>>>>> b683f88f9944848802be33098fda87387deec293
+
     int randomHole = evaluate();
     while(!isValidMove(randomHole)){
       randomHole = evaluate();
     }
-<<<<<<< HEAD
+
     return super.makeAMove(randomHole);
-=======
-    super.makeAMove(randomHole);
->>>>>>> b683f88f9944848802be33098fda87387deec293
+
   }
 
   /**
@@ -111,27 +80,15 @@ public class AIBoard extends Board{
     return (int)(Math.random()*8);
   }
 
-<<<<<<< HEAD
-  // get the possible moves he could make from pos 0
 
-
-  private boolean isValidMove(int pressedHole){
-    if(getPlayerHole(pressedHole).getKorgools() != 0){
-      //System.out.println("CHECKING MOVE FOR: "+pressedHole);
-      return true;
-    }
-    else return false;
-=======
 
   private boolean isValidMove(int pressedHole){
     return getPlayerHole(pressedHole).getKorgools() != 0;
->>>>>>> b683f88f9944848802be33098fda87387deec293
   }
 
   /**
    * AI makes a move based on a basic logic
    */
-<<<<<<< HEAD
   private boolean mediumMove(){
     int a = getBestMoveForBlack(FORSEEN_MOVES*2);
     System.out.println("Moving " + a);
@@ -148,20 +105,7 @@ public class AIBoard extends Board{
 
   // ASSUMING AI IS BLACK
   private Pair<Integer, String> alphabeta(String boardString, int depth, int alpha, int beta, boolean isBlackTurn) {
-=======
-  private void mediumMove(){}
 
-  public static void main(String[] s) {
-    String testBoard = "5,8,5,26,0,1,1,2,0,55,4\n" +
-            "3,2,5,1,3,2,2,0,1,40,7\n" +
-            "b";
-
-    System.out.println("move to Do: " + (getBestMoveForBlack(testBoard) + 1));
-  }
-
-  // ASSUMING AI IS BLACK
-  private static Pair<Integer, String> alphabeta(String boardString, int depth, int alpha, int beta, boolean isBlackTurn) {
->>>>>>> b683f88f9944848802be33098fda87387deec293
     if (depth == 0 || gameHasEnded(boardString)) {
       return new Pair<Integer, String>(heuristicValue(boardString), boardString);
     }
@@ -199,7 +143,6 @@ public class AIBoard extends Board{
     }
   }
 
-<<<<<<< HEAD
   private boolean gameHasEnded(String boardString) {
     return (new Board(boardString)).gameHasEnded();
   }
@@ -210,17 +153,6 @@ public class AIBoard extends Board{
   private boolean hardMove(){
       return super.makeAMove(9-getBestMoveForBlack(FORSEEN_MOVES*2));
   }
-=======
-  private static boolean gameHasEnded(String boardString) {
-    return (new Board()).gameHasEnded();
-  }
-
-
-  /**
-   * AI makes a smart move
-   */
-  private void hardMove(){ }
->>>>>>> b683f88f9944848802be33098fda87387deec293
 
   /**
    * For now, the heurstic value is the difference between the scores of the players, favoring black.
@@ -232,11 +164,7 @@ public class AIBoard extends Board{
    * @param boardString the board that we want to get the h-value for
    * @return the heuristic value of the board
    */
-<<<<<<< HEAD
   private int heuristicValue(String boardString) {
-=======
-  private static int heuristicValue(String boardString) {
->>>>>>> b683f88f9944848802be33098fda87387deec293
     String[] tokens = boardString.split("\n");
     int blackScore = Integer.parseInt(tokens[0].split(",")[9]);
     int whiteScore = Integer.parseInt(tokens[1].split(",")[9]);
@@ -244,11 +172,7 @@ public class AIBoard extends Board{
     return blackScore - whiteScore;
   }
 
-<<<<<<< HEAD
   private ArrayList<String> getPossibleMoves(String boardString) {
-=======
-  private static ArrayList<String> getPossibleMoves(String boardString) {
->>>>>>> b683f88f9944848802be33098fda87387deec293
     ArrayList<String> reachableBoards = new ArrayList<>();
     for (int i = 0; i < 9; i++) {
       if ((new AIBoard(boardString, 0)).isValidMove(i)) {
@@ -263,19 +187,11 @@ public class AIBoard extends Board{
     return reachableBoards;
   }
 
-<<<<<<< HEAD
   private int getBestMoveForBlack(int moveToLookForwardFor) {
     //System.out.println("starting: " + boardString);
     //System.out.println(heuristicValue(boardString) + "\n");
     String boardString = this.toString();
     String desiredBoard = alphabeta(boardString, moveToLookForwardFor*2, Integer.MIN_VALUE, Integer.MAX_VALUE, true).getValue();
-=======
-  private static int getBestMoveForBlack(String boardString) {
-    //System.out.println("starting: " + boardString);
-    //System.out.println(heuristicValue(boardString) + "\n");
-
-    String desiredBoard = alphabeta(boardString, 6, Integer.MIN_VALUE, Integer.MAX_VALUE, true).getValue();
->>>>>>> b683f88f9944848802be33098fda87387deec293
 
     System.out.println("desired: " + desiredBoard);
     //System.out.println(heuristicValue(desiredBoard) + "\n");
