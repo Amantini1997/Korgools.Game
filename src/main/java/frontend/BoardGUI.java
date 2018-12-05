@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
@@ -21,14 +23,29 @@ public class BoardGUI extends JPanel
 	private Board board;
 	private Player black;
 	private Player white;
+	private MouseAdapter mouseClick = new MouseAdapter(){
+		public void mouseClicked(MouseEvent e)
+		{
+			System.out.println("\n This is the board before the move:");
+				System.out.println(board);
+				int indexOfHole = ((Hole) e.getSource()).getIndex();
+				//call backend, and tell them the index of the cell that has been clicked
 
+				//get necessary information from backend to update the state of the game/GUI
+				board.makeAMove(indexOfHole);
+				updateGUI(board.toString());
+				System.out.println("This is the board after the move:");
+				System.out.println("BUTTON PRESSED: " +  indexOfHole);
+				System.out.println(board);
+		}
+	};
   public BoardGUI()
   {
-  	board = new Board();
+		board = new Board();
     this.setLayout(new GridLayout(3,1));
-    black = new Player(9, e -> onButtonClick(e));
+    black = new ReversedPlayer(9,mouseClick);
     this.add(black.showHoles());
-    white = new Player(9,e -> onButtonClick(e));
+    white = new NormalPlayer(9,mouseClick);
 		this.add(setCenter());
     this.add(white.showHoles());
 		updateGUI(board.toString());
@@ -49,18 +66,8 @@ public class BoardGUI extends JPanel
     return center;
   }
 
-  private void onButtonClick(ActionEvent e) {
-		System.out.println("\n This is the board before the move:");
-		  System.out.println(board);
-      int indexOfHole = ((Hole) e.getSource()).getIndex();
-      //call backend, and tell them the index of the cell that has been clicked
+  private void onButtonClick(MouseEvent e) {
 
-      //get necessary information from backend to update the state of the game/GUI
-			board.makeAMove(indexOfHole);
-      updateGUI(board.toString());
-			System.out.println("This is the board after the move:");
-			System.out.println("BUTTON PRESSED: " +  indexOfHole);
-      System.out.println(board);
   }
 
   public void updateGUI(String boardState) {

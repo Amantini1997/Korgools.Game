@@ -51,6 +51,7 @@ public class ChoiceGUI extends JPanel
         }
         case(INPUT_BUTTON_TEXT):{
           //TODO: Create "Input board panel"
+          frame.setContentPane(new InputGUI());
           break;
         }
         case(LOAD_PREVIOUS_GAME_TEXT): {

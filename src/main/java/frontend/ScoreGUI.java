@@ -14,35 +14,25 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class ScoreGUI extends JPanel{
-  private JLabel scoreLabel;
+public abstract class ScoreGUI extends JPanel{
+  protected JComponent score;
 
   public ScoreGUI()
   {
     this.setLayout(new GridLayout());
-    scoreLabel = new JLabel("0");
-    scoreLabel.setOpaque(true);
-    scoreLabel.setBackground(Color.WHITE);
+
     Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-    scoreLabel.setBorder(border);
+
     this.setAlignmentY(CENTER_ALIGNMENT);
     this.setAlignmentX(CENTER_ALIGNMENT);
-    this.add(scoreLabel);
     this.setBorder(new EmptyBorder(10,10,10,10));
+    setScore();
+    score.setOpaque(true);
+    score.setBackground(Color.WHITE);
+    score.setBorder(border);
   }
+  public abstract void updateScore(String newScore);
+  public abstract void setScore();
+  public abstract String getScore();
 
-  public void updateScore(String newScore)
-  {
-    scoreLabel.setText(newScore);
-  }
-
-  public void setColor(Color c)
-  {
-    this.setBackground(c);
-  }
-
-  public JPanel showScore()
-  {
-    return this;
-  }
 }
