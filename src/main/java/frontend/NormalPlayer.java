@@ -18,6 +18,8 @@ public class NormalPlayer extends Player{
     super(numberOfKorgools,listener);
     super.setBackground(Color.WHITE);
     addHoles();
+
+    this.scoreLabel.setName("whiteScore");
   }
 
   private void addHoles()
@@ -33,6 +35,8 @@ public class NormalPlayer extends Player{
       holeInfo.add(holeNumber);
       holeNumber.setBackground(Color.WHITE);
       holesPanel.add(holeInfo);
+
+      hole.setName("whiteHole" + hole.getIndex());
     }
   }
 

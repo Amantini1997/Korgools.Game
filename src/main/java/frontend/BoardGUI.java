@@ -48,6 +48,7 @@ public class BoardGUI extends JPanel
     white = new NormalPlayer(9,mouseClick);
 		this.add(setCenter());
     this.add(white.showHoles());
+		this.setName("boardGUI");
 		updateGUI(board.toString());
   }
 
