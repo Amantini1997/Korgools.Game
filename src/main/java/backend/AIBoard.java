@@ -57,7 +57,6 @@ public class AIBoard extends Board{
     while(!isValidMove(randomHole)){
       randomHole = evaluate();
     }
-<<<<<<< HEAD
     super.makeAMove(evaluate());
   }
 
@@ -66,9 +65,6 @@ public class AIBoard extends Board{
     //System.out.println(this);
     //System.out.println("is " + pressedHole + " valid? " + (currentPlayer.getHoles()[pressedHole].getKorgools() != 0));
     return currentPlayer.getHoles()[pressedHole].getKorgools() != 0;
-=======
-    super.makeAMove(randomHole);
->>>>>>> Refactor AI Player
   }
 
   /**
@@ -79,17 +75,16 @@ public class AIBoard extends Board{
     return (int)(Math.random()*8);
   }
 
-<<<<<<< HEAD
   // get the possible moves he could make from pos 0
 
   //
 
   public static void main(String[] s) {
-    String testBoard = "5,8,5,26,0,1,1,2,0,55,4\n" +
-            "3,2,5,1,3,2,2,0,1,40,7\n" +
+    String testBoard = "10,10,10,10,10,10,10,0,9,0,-1\n" +
+            "9,9,9,9,9,9,9,9,1,10,-1\n" +
             "b";
 
-    System.out.println("move to Do: " + (getBestMoveForBlack(testBoard) + 1));
+    System.out.println("move to Do: " + getBestMoveForBlack(testBoard));
   }
 
 
@@ -174,7 +169,7 @@ public class AIBoard extends Board{
     //System.out.println("starting: " + boardString);
     //System.out.println(heuristicValue(boardString) + "\n");
 
-    String desiredBoard = alphabeta(boardString, 6, Integer.MIN_VALUE, Integer.MAX_VALUE, true).getValue();
+    String desiredBoard = alphabeta(boardString, 1, Integer.MIN_VALUE, Integer.MAX_VALUE, true).getValue();
 
     System.out.println("desired: " + desiredBoard);
     //System.out.println(heuristicValue(desiredBoard) + "\n");
@@ -193,23 +188,5 @@ public class AIBoard extends Board{
       e.printStackTrace();
     }
     return -1;
-=======
-  private boolean isValidMove(int pressedHole){
-    return getPlayerHole(pressedHole).getKorgools() != 0;
-  }
-
-  /**
-   * AI makes a move based on a basic logic
-   */
-  private void mediumMove(){
-
-  }
-
-  /**
-   * AI makes a smart move
-   */
-  private void hardMove(){
-
->>>>>>> Refactor AI Player
   }
 }
