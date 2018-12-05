@@ -7,6 +7,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
 import backend.*;
 
 /**
@@ -46,7 +52,7 @@ public class BoardGUI extends JPanel
 		updateGUI(board.toString());
   }
 
-	public BoardGUI(String boardString) {
+  public BoardGUI(String boardString) {
       this();
       this.board = new Board(boardString);
       updateGUI(board.toString());
@@ -65,7 +71,7 @@ public class BoardGUI extends JPanel
 
   }
 
-  private void updateGUI(String boardState) {
+  public void updateGUI(String boardState) {
     //update the information
 		String[] info = boardState.split("\n");
 		black.update(info[0]);
@@ -77,6 +83,10 @@ public class BoardGUI extends JPanel
 			JFrame frame = (JFrame) SwingUtilities.getRoot(this);
 			frame.pack();
 		}
+  }
+  
+  public Board getBoardDisplayed() {
+      return board;
   }
 
 	private void blockPlayer(String player)
