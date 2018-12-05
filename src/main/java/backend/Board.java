@@ -47,35 +47,35 @@ public class Board {
    *    False otherwise
 	 */
     public void makeAMove(int pressedHole){
-    //if the player presses a hole containing 0 korgools nothing happens
-    int initKorgools = getPlayerHole(pressedHole).getKorgools();
-    if(initKorgools > 1){
-      initKorgools--;
-    }
-    if(initKorgools==0){
-      return ;
-    }
-    int kargoolsLeft = currentPlayer.act(pressedHole, hasMoveStartedFromThisPlayer());
-    while(kargoolsLeft>0){
-      currentPlayer = (currentPlayer == black)?white:black;
-      kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer());
-    }
-    //checking that the ending hole is an opponent's one
-    if(  !hasMoveStartedFromThisPlayer()){//(currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
-      int finalHole = (pressedHole+initKorgools)%9;
-      if(getPlayerHole(finalHole).getKorgools()%2==0){
-        stealKorgools(finalHole);
+      //if the player presses a hole containing 0 korgools nothing happens
+      int initKorgools = getPlayerHole(pressedHole).getKorgools();
+      if(initKorgools > 1){
+        initKorgools--;
       }
-    }
-    isWhiteTurn = !isWhiteTurn;
-    setCurrentPlayer();
-    moveKorgoolsFromTuzzes();
-    currentPlayerHasWon(currentPlayer);
-    if(!currentPlayer.hasAMove()){
+      if(initKorgools==0){
+        return ;
+      }
+      int kargoolsLeft = currentPlayer.act(pressedHole);
+      while(kargoolsLeft>0){
+        currentPlayer = (currentPlayer == black)?white:black;
+        kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer());
+      }
+      //checking that the ending hole is an opponent's one
+      if( !hasMoveStartedFromThisPlayer()){//(currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
+        int finalHole = (pressedHole+initKorgools)%9;
+        if(getPlayerHole(finalHole).getKorgools()%2==0){
+          stealKorgools(finalHole);
+        }
+      }
       isWhiteTurn = !isWhiteTurn;
       setCurrentPlayer();
-      return;
-    }
+      moveKorgoolsFromTuzzes();
+      currentPlayerHasWon(currentPlayer);
+      if(!currentPlayer.hasAMove()){
+        isWhiteTurn = !isWhiteTurn;
+        setCurrentPlayer();
+        return;
+      }
   }
 
    /**
@@ -105,7 +105,7 @@ public class Board {
   protected void currentPlayerHasWon(Player currentPlayer){
     if(currentPlayer.hasWon()){
       String cPlayer = (isWhiteTurn)? "WHITE" : "BLACK";
-     System.out.println("\nCONGRATS "+cPlayer+" PLAYER, YOU WON");
+      System.out.println("\nCONGRATS "+cPlayer+" PLAYER, YOU WON");
       System.exit(0);
     }
   }
