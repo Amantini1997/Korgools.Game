@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import javax.swing.SwingUtilities;
 /**
 * Panel with initial screen, which lets the player choose game type
@@ -13,6 +15,8 @@ public class ChoiceGUI extends JPanel
 {
   private static final String NEW_BUTTON_TEXT = "New Game";
   private static final String INPUT_BUTTON_TEXT = "Input Game";
+  private static final String LOAD_PREVIOUS_GAME_TEXT = "Load Game";
+
   public ChoiceGUI()
   {
     this.setLayout(new BorderLayout());
@@ -28,6 +32,7 @@ public class ChoiceGUI extends JPanel
     center.setLayout(new FlowLayout());
     center.add(creatOptionButton(NEW_BUTTON_TEXT));
     center.add(creatOptionButton(INPUT_BUTTON_TEXT));
+    center.add(creatOptionButton(LOAD_PREVIOUS_GAME_TEXT));
     return center;
   }
 
@@ -48,6 +53,27 @@ public class ChoiceGUI extends JPanel
           //TODO: Create "Input board panel"
           break;
         }
+        case(LOAD_PREVIOUS_GAME_TEXT): {
+          // fetch the game state from the document
+          try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/java/gameSaves.txt"));
+            String boardState = "";
+            String line;
+            while ((line = reader.readLine()) != null) {
+              boardState += line + "\n";
+            }
+
+            // set the game state
+            BoardGUI boardGUI = new BoardGUI(boardState);
+            // display it
+            frame.setContentPane(boardGUI);
+          } catch (Exception e1) {
+            e1.printStackTrace();
+            frame.setContentPane(new BoardGUI());
+          }
+
+          break;
+        }
       }
       frame.pack();
       frame.repaint();
@@ -59,6 +85,7 @@ public class ChoiceGUI extends JPanel
   private JButton creatOptionButton(String text)
   {
     JButton button = new JButton(text);
+    button.setName(text);
     button.addActionListener(e -> getNewScreen(e));
     return button;
   }
