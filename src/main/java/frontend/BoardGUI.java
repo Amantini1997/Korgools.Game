@@ -57,7 +57,7 @@ public class BoardGUI extends JPanel
 
   public BoardGUI(String boardString) {
       this();
-      this.board = new Board(boardString);
+      this.board = new AIBoard(boardString,2);
       updateGUI(board.toString());
   }
 

@@ -10,7 +10,7 @@ public class AIBoard extends Board{
   private static final int HARD = 3;
   private static final int MEDIUM = 2;
   private static final int EASY = 1;
-  private static final int FORSEEN_MOVES = 3;
+  private static final int FORSEEN_MOVES = 1;
   private int level;
 
   public AIBoard(int hardness){
@@ -18,7 +18,7 @@ public class AIBoard extends Board{
     level = hardness;
   }
 
-  private AIBoard(String board, int hardness) {
+  public AIBoard(String board, int hardness) {
     super(board);
     level = hardness;
   }
@@ -34,7 +34,9 @@ public class AIBoard extends Board{
     if(isWhiteTurn)
       if(super.makeAMove(pressedHole))
         return true;
-    return makeAIMove();
+    if(!isWhiteTurn)
+      return makeAIMove();
+    return false;
   }
 
   /**
@@ -76,15 +78,22 @@ public class AIBoard extends Board{
 
   // get the possible moves he could make from pos 0
 
+
   private boolean isValidMove(int pressedHole){
-    return getPlayerHole(pressedHole).getKorgools() != 0;
+    if(getPlayerHole(pressedHole).getKorgools() != 0){
+      //System.out.println("CHECKING MOVE FOR: "+pressedHole);
+      return true;
+    }
+    else return false;
   }
 
   /**
    * AI makes a move based on a basic logic
    */
   private boolean mediumMove(){
-      return super.makeAMove(FORSEEN_MOVES);
+    int a = getBestMoveForBlack(FORSEEN_MOVES*2);
+    System.out.println("Moving " + a);
+      return  super.makeAMove(a) ;
   }
 
   // public  void main(String[] s) {
@@ -134,17 +143,15 @@ public class AIBoard extends Board{
     }
   }
 
-  private  boolean gameHasEnded(String boardString) {
-    return (new Board()).gameHasEnded();
+  private boolean gameHasEnded(String boardString) {
+    return (new Board(boardString)).gameHasEnded();
+  }
 
-<<<<<<< HEAD
-=======
   /**
    * AI makes a smart move
    */
   private boolean hardMove(){
-      return super.makeAMove(getBestMoveForBlack(FORSEEN_MOVES*2));
->>>>>>> AI is a kind of complete
+      return super.makeAMove(9-getBestMoveForBlack(FORSEEN_MOVES*2));
   }
 
   /**
@@ -183,13 +190,8 @@ public class AIBoard extends Board{
   private int getBestMoveForBlack(int moveToLookForwardFor) {
     //System.out.println("starting: " + boardString);
     //System.out.println(heuristicValue(boardString) + "\n");
-<<<<<<< HEAD
-
-    String desiredBoard = alphabeta(boardString, 1, Integer.MIN_VALUE, Integer.MAX_VALUE, true).getValue();
-=======
     String boardString = this.toString();
     String desiredBoard = alphabeta(boardString, moveToLookForwardFor*2, Integer.MIN_VALUE, Integer.MAX_VALUE, true).getValue();
->>>>>>> AI is a kind of complete
 
     System.out.println("desired: " + desiredBoard);
     //System.out.println(heuristicValue(desiredBoard) + "\n");
