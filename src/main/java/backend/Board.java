@@ -46,11 +46,16 @@ public class Board {
    * @return True if the current player has won,
    *    False otherwise
 	 */
+<<<<<<< HEAD
     public boolean makeAMove(int pressedHole){
+=======
+    public void makeAMove(int pressedHole){
+>>>>>>> b683f88f9944848802be33098fda87387deec293
       //if the player presses a hole containing 0 korgools nothing happens
       int initKorgools = getPlayerHole(pressedHole).getKorgools();
       if(initKorgools > 1){
         initKorgools--;
+<<<<<<< HEAD
       }
       if(initKorgools==0){
         return currentPlayerHasWon(currentPlayer);
@@ -78,6 +83,34 @@ public class Board {
         setCurrentPlayer();
       }
       return false;
+=======
+      }
+      if(initKorgools==0){
+        return ;
+      }
+      int kargoolsLeft = currentPlayer.act(pressedHole);
+      while(kargoolsLeft>0){
+        currentPlayer = (currentPlayer == black)?white:black;
+        kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer());
+      }
+      //checking that the ending hole is an opponent's one
+      if( !hasMoveStartedFromThisPlayer()){//(currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
+        int finalHole = (pressedHole+initKorgools)%9;
+        if(getPlayerHole(finalHole).getKorgools()%2==0){
+          stealKorgools(finalHole);
+        }
+      }
+      isWhiteTurn = !isWhiteTurn;
+        System.out.println(this + "\n");
+      setCurrentPlayer();
+      moveKorgoolsFromTuzzes();
+      currentPlayerHasWon(currentPlayer);
+      if(!currentPlayer.hasAMove()){
+        isWhiteTurn = !isWhiteTurn;
+        setCurrentPlayer();
+        return;
+      }
+>>>>>>> b683f88f9944848802be33098fda87387deec293
   }
 
    /**
@@ -104,8 +137,17 @@ public class Board {
   * TO-DO implement this method, it will be called
   * when one of the player wins
   */
+<<<<<<< HEAD
   protected boolean currentPlayerHasWon(Player currentPlayer){
     return currentPlayer.hasWon();
+=======
+  protected void currentPlayerHasWon(Player currentPlayer){
+    if(currentPlayer.hasWon()){
+      String cPlayer = (isWhiteTurn)? "WHITE" : "BLACK";
+      System.out.println("\nCONGRATS "+cPlayer+" PLAYER, YOU WON");
+      System.exit(0);
+    }
+>>>>>>> b683f88f9944848802be33098fda87387deec293
   }
 
   @Override

@@ -44,7 +44,7 @@ public class BoardGUI extends JPanel
 	};
   public BoardGUI()
   {
-  	board = new AIBoard(2);
+  	board = new AIBoard(2);//TO DO let the player select the level
     this.setLayout(new GridLayout(3,1));
     black = new ReversedPlayer(9,mouseClick);
     this.add(black.showHoles());
