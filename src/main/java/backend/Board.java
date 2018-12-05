@@ -16,8 +16,8 @@ public class Board {
 
   public Board(String boardString) {
     String[] lines = boardString.split("\n");
-    white = new Player(lines[0]);
-    black = new Player(lines[1]);
+    white = new Player(lines[1]);
+    black = new Player(lines[0]);
 
     if (lines[2].equals("w")) {
       isWhiteTurn = true;

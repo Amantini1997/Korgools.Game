@@ -7,6 +7,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
 import backend.*;
 
 /**
@@ -44,13 +50,14 @@ public class BoardGUI extends JPanel
     white = new NormalPlayer(9,mouseClick);
 		this.add(setCenter());
     this.add(white.showHoles());
+		this.setName("boardGUI");
 		updateGUI(board.toString());
   }
-
-	public BoardGUI(String boardString) {
-			this();
-			board = new Board(boardString);
-      updateGUI(boardString);
+  
+  public BoardGUI(String boardString) {
+      this();
+      this.board = new Board(boardString);
+      updateGUI(board.toString());
   }
 
   private JPanel setCenter()
@@ -74,6 +81,10 @@ public class BoardGUI extends JPanel
 			JFrame frame = (JFrame) SwingUtilities.getRoot(this);
 			frame.pack();
 		}
+  }
+  
+  public Board getBoardDisplayed() {
+      return board;
   }
 
 	private void blockPlayer(String player)

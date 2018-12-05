@@ -14,6 +14,7 @@ public class Hole extends JButton{
         this.index = index;
         this.numberOfKorgools = numberOfKorgools;
         this.setText(numberOfKorgools+"");
+        this.setName("name:hole" + index);
         this.addMouseListener(listener);
     }
 

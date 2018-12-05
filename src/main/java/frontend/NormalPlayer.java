@@ -20,6 +20,7 @@ public class NormalPlayer extends Player{
     super.setBackground(Color.WHITE);
     addHoles();
     setNames();
+    this.scoreLabel.setName("whiteScore");
   }
 
   private void addHoles()
