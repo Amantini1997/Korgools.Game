@@ -16,8 +16,8 @@ public class Board {
 
   public Board(String boardString) {
     String[] lines = boardString.split("\n");
-    white = new Player(lines[0]);
-    black = new Player(lines[1]);
+    black = new Player(lines[0]);
+    white = new Player(lines[1]);
 
     if (lines[2].equals("w")) {
       isWhiteTurn = true;
@@ -68,6 +68,7 @@ public class Board {
         }
       }
       isWhiteTurn = !isWhiteTurn;
+        System.out.println(this + "\n");
       setCurrentPlayer();
       moveKorgoolsFromTuzzes();
       currentPlayerHasWon(currentPlayer);
@@ -121,5 +122,9 @@ public class Board {
 
   protected Hole getPlayerHole(int hole){
     return currentPlayer.getHoles()[hole];
+  }
+
+  public boolean gameHasEnded() {
+    return white.hasWon() || black.hasWon();
   }
 }

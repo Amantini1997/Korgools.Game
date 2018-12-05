@@ -12,7 +12,7 @@ public class Hole extends Cell{
 
 	public Hole(int korgools) {
 		super(korgools);
-		isTuz = true;
+		isTuz = false;
 	}
 
 	/**
