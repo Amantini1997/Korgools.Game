@@ -36,11 +36,28 @@ public class AIBoard extends Board{
   }
 
   private void makeAIMove(){
+    switch(level){
+      case 1:
+        easyMove();
+        break;
+      case 2:
+        mediumMove();
+        break;
+      case 3:
+        hardMove();
+        break;
+    }
+  }
+
+  /**
+   * AI makes a move based on randomness
+   */
+  private void easyMove(){
     int randomHole = evaluate();
     while(!isValidMove(randomHole)){
-      System.out.println(randomHole);
       randomHole = evaluate();
     }
+<<<<<<< HEAD
     super.makeAMove(evaluate());
   }
 
@@ -49,6 +66,9 @@ public class AIBoard extends Board{
     //System.out.println(this);
     //System.out.println("is " + pressedHole + " valid? " + (currentPlayer.getHoles()[pressedHole].getKorgools() != 0));
     return currentPlayer.getHoles()[pressedHole].getKorgools() != 0;
+=======
+    super.makeAMove(randomHole);
+>>>>>>> Refactor AI Player
   }
 
   /**
@@ -59,6 +79,7 @@ public class AIBoard extends Board{
     return (int)(Math.random()*8);
   }
 
+<<<<<<< HEAD
   // get the possible moves he could make from pos 0
 
   //
@@ -172,5 +193,23 @@ public class AIBoard extends Board{
       e.printStackTrace();
     }
     return -1;
+=======
+  private boolean isValidMove(int pressedHole){
+    return getPlayerHole(pressedHole).getKorgools() != 0;
+  }
+
+  /**
+   * AI makes a move based on a basic logic
+   */
+  private void mediumMove(){
+
+  }
+
+  /**
+   * AI makes a smart move
+   */
+  private void hardMove(){
+
+>>>>>>> Refactor AI Player
   }
 }
