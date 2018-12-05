@@ -36,6 +36,9 @@ public class Player {
       }
     }
 
+    public int getKazanKorgools(){
+      return kazan.getKorgools();
+    }
     public Hole[] getHoles(){
       return holes;
     }

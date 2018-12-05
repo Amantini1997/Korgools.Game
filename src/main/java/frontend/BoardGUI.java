@@ -34,11 +34,20 @@ public class BoardGUI extends JPanel
 				//call backend, and tell them the index of the cell that has been clicked
 
 				//get necessary information from backend to update the state of the game/GUI
-				board.makeAMove(indexOfHole);
+				boolean hasWon = board.makeAMove(indexOfHole);
 				updateGUI(board.toString());
 				System.out.println("This is the board after the move:");
 				System.out.println("BUTTON PRESSED: " +  indexOfHole);
 				System.out.println(board);
+				if (hasWon){
+					JOptionPane.showMessageDialog(null, "Congratulations, you won!");
+					JFrame frame = (JFrame) SwingUtilities.getRoot(	(Hole)e.getSource());
+					frame.setContentPane(new ChoiceGUI());
+					frame.pack();
+					frame.repaint();
+					frame.revalidate();
+				}
+
 		}
 	}
 	};

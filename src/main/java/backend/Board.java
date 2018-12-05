@@ -71,8 +71,9 @@ public class Board {
         //System.out.println(this + "\n");
       setCurrentPlayer();
       moveKorgoolsFromTuzzes();
-      if(currentPlayerHasWon(currentPlayer))
+      if(currentPlayerHasWon(black) || currentPlayerHasWon(white))
         return true;
+      //System.out.println("Number of korgools in Kazan: "+ currentPlayer.getKazanKorgools()+ "Has won = "+ currentPlayer.hasWon());
       if(!currentPlayer.hasAMove()){
         isWhiteTurn = !isWhiteTurn;
         setCurrentPlayer();
