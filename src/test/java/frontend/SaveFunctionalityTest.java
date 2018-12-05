@@ -1,4 +1,4 @@
-package integration_testing;
+package frontend;
 
 import frontend.BoardGUI;
 import org.junit.FixMethodOrder;
@@ -12,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.awt.Window;
+import java.awt.event.WindowEvent;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -21,8 +23,8 @@ public class SaveFunctionalityTest {
     @Test
     public void testSave() {
         JFrame frame = new frontend.Gui().getFrame();
-        Swinger swinger = Swinger.forSwingWindow();
-        swinger.clickOn("name:New Game");
+        Swinger swinger =Swinger.getUserWith(Window.getWindows()[Window.getWindows().length-1]);
+        swinger.clickOn("name:New Game").pause(500);
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 
         String boardState = "";
@@ -61,7 +63,7 @@ public class SaveFunctionalityTest {
         }
 
         JFrame frame = new frontend.Gui().getFrame();
-        Swinger swinger = Swinger.forSwingWindow();
+        Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length-1]);
         swinger.clickOn("name:Load Game");
         frame.dispose();
 

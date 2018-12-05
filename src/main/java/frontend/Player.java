@@ -118,4 +118,27 @@ public class  Player {
       hole.setEnabled(false);
     }
   }
+
+  public void removeTuz()
+  {
+    for(Hole hole: getHoles())
+    {
+      if(hole.isTuz())
+      {
+        hole.unTuz();
+      }
+    }
+  }
+
+  public int getTuz()
+  {
+    for(Hole hole: getHoles())
+    {
+      if(hole.isTuz())
+      {
+        return hole.getIndex();
+      }
+    }
+    return -1;
+  }
 }

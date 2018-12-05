@@ -10,6 +10,7 @@ import static org.hamcrest.CoreMatchers.is;
 import javax.swing.*;
 import java.awt.Window;
 import java.awt.event.WindowEvent;
+import com.athaydes.automaton.Speed;
 public class BoardGUITest{
   @AfterClass
   public static void cleanup()
@@ -26,18 +27,37 @@ public class BoardGUITest{
   {
     new Gui();
   }
+
   @Test
-  public void testGUI()
+  public void testNewGameGUIWithFewMoves()
   {
     Swinger swinger =  Swinger.getUserWith(Window.getWindows()[Window.getWindows().length-1]);
-    System.out.println(Window.getWindows().length);
     swinger.pause(500)
-    .clickOn("text:New Game").pause(500)
-    .clickOn("name:Hole9").pause(1000)
-    .clickOn("name:Hole-9").pause(1000)
-    .pause(500);
+    .clickOn("text:New Game",Speed.MAX_VALUE).pause(200)
+    .clickOn("name:Hole9",Speed.MAX_VALUE).pause(200)
+    .clickOn("name:Hole-9",Speed.MAX_VALUE).pause(200)
+    .pause(200);
     JFrame frame = (JFrame)swinger.getAt("name:frame");
     JPanel panel = (JPanel) frame.getContentPane();
     assertThat(panel,instanceOf(BoardGUI.class));
+  }
+  @Test
+  public void testNewGameGUIWithFewMovesAndOneIncorrect()
+  {
+    Swinger swinger =  Swinger.getUserWith(Window.getWindows()[Window.getWindows().length-1]);
+    swinger.pause(500)
+    .clickOn("text:New Game",Speed.MAX_VALUE).pause(200)
+    .clickOn("name:Hole9",Speed.MAX_VALUE).pause(200)
+    .clickOn("name:Hole-9",Speed.MAX_VALUE).pause(200)
+    .clickOn("name:Hole7",Speed.MAX_VALUE).pause(200)
+    .clickOn("name:Hole-9",Speed.MAX_VALUE).pause(200)
+    .pause(200);
+    String holeString = ((Hole)swinger.getAt("name:Hole-9")).getText();
+    swinger.clickOn("name:Hole-9",Speed.MAX_VALUE).pause(200);
+    String holeStringClick = ((Hole)swinger.getAt("name:Hole-9")).getText();
+    JFrame frame = (JFrame)swinger.getAt("name:frame");
+    JPanel panel = (JPanel) frame.getContentPane();
+    assertThat(panel,instanceOf(BoardGUI.class));
+    assertEquals(holeString,holeStringClick);
   }
 }

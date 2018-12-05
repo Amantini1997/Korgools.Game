@@ -19,15 +19,15 @@ public class InputGUI extends JPanel{
   public InputGUI()
   {
     startButton.addActionListener(e->startGame(e));
+    startButton.setName("startGame");
     this.setLayout(new BorderLayout());
     JPanel game = new JPanel();
     game.setLayout(new GridLayout(3,1));
     black = new InputReversedPlayer(mouseClickBlack);
-    mouseClickBlack.setPlayer(black);
     game.add(black.showHoles());
     white = new InputNormalPlayer(mouseClickWhite);
-    mouseClickWhite.setPlayer(white);
-
+    mouseClickWhite.setPlayers(white,black);
+    mouseClickBlack.setPlayers(black,white);
 		game.add(setCenter());
     game.add(white.showHoles());
     this.add(errorText, BorderLayout.PAGE_START);
@@ -51,7 +51,6 @@ public class InputGUI extends JPanel{
       else
       {
         JFrame frame = (JFrame) SwingUtilities.getRoot(this);
-        System.out.println(white.playerString()+"\n"+black.playerString()+"\n"+"w");
         BoardGUI boardGUI = new BoardGUI(black.playerString()+"\n"+white.playerString()+"\n"+"w");
         frame.setContentPane(boardGUI);
         frame.revalidate();

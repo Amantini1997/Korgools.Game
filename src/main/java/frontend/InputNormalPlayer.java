@@ -13,6 +13,7 @@ public class InputNormalPlayer extends NormalPlayer{
     super(0,listener);
 
     scoreLabel=new ScoreGUITextField();
+    scoreLabel.setName("whiteInput");
     super.setBackground(Color.WHITE);
   }
   public String playerString()

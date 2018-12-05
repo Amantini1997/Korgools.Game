@@ -14,6 +14,7 @@ public class InputReversedPlayer extends ReversedPlayer{
   {
     super(0,listener);
     scoreLabel=new ScoreGUITextField();
+    scoreLabel.setName("blackInput");
     super.setBackground(Color.BLACK);
   }
 
