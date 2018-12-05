@@ -66,13 +66,14 @@ public class AIBoard extends Board{
    * AI makes a move based on a basic logic
    */
   private void mediumMove(){
-
+      // EITHER alternate Nich's code with the stupid code
+      // OR nich's code with shorter forsees
   }
 
   /**
    * AI makes a smart move
    */
   private void hardMove(){
-
+    // nich's code HERE
   }
 }
