@@ -16,8 +16,8 @@ import java.io.UnsupportedEncodingException;
 import backend.*;
 
 /**
-* Panel with the board game
-**/
+ * Panel with the board game
+ **/
 public class BoardGUI extends JPanel
 {
 	private Board board = new Board();
@@ -44,7 +44,7 @@ public class BoardGUI extends JPanel
 	};
   public BoardGUI()
   {
-  	board = new Board("99,99,99,99,99,99,99,99,99,0,-1\n99,99,99,99,99,99,99,99,99,0,-1\nb");
+  	board = new AIBoard(2);
     this.setLayout(new GridLayout(3,1));
     black = new ReversedPlayer(9,mouseClick);
     this.add(black.showHoles());
