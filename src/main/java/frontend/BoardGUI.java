@@ -44,8 +44,7 @@ public class BoardGUI extends JPanel
 	};
   public BoardGUI()
   {
-  	board = new Board("0,0,1,0,0,0,0,0,0,20,0\n"+
-                      "0,0,0,0,0,0,0,0,0,13,0\nw");
+  	board = new Board();
     this.setLayout(new GridLayout(3,1));
     black = new ReversedPlayer(9,mouseClick);
     this.add(black.showHoles());

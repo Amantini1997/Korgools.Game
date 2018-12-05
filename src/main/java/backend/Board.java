@@ -35,6 +35,11 @@ public class Board {
     currentPlayer = (isWhiteTurn)?white:black;
   }
 
+  private boolean hasMoveStartedFromThisPlayer(){
+    return isWhiteTurn && currentPlayer == white
+            || !isWhiteTurn && currentPlayer == black;
+  }
+
 	/**
 	 * Move the korgools according to the pressed hole
 	 * @param pressedHole: the hole pressed
@@ -53,13 +58,13 @@ public class Board {
         //System.out.println("Not legal move, kerg empty");
       return ;
     }
-    int kargoolsLeft = currentPlayer.act(pressedHole);
+    int kargoolsLeft = currentPlayer.act(pressedHole, hasMoveStartedFromThisPlayer());
     while(kargoolsLeft>0){
       currentPlayer = (currentPlayer == black)?white:black;
-      kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft);
+      kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer());
     }
     //checking that the ending hole is an opponent's one
-    if((currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
+    if(  !hasMoveStartedFromThisPlayer()){//(currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
       int finalHole = (pressedHole+initKorgools)%9;
       if(getPlayerHole(finalHole).getKorgools()%2==0){
         stealKorgools(finalHole);
