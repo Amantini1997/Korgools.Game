@@ -4,17 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingUtilities;
-
 public class  Gui
 {
-    private JFrame frame = new JFrame();
+    private JFrame frame;
 
     /**
     * Create the window with the Choice panel and prepare it for display
     **/
     public Gui()
     {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame = new JFrame();
+        frame.setName("frame");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ChoiceGUI main = new ChoiceGUI();
         frame.setContentPane(main);
         frame.pack();

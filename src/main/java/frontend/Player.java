@@ -94,8 +94,21 @@ public class  Player {
   public void unblockHoles(){
     for(Hole hole: holes)
     {
-      if(Integer.parseInt(hole.getText())!=0)
-      {hole.setEnabled(true);}
+      if(hole.getNumberOfKorgools()!=0)
+      {
+        hole.setEnabled(true);
+      }
+    }
+  }
+
+  public void block0Holes()
+  {
+    for(Hole hole: holes)
+    {
+      if(hole.getNumberOfKorgools()==0)
+      {
+        hole.setEnabled(false);
+      }
     }
   }
 

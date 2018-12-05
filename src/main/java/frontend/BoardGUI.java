@@ -14,14 +14,16 @@ import backend.*;
 **/
 public class BoardGUI extends JPanel
 {
-	private Board board;
+	private Board board = new Board();
 	private Player black;
 	private Player white;
 	private MouseAdapter mouseClick = new MouseAdapter(){
 		public void mouseClicked(MouseEvent e)
 		{
+			if(((Hole) e.getSource()).isEnabled()){
 			System.out.println("\n This is the board before the move:");
 				System.out.println(board);
+				System.out.println("NAME: "+((Hole) e.getSource()).getName());
 				int indexOfHole = ((Hole) e.getSource()).getIndex();
 				//call backend, and tell them the index of the cell that has been clicked
 
@@ -32,10 +34,10 @@ public class BoardGUI extends JPanel
 				System.out.println("BUTTON PRESSED: " +  indexOfHole);
 				System.out.println(board);
 		}
+	}
 	};
   public BoardGUI()
   {
-		board = new Board();
     this.setLayout(new GridLayout(3,1));
     black = new ReversedPlayer(9,mouseClick);
     this.add(black.showHoles());
@@ -46,9 +48,9 @@ public class BoardGUI extends JPanel
   }
 
 	public BoardGUI(String boardString) {
-      this();
-      this.board = new Board(boardString);
-      updateGUI(board.toString());
+			this();
+			board = new Board(boardString);
+      updateGUI(boardString);
   }
 
   private JPanel setCenter()
@@ -58,10 +60,6 @@ public class BoardGUI extends JPanel
     center.add(black.showScoreLabel());
     center.add(white.showScoreLabel());
     return center;
-  }
-
-  private void onButtonClick(MouseEvent e) {
-
   }
 
   private void updateGUI(String boardState) {
@@ -82,11 +80,13 @@ public class BoardGUI extends JPanel
 	{
 		if(player.equals("w"))
 		{
+			white.block0Holes();
 			black.blockHoles();
 			white.unblockHoles();
 		}
 		else
 		{
+			black.block0Holes();
 			white.blockHoles();
 			black.unblockHoles();
 		}

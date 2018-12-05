@@ -41,13 +41,13 @@ public class InputHoleListener extends MouseAdapter
       }
   }
 
-  public void removeTuz()
-  {
-    for(Hole hol: player.getHoles()){
+  public void removeTuz(){
+    for(Hole hol: player.getHoles())
+    {
       if(hol.isTuz())
       {
         hol.unTuz();
       }
-  }
+    }
   }
 }

@@ -9,18 +9,20 @@ import java.awt.event.MouseAdapter;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 public class InputReversedPlayer extends ReversedPlayer{
+
   public InputReversedPlayer(MouseAdapter listener)
   {
     super(0,listener);
     scoreLabel=new ScoreGUITextField();
     super.setBackground(Color.BLACK);
   }
+
   public String playerString()
   {
     String returnString = "";
-    for(int i=0;i<9;i++)
+    for(Hole hole: holes)
     {
-        returnString+=holes.get(i).getNumberOfKorgools()+",";
+        returnString+=hole.getNumberOfKorgools()+",";
     }
     returnString+=getScore()+",";
     returnString+=addTuz();

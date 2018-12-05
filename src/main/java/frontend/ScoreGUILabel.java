@@ -31,6 +31,7 @@ public class ScoreGUILabel extends ScoreGUI
   {
     ((JLabel) score).setText(newScore);
   }
+  
   public String getScore()
   {
     return ((JLabel) score).getText();

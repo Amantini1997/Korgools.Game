@@ -12,6 +12,7 @@ public class HoleTest{
         h = new Hole();
     }
 
+
     @Test
     public void setKorgoolsToZeroTest1(){
         h.setKorgoolsToZero();
