@@ -16,8 +16,8 @@ public class Board {
 
   public Board(String boardString) {
     String[] lines = boardString.split("\n");
-    white = new Player(lines[1]);
     black = new Player(lines[0]);
+    white = new Player(lines[1]);
 
     if (lines[2].equals("w")) {
       isWhiteTurn = true;
@@ -35,37 +35,51 @@ public class Board {
     currentPlayer = (isWhiteTurn)?white:black;
   }
 
+  private boolean hasMoveStartedFromThisPlayer(){
+    return isWhiteTurn && currentPlayer == white
+            || !isWhiteTurn && currentPlayer == black;
+  }
+
 	/**
 	 * Move the korgools according to the pressed hole
 	 * @param pressedHole: the hole pressed
    * @return True if the current player has won,
    *    False otherwise
 	 */
-  public boolean makeAMove(int pressedHole){
-    //if the player presses a hole containing 0 korgools nothing happens
-    int initKorgools = currentPlayer.getHoles()[pressedHole].getKorgools();
-    if(initKorgools > 1){
-      initKorgools--;
-    }
-    if(initKorgools==0){
-      return false;
-    }
-    int kargoolsLeft = currentPlayer.act(pressedHole);
-    while(kargoolsLeft>0){
-      currentPlayer = (currentPlayer == black)?white:black;
-      kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft);
-    }
-    //checking that the ending hole is an opponent's one
-    if((currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
-      int finalHole = (pressedHole+initKorgools)%9;
-      if(currentPlayer.getHoles()[finalHole].getKorgools()%2==0){
-        stealKorgools(finalHole);
+    public boolean makeAMove(int pressedHole){
+      //if the player presses a hole containing 0 korgools nothing happens
+      int initKorgools = getPlayerHole(pressedHole).getKorgools();
+      if(initKorgools > 1){
+        initKorgools--;
       }
-    }
-    isWhiteTurn = !isWhiteTurn;
-    setCurrentPlayer();
-    moveKorgoolsFromTuzzes();
-    return currentPlayerHasWon(currentPlayer);
+      if(initKorgools==0){
+        return currentPlayerHasWon(currentPlayer);
+      }
+      int kargoolsLeft = currentPlayer.act(pressedHole);
+      while(kargoolsLeft>0){
+        currentPlayer = (currentPlayer == black)?white:black;
+        kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer());
+      }
+      //checking that the ending hole is an opponent's one
+      if( !hasMoveStartedFromThisPlayer()){//(currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
+        int finalHole = (pressedHole+initKorgools)%9;
+        if(getPlayerHole(finalHole).getKorgools()%2==0){
+          stealKorgools(finalHole);
+        }
+      }
+      isWhiteTurn = !isWhiteTurn;
+        //System.out.println(this + "\n");
+      setCurrentPlayer();
+      moveKorgoolsFromTuzzes();
+      if(currentPlayerHasWon(black) || currentPlayerHasWon(white))
+        return true;
+      //System.out.println("Number of korgools in Kazan: "+ currentPlayer.getKazanKorgools()+ "Has won = "+ currentPlayer.hasWon());
+      if(!currentPlayer.hasAMove()){
+        isWhiteTurn = !isWhiteTurn;
+        setCurrentPlayer();
+      }
+      return false;
+
   }
 
    /**
@@ -75,7 +89,7 @@ public class Board {
     * @param hole: the hole to steal korgools from
     */
     private void stealKorgools(int hole){
-      int stolenKorgools = currentPlayer.getHoles()[hole].setKorgoolsToZero();
+      int stolenKorgools = getPlayerHole(hole).setKorgoolsToZero();
       setCurrentPlayer();
       currentPlayer.addKorgoolsToKazan(stolenKorgools);
     }
@@ -93,10 +107,6 @@ public class Board {
   * when one of the player wins
   */
   protected boolean currentPlayerHasWon(Player currentPlayer){
-    if(currentPlayer.hasWon()){
-      System.out.println("\nCONGRATS YOU WON");
-      System.exit(0);
-    }
     return currentPlayer.hasWon();
   }
 
@@ -107,5 +117,13 @@ public class Board {
     String line3 = (isWhiteTurn? "w" : "b");
 
     return line1 + "\n" + line2 + "\n" + line3;
+  }
+
+  protected Hole getPlayerHole(int hole){
+    return currentPlayer.getHoles()[hole];
+  }
+
+  public boolean gameHasEnded() {
+    return white.hasWon() || black.hasWon();
   }
 }
