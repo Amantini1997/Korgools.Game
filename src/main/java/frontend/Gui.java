@@ -7,17 +7,18 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
 import javax.swing.SwingUtilities;
-
 public class  Gui
 {
-    private JFrame frame = new JFrame();
+    private JFrame frame;
 
     /**
     * Create the window with the Choice panel and prepare it for display
     **/
     public Gui()
     {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame = new JFrame();
+        frame.setName("frame");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ChoiceGUI main = new ChoiceGUI();
         frame.setContentPane(main);
         frame.pack();

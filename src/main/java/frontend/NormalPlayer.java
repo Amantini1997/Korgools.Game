@@ -13,12 +13,13 @@ import javax.swing.*;
 import java.util.*;
 import java.awt.event.MouseAdapter;
 public class NormalPlayer extends Player{
+  protected int number=1;
   public NormalPlayer(int numberOfKorgools, MouseAdapter listener)
   {
     super(numberOfKorgools,listener);
     super.setBackground(Color.WHITE);
     addHoles();
-
+    setNames();
     this.scoreLabel.setName("whiteScore");
   }
 
@@ -35,9 +36,19 @@ public class NormalPlayer extends Player{
       holeInfo.add(holeNumber);
       holeNumber.setBackground(Color.WHITE);
       holesPanel.add(holeInfo);
-
-      hole.setName("whiteHole" + hole.getIndex());
     }
   }
 
+  private void setNames()
+  {
+    for(Hole hole: holes)
+    {
+      hole.setName("Hole"+number);
+      number=(number+1)%(10);
+      if(number==0)
+      {
+        number=1;
+      }
+    }
+  }
 }

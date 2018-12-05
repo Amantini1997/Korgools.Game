@@ -8,11 +8,11 @@ import java.awt.event.MouseAdapter;
 public class Hole extends JButton{
     private int index;
     private int numberOfKorgools;
+    private static int number;
     private boolean isTuz=false;
     public Hole(int index, int numberOfKorgools, MouseAdapter listener){
         this.index = index;
         this.numberOfKorgools = numberOfKorgools;
-
         this.setText(numberOfKorgools+"");
         this.setName("name:hole" + index);
         this.addMouseListener(listener);

@@ -13,6 +13,7 @@ import javax.swing.*;
 import java.util.*;
 import java.awt.event.MouseAdapter;
 public class ReversedPlayer extends Player{
+  protected int number= -1;
   public ReversedPlayer(int numberOfKorgools, MouseAdapter listener)
   {
     super(numberOfKorgools,listener);
@@ -23,6 +24,7 @@ public class ReversedPlayer extends Player{
     this.scoreLabel.setName("blackScore");
 
     Collections.reverse(holes);
+    setNames();
   }
  private void addHoles()
  {
@@ -39,6 +41,19 @@ public class ReversedPlayer extends Player{
      holesPanel.add(holeInfo);
 
      hole.setName("blackHole" + hole.getIndex());
+   }
+ }
+
+ private void setNames()
+ {
+   for(Hole hole: holes)
+   {
+     hole.setName("Hole"+number);
+     number=(number-1)%(-10);
+     if(number==0)
+     {
+       number=-1;
+     }
    }
  }
 }

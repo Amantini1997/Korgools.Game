@@ -50,7 +50,6 @@ public class ChoiceGUI extends JPanel
           break;
         }
         case(INPUT_BUTTON_TEXT):{
-          //TODO: Create "Input board panel"
           frame.setContentPane(new InputGUI());
           break;
         }
@@ -88,6 +87,7 @@ public class ChoiceGUI extends JPanel
     JButton button = new JButton(text);
     button.setName(text);
     button.addActionListener(e -> getNewScreen(e));
+    button.setName(text);
     return button;
   }
 }

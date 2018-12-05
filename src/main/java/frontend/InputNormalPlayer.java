@@ -18,9 +18,9 @@ public class InputNormalPlayer extends NormalPlayer{
   public String playerString()
   {
     String returnString = "";
-    for(int i=0;i<9;i++)
+    for(Hole hole: holes)
     {
-        returnString+=holes.get(i).getNumberOfKorgools()+",";
+        returnString+=hole.getNumberOfKorgools()+",";
     }
     returnString+=getScore()+",";
     returnString+=addTuz();
@@ -38,7 +38,7 @@ public class InputNormalPlayer extends NormalPlayer{
     }
     return -1;
   }
-  
+
   public int getAllHolesScores()
   {
     int sum=0;
