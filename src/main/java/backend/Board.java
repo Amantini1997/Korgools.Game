@@ -7,13 +7,20 @@ public class Board {
   protected boolean isWhiteTurn;
   protected static final boolean WHITE_MOVES_FIRST = true;
 
+
+  /**
+  Initialises the board
+  */
   public Board(){
     white = new Player();
     black = new Player();
     isWhiteTurn = WHITE_MOVES_FIRST;
     setCurrentPlayer();
   }
-
+  /**
+  Initialises the board with the given state
+  @param boardString the initial state of the board
+  */
   public Board(String boardString) {
     String[] lines = boardString.split("\n");
     black = new Player(lines[0]);
@@ -35,6 +42,10 @@ public class Board {
     currentPlayer = (isWhiteTurn)?white:black;
   }
 
+  /**
+  *Checks whether the turn has changed
+  @return if the turn has changed
+  */
   private boolean hasMoveStartedFromThisPlayer(){
     return isWhiteTurn && currentPlayer == white
             || !isWhiteTurn && currentPlayer == black;
@@ -110,6 +121,9 @@ public class Board {
     return currentPlayer.hasWon();
   }
 
+  /**
+  *@return a visual representation of the board
+  */
   @Override
   public String toString() {
     String line1 = black.toString();
@@ -119,10 +133,17 @@ public class Board {
     return line1 + "\n" + line2 + "\n" + line3;
   }
 
+  /**
+  *Gets the hole for the current player
+  @param hole the hole to get
+  @return the corresponding hole of the current player
+  */
   protected Hole getPlayerHole(int hole){
     return currentPlayer.getHoles()[hole];
   }
-
+  /**
+  *Checks if the game has ended
+  @return if the game has finished*/
   public boolean gameHasEnded() {
     return white.hasWon() || black.hasWon();
   }

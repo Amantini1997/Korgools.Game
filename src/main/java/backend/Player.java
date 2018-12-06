@@ -1,5 +1,7 @@
 package backend;
-
+/**
+*Implementation of a player in the game.
+*/
 public class Player {
     private static final int N_HOLES = 9;
     private static final int UNTUZZABLE_HOLE = N_HOLES-1;//position in the array
@@ -18,7 +20,10 @@ public class Player {
       kazan = new Kazan();
       tuzIsAvailable = true;
     }
-
+    /**
+    *Initialises the player with a given state
+    *@param playerString Initial state of the player
+    */
     public Player(String playerString) {
       holes = new Hole[N_HOLES];
 
@@ -35,14 +40,22 @@ public class Player {
         tuzIsAvailable = false;
       }
     }
-
+    /**
+    *@return the korgools in the kazan
+    */
     public int getKazanKorgools(){
       return kazan.getKorgools();
     }
+    /**
+    *@return a collection of the player's holes
+    */
     public Hole[] getHoles(){
       return holes;
     }
-
+    /**
+    *Finds the player's tuz and returns it
+    *@return the tuz index if it exists, -1 otherwise
+    */
     public int getTuz() {
       for(int i = 0; i < holes.length; i++) {
         if(holes[i].isTuz()) {
@@ -146,6 +159,10 @@ public class Player {
                 && currentHole != UNTUZZABLE_HOLE && !moveStartedFromThisPlayer);
     }
 
+    /**
+    *Checks if the player has won
+    *@return if the player has has won
+    */
     public boolean hasWon(){
       return kazan.hasWon();
     }
@@ -186,7 +203,10 @@ public class Player {
          return false;
        }
 
-
+    /**
+    *Gets the string representation of the player's state
+    *@return the player's current state
+    */
     @Override
     public String toString() {
       String stringToReturn = "";
