@@ -13,11 +13,19 @@ public class AIBoard extends Board{
   private static final int FORSEEN_MOVES = 1;
   private int level;
 
+/**
+Initialises the AI board with the given level of difficulty
+@param hardness the difficulty of the AI
+*/
   public AIBoard(int hardness){
     super();
     level = hardness;
   }
-
+  /**
+  Initialises the AI board with the given level of difficulty and setup
+  @param board the initial state of the board
+  @param hardness the difficulty of the AI
+  */
   public AIBoard(String board, int hardness) {
     super(board);
     level = hardness;
@@ -59,6 +67,7 @@ public class AIBoard extends Board{
 
   /**
    * AI makes a move based on randomness
+      @return if the player has won
    */
 
   private boolean easyMove(){
@@ -74,6 +83,7 @@ public class AIBoard extends Board{
 
   /**
    * Return the hole to move for the AI Player
+   * The selection is done randomly
    * @return The hole selected
    */
   private int evaluate(){
@@ -81,13 +91,16 @@ public class AIBoard extends Board{
   }
 
 
-
+  /**
+  Ensures the given hole can be pressed by the AI
+  @return if the AI can press the hole*/
   private boolean isValidMove(int pressedHole){
     return getPlayerHole(pressedHole).getKorgools() != 0;
   }
 
   /**
    * AI makes a move based on a basic logic
+      @return if the player has won
    */
   private boolean mediumMove(){
     int a = getBestMoveForBlack(FORSEEN_MOVES*2);
@@ -95,15 +108,12 @@ public class AIBoard extends Board{
       return  super.makeAMove(a) ;
   }
 
-  // public  void main(String[] s) {
-  //   String testBoard = "5,8,5,26,0,1,1,2,0,55,4\n" +
-  //           "3,2,5,1,3,2,2,0,1,40,7\n" +
-  //           "b";
-  //
-  //   System.out.println("move to Do: " + (getBestMoveForBlack(testBoard) + 1));
-  // }
-
-  // ASSUMING AI IS BLACK
+  /**Applies an min max algorithm for the AI to determine its next move.
+  @param boardString current state of the boardString
+  @param depth how many moves in advance it has to look
+  @param alpha Alpha index
+  @param beta Beta index
+  @param isBlackTurn whether it is the black player's turn*/
   private Pair<Integer, String> alphabeta(String boardString, int depth, int alpha, int beta, boolean isBlackTurn) {
 
     if (depth == 0 || gameHasEnded(boardString)) {
@@ -143,15 +153,19 @@ public class AIBoard extends Board{
     }
   }
 
+  /**
+  *Determines if the game has finished
+  @return if the game has ended*/
   private boolean gameHasEnded(String boardString) {
     return (new Board(boardString)).gameHasEnded();
   }
 
   /**
-   * AI makes a smart move
+   * Uses the min max algorithm to find the next move
+   @return if the player has won
    */
   private boolean hardMove(){
-      return super.makeAMove(9-getBestMoveForBlack(FORSEEN_MOVES*2));
+      return super.makeAMove(getBestMoveForBlack(FORSEEN_MOVES*2));
   }
 
   /**
@@ -187,6 +201,9 @@ public class AIBoard extends Board{
     return reachableBoards;
   }
 
+/**Finds the bext move for the AI
+@param moveToLookForwardFor how many turns into the future the AI has to calculate
+@return the hole to make the move*/
   private int getBestMoveForBlack(int moveToLookForwardFor) {
     //System.out.println("starting: " + boardString);
     //System.out.println(heuristicValue(boardString) + "\n");
