@@ -52,8 +52,8 @@ public class InputGUI extends JPanel{
       {
         JFrame frame = (JFrame) SwingUtilities.getRoot(this);
         System.out.println(white.playerString()+"\n"+black.playerString()+"\n"+"w");
-        BoardGUI boardGUI = new BoardGUI(black.playerString()+"\n"+white.playerString()+"\n"+"w");
-        frame.setContentPane(boardGUI);
+        AIChoiceGUI aiChoiceGUI = new AIChoiceGUI(black.playerString()+"\n"+white.playerString()+"\n"+"w");
+        frame.setContentPane(aiChoiceGUI);
         frame.revalidate();
         frame.repaint();
       }

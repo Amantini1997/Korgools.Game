@@ -46,7 +46,7 @@ public class ChoiceGUI extends JPanel
       //What was one the button?
       switch(( (JButton)e.getSource()).getText() ){
         case(NEW_BUTTON_TEXT):{
-          frame.setContentPane(new BoardGUI());
+          frame.setContentPane(new AIChoiceGUI());
           break;
         }
         case(INPUT_BUTTON_TEXT):{
@@ -57,6 +57,9 @@ public class ChoiceGUI extends JPanel
           // fetch the game state from the document
           try {
             BufferedReader reader = new BufferedReader(new FileReader("src/main/java/gameSaves.txt"));
+            
+            int level = Integer.parseInt(reader.readLine());
+
             String boardState = "";
             String line;
             while ((line = reader.readLine()) != null) {
@@ -64,12 +67,12 @@ public class ChoiceGUI extends JPanel
             }
 
             // set the game state
-            BoardGUI boardGUI = new BoardGUI(boardState);
+            BoardGUI boardGUI = new BoardGUI(boardState, level);
             // display it
             frame.setContentPane(boardGUI);
           } catch (Exception e1) {
             e1.printStackTrace();
-            frame.setContentPane(new BoardGUI());
+            frame.setContentPane(new AIChoiceGUI());
           }
 
           break;

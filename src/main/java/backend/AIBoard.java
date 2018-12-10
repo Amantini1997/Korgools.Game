@@ -228,4 +228,11 @@ Initialises the AI board with the given level of difficulty
     }
     return -1;
   }
+
+  /**
+  * @return the difficulty level of the game
+  */
+  public int getLevel(){
+    return this.level;
+  }
 }
