@@ -46,7 +46,7 @@ public class ChoiceGUI extends JPanel
       //What was one the button?
       switch(( (JButton)e.getSource()).getText() ){
         case(NEW_BUTTON_TEXT):{
-          frame.setContentPane(new AIChoiceGUI());
+          frame.setContentPane(new PlayerChoiceGUI());
           break;
         }
         case(INPUT_BUTTON_TEXT):{
