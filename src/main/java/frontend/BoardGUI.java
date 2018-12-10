@@ -23,6 +23,7 @@ public class BoardGUI extends JPanel
 	private Board board = new Board();
 	private Player black;
 	private Player white;
+
 	private MouseAdapter mouseClick = new MouseAdapter(){
 		public void mouseClicked(MouseEvent e)
 		{
@@ -47,13 +48,19 @@ public class BoardGUI extends JPanel
 					frame.repaint();
 					frame.revalidate();
 				}
-
+			}
 		}
-	}
 	};
-  public BoardGUI()
+
+  public BoardGUI(int hardness)
   {
-  	board = new AIBoard(2);//TO DO let the player select the level
+  	//TO DO let the player select the level
+		if(hardness == -1){
+			board = new Board();
+		}
+		else {
+			board = new AIBoard(hardness);
+		}
     this.setLayout(new GridLayout(3,1));
     black = new ReversedPlayer(9,mouseClick);
     this.add(black.showHoles());
@@ -64,9 +71,9 @@ public class BoardGUI extends JPanel
 		updateGUI(board.toString());
   }
 
-  public BoardGUI(String boardString) {
-      this();
-      this.board = new AIBoard(boardString,2);
+  public BoardGUI(String boardString, int hardness) {
+      this(hardness);
+      this.board = new AIBoard(boardString, hardness);
       updateGUI(board.toString());
   }
 
@@ -111,5 +118,12 @@ public class BoardGUI extends JPanel
 			white.blockHoles();
 			black.unblockHoles();
 		}
+	}
+
+	/**
+	 * @return the instance of the board
+	 */
+	public Board getBoard(){
+		return board;
 	}
 }
