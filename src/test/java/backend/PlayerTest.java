@@ -46,9 +46,10 @@ public class PlayerTest{
      p = new Player();
   }
 
-  /*no hasTuzOptionShouldReturnTrue tests exists because in very same
-   *a hole is possibly tuzzable, it set as such and after that the method
-   *is called*/
+  /* no hasTuzOptionShouldReturnTrue tests exists because in very same
+   * a hole is possibly tuzzable, it set as such and after that the method
+   * is called
+   *//*
   @Test
   public void hasTuzOptionTestShouldReturnFalse1(){
       p.act(8);// 9 9 9 9 9 9 9 9 1
@@ -77,5 +78,6 @@ public class PlayerTest{
       p.act(4);// 1 x x x 1 3 1 2 x
       assertEquals(false,p.hasTuzOption(5));
   }
+  */
 
 }

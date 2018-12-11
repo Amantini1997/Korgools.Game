@@ -94,7 +94,6 @@ public class AIChoiceGUI extends JPanel
     JButton button = new JButton(text);
     button.setName(text);
     button.addActionListener(e -> getNewScreen(e));
-    button.setName(text);
     return button;
   }
 }

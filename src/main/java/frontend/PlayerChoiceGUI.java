@@ -14,7 +14,7 @@ import javax.swing.SwingUtilities;
 public class PlayerChoiceGUI extends JPanel
 {
   private static final String ONE_PLAYER_TEXT = "One Player";
-  private static final String TWO_PLAYER_TEXT = "Two Players";
+  private static final String TWO_PLAYER_TEXT = "Two Player";
 
   private String boardString;
 
