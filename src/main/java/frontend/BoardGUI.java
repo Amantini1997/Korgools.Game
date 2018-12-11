@@ -55,12 +55,12 @@ public class BoardGUI extends JPanel
   public BoardGUI(int hardness)
   {
   	//TO DO let the player select the level
-		if(hardness == -1){
-			board = new Board();
-		}
-		else {
-			board = new AIBoard(hardness);
-		}
+	if(hardness == -1){
+		board = new Board();
+	}
+	else {
+		board = new AIBoard(hardness);
+	}
     this.setLayout(new GridLayout(3,1));
     black = new ReversedPlayer(9,mouseClick);
     this.add(black.showHoles());
@@ -73,7 +73,13 @@ public class BoardGUI extends JPanel
 
   public BoardGUI(String boardString, int hardness) {
       this(hardness);
+	if(hardness == -1){
+		board = new Board(boardString);
+	}
+	else {
       this.board = new AIBoard(boardString, hardness);
+	}
+
       updateGUI(board.toString());
   }
 

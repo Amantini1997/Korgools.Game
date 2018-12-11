@@ -5,13 +5,16 @@ import java.awt.event.MouseEvent;
 public class InputHoleListener extends MouseAdapter
 {
   private Player player;
+  private Player secondPlayer;
   public InputHoleListener(Player player)
   {
     this.player = player;
+    this.secondPlayer = secondPlayer;
   }
-  public void setPlayer(Player player)
+  public void setPlayers(Player player1, Player player2)
   {
-    this.player=player;
+    this.player=player1;
+    this.secondPlayer = player2;
   }
 
   public void mouseClicked(MouseEvent e)
@@ -27,8 +30,12 @@ public class InputHoleListener extends MouseAdapter
         }
         else
         {
-          removeTuz();
+          player.removeTuz();
           hole.makeTuz();
+          if(secondPlayer.getTuz()==player.getTuz())
+          {
+            secondPlayer.removeTuz();
+          }
         }
       }
       else if(e.getButton()==MouseEvent.BUTTON1)
@@ -36,18 +43,10 @@ public class InputHoleListener extends MouseAdapter
         if(hole.isTuz())
         {
           hole.unTuz();
+        }else
+        {
+          hole.update(hole.getNumberOfKorgools()+1);
         }
-        hole.update(hole.getNumberOfKorgools()+1);
       }
-  }
-
-  public void removeTuz(){
-    for(Hole hol: player.getHoles())
-    {
-      if(hol.isTuz())
-      {
-        hol.unTuz();
-      }
-    }
   }
 }
