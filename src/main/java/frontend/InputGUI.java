@@ -40,6 +40,7 @@ public class InputGUI extends JPanel{
     try{
       int white1 = white.getAllHolesScores() + Integer.parseInt(white.getScore());
       int black2 = black.getAllHolesScores() + Integer.parseInt(black.getScore());
+
       if(white1+black2>162)
       {
           errorText.setText("Incorrect number of balls: Please remove " +  ((white1+black2)-162) + " balls");
@@ -51,8 +52,12 @@ public class InputGUI extends JPanel{
       else
       {
         JFrame frame = (JFrame) SwingUtilities.getRoot(this);
-        BoardGUI boardGUI = new BoardGUI(black.playerString()+"\n"+white.playerString()+"\n"+"w");
-        frame.setContentPane(boardGUI);
+
+        System.out.println(white.playerString()+"\n"+black.playerString()+"\n"+"w");
+
+        PlayerChoiceGUI playerChoiceGUI = new PlayerChoiceGUI(black.playerString()+"\n"+white.playerString()+"\n"+"w");
+
+        frame.setContentPane(playerChoiceGUI);
         frame.revalidate();
         frame.repaint();
       }

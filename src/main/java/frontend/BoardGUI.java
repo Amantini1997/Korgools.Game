@@ -16,13 +16,14 @@ import java.io.UnsupportedEncodingException;
 import backend.*;
 
 /**
-* Panel with the board game
-**/
+ * Panel with the board game
+ **/
 public class BoardGUI extends JPanel
 {
 	private Board board = new Board();
 	private Player black;
 	private Player white;
+
 	private MouseAdapter mouseClick = new MouseAdapter(){
 		public void mouseClicked(MouseEvent e)
 		{
@@ -34,16 +35,32 @@ public class BoardGUI extends JPanel
 				//call backend, and tell them the index of the cell that has been clicked
 
 				//get necessary information from backend to update the state of the game/GUI
-				board.makeAMove(indexOfHole);
+				boolean hasWon = board.makeAMove(indexOfHole);
 				updateGUI(board.toString());
 				System.out.println("This is the board after the move:");
 				System.out.println("BUTTON PRESSED: " +  indexOfHole);
 				System.out.println(board);
+				if (hasWon){
+					JOptionPane.showMessageDialog(null, "Congratulations, you won!");
+					JFrame frame = (JFrame) SwingUtilities.getRoot(	(Hole)e.getSource());
+					frame.setContentPane(new ChoiceGUI());
+					frame.pack();
+					frame.repaint();
+					frame.revalidate();
+				}
+			}
 		}
-	}
 	};
-  public BoardGUI()
+
+  public BoardGUI(int hardness)
   {
+  	//TO DO let the player select the level
+		if(hardness == -1){
+			board = new Board();
+		}
+		else {
+			board = new AIBoard(hardness);
+		}
     this.setLayout(new GridLayout(3,1));
     black = new ReversedPlayer(9,mouseClick);
     this.add(black.showHoles());
@@ -53,10 +70,10 @@ public class BoardGUI extends JPanel
 		this.setName("boardGUI");
 		updateGUI(board.toString());
   }
-  
-  public BoardGUI(String boardString) {
-      this();
-      this.board = new Board(boardString);
+
+  public BoardGUI(String boardString, int hardness) {
+      this(hardness);
+      this.board = new AIBoard(boardString, hardness);
       updateGUI(board.toString());
   }
 
@@ -82,7 +99,7 @@ public class BoardGUI extends JPanel
 			frame.pack();
 		}
   }
-  
+
   public Board getBoardDisplayed() {
       return board;
   }
@@ -101,5 +118,12 @@ public class BoardGUI extends JPanel
 			white.blockHoles();
 			black.unblockHoles();
 		}
+	}
+
+	/**
+	 * @return the instance of the board
+	 */
+	public Board getBoard(){
+		return board;
 	}
 }

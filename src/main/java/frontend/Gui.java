@@ -7,6 +7,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
 import javax.swing.SwingUtilities;
+
+import backend.AIBoard;
+import backend.Board;
+
 public class  Gui
 {
     private JFrame frame;
@@ -30,7 +34,20 @@ public class  Gui
                 // if the window currently open is a a board (so it won't try to save if we are in main menu)
                 if (frame.getContentPane() instanceof BoardGUI) {
                     BoardGUI board = (BoardGUI) frame.getContentPane();
-                    String str = board.getBoardDisplayed().toString();
+                    
+                    // Add ai difficulty 
+                    String str = "";
+                    if(board.getBoard() instanceof AIBoard){
+                        // AI game - save the difficulty
+                        str += ((AIBoard)board.getBoard()).getLevel() + "\n";
+                    
+                    }
+                    else{
+                        // Two player game
+                        str += "-1\n";
+                    }
+                    
+                    str += board.getBoardDisplayed().toString(); 
 
                     try {
                         BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/gameSaves.txt"));
