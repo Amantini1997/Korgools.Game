@@ -59,7 +59,7 @@ Initialises the AI board with the given level of difficulty
       case 3:
         return hardMove();
       default:
-        System.err.println("Hardness level not Allowed");
+        //unreachable statement
         return true;
 
     }

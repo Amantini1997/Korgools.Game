@@ -1,7 +1,6 @@
 package backend;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertFalse;
 import org.junit.Test;
 import java.util.Arrays;
 import org.junit.runner.RunWith;
@@ -11,32 +10,34 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class PlayerTest{
+public class NegativePlayerTest{
 
   @Parameters
   public static Collection<Object[]> data(){return Arrays.asList(new Object[][]{
-    {3,3,true,1},
-    {0,0,true,1},
-    {7,7,true,1},
-    {6,6,true,1}});
+    {new int[]{8,7,0},3,true,1},
+    {new int[]{5,6,7,4,5},3,true,1},
+    {new int[]{2,7,6,4},3,true,1}});
   }
   public Player p;
-  public int returningKorgools;
-  public int move;
+  public int[] moves;
+  public int tuzToCheck;
   public boolean moveStartedFromThisPlayer;
   public int opponentTuz;
 
-  public PlayerTest(int retKorg,int move, boolean moveSFTP, int opTuz){
+  public NegativePlayerTest(int[] moves,int tuzToCheck, boolean moveSFTP, int opTuz){
     p = new Player();
-    returningKorgools = retKorg;
-    this.move = move;
+    this.tuzToCheck = tuzToCheck;
+    this.moves = moves;
     moveStartedFromThisPlayer = moveSFTP;
     opponentTuz = opTuz;
   }
 
   @Test
   public void actTest(){
-    assertEquals(returningKorgools,p.act(move,moveStartedFromThisPlayer,opponentTuz));
+    for(int i = 0; i< moves.length; i++){
+      p.act(moves[i],moveStartedFromThisPlayer,opponentTuz);
+    }
+    assertFalse(p.hasTuzOption(tuzToCheck,moveStartedFromThisPlayer,opponentTuz));
   }
 
   /*
