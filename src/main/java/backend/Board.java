@@ -7,20 +7,20 @@ public class Board {
   protected boolean isWhiteTurn;
   protected static final boolean WHITE_MOVES_FIRST = true;
 
-
   /**
-  Initialises the board
-  */
+   * Initialises the board
+   */
   public Board(){
     white = new Player();
     black = new Player();
     isWhiteTurn = WHITE_MOVES_FIRST;
     setCurrentPlayer();
   }
+
   /**
-  Initialises the board with the given state
-  @param boardString the initial state of the board
-  */
+   * Initialises the board with the given state
+   * @param boardString string representation of the board
+   */
   public Board(String boardString) {
     String[] lines = boardString.split("\n");
     black = new Player(lines[0]);
@@ -43,54 +43,50 @@ public class Board {
   }
 
   /**
-  *Checks whether the turn has changed
-  @return if the turn has changed
-  */
+   * Checks whether the turn has changed
+   * @return if the turn has changed
+   */
   private boolean hasMoveStartedFromThisPlayer(){
     return isWhiteTurn && currentPlayer == white
             || !isWhiteTurn && currentPlayer == black;
   }
 
-	/**
-	 * Move the korgools according to the pressed hole
-	 * @param pressedHole: the hole pressed
-   * @return True if the current player has won,
-   *    False otherwise
-	 */
-    public boolean makeAMove(int pressedHole){
-      //if the player presses a hole containing 0 korgools nothing happens
-      int initKorgools = getPlayerHole(pressedHole).getKorgools();
-      if(initKorgools > 1){
+  /**
+   * Move the korgools according to the pressed hole
+   * @param pressedHole: the hole pressed
+   * @return True if the current player has won, False otherwise
+   */
+  public boolean makeAMove(int pressedHole){
+    //if the player presses a hole containing 0 korgools nothing happens
+    int initKorgools = getPlayerHole(pressedHole).getKorgools();
+    if(initKorgools > 1){
         initKorgools--;
-      }
-      if(initKorgools==0){
-        return currentPlayerHasWon(currentPlayer);
-      }
-      int kargoolsLeft = currentPlayer.act(pressedHole);
-      while(kargoolsLeft>0){
+    }
+    if(initKorgools==0){
+        return playerHasWon(currentPlayer);
+    }
+    int kargoolsLeft = currentPlayer.act(pressedHole);
+    while(kargoolsLeft>0){
         currentPlayer = (currentPlayer == black)?white:black;
         kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer());
-      }
-      //checking that the ending hole is an opponent's one
-      if( !hasMoveStartedFromThisPlayer()){//(currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
+    }
+    //checking that the ending hole is an opponent's one
+    if( !hasMoveStartedFromThisPlayer()){//(currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
         int finalHole = (pressedHole+initKorgools)%9;
         if(getPlayerHole(finalHole).getKorgools()%2==0){
-          stealKorgools(finalHole);
+            stealKorgools(finalHole);
         }
-      }
-      isWhiteTurn = !isWhiteTurn;
-        //System.out.println(this + "\n");
-      setCurrentPlayer();
-      moveKorgoolsFromTuzzes();
-      if(currentPlayerHasWon(black) || currentPlayerHasWon(white))
-        return true;
-      //System.out.println("Number of korgools in Kazan: "+ currentPlayer.getKazanKorgools()+ "Has won = "+ currentPlayer.hasWon());
+    }
+    isWhiteTurn = !isWhiteTurn;
+    setCurrentPlayer();
+    moveKorgoolsFromTuzzes();
+    if(playerHasWon(black) || playerHasWon(white))
+      return true;
       if(!currentPlayer.hasAMove()){
         isWhiteTurn = !isWhiteTurn;
         setCurrentPlayer();
       }
       return false;
-
   }
 
    /**
@@ -104,6 +100,7 @@ public class Board {
       setCurrentPlayer();
       currentPlayer.addKorgoolsToKazan(stolenKorgools);
     }
+
   /**
    * Remove the korgools from the tuz hole
    * in the kazan they belong to
@@ -114,11 +111,12 @@ public class Board {
   }
 
   /**
-  * TO-DO implement this method, it will be called
-  * when one of the player wins
-  */
-  protected boolean currentPlayerHasWon(Player currentPlayer){
-    return currentPlayer.hasWon();
+   * Returns whether the current player has won
+   * @param player the player we wonder if has won
+   * @return true if the player has won
+   */
+  protected boolean playerHasWon(Player player){
+    return player.hasWon();
   }
 
   /**
@@ -134,16 +132,18 @@ public class Board {
   }
 
   /**
-  *Gets the hole for the current player
-  @param hole the hole to get
-  @return the corresponding hole of the current player
-  */
+   *Gets the hole for the current player
+   * @param hole the hole to get
+   * @return the corresponding hole of the current player
+   */
   protected Hole getPlayerHole(int hole){
     return currentPlayer.getHoles()[hole];
   }
+
   /**
-  *Checks if the game has ended
-  @return if the game has finished*/
+   * Checks if the game has ended
+   * @return if the game has finished
+   */
   public boolean gameHasEnded() {
     return white.hasWon() || black.hasWon();
   }
