@@ -12,23 +12,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class BoardTest2{
+public class NegativeBoardTest{
 
   @Parameters
   public static Collection<Object[]> data(){
     return Arrays.asList(new Object[][]{
-      {null,"9,9,9,9,9,9,9,9,9,0,-1\n"+
-            "9,9,9,9,9,9,9,9,9,0,-1\nw"},
-
-      {new int[]{6},"10,10,10,10,10,0,9,9,9,0,-1\n"+
-                    "9,9,9,9,9,9,1,10,10,10,-1\nb"},
-
-      {new int[]{0,0,1,0,2,0,8},"2,15,12,12,11,11,11,11,11,0,-1\n"+
-                                "2,2,1,12,12,12,12,12,1,0,-1\nb"},
-
-      {new int[]{0,0,0},"1,10,10,10,10,10,10,10,10,0,-1\n"+
-                        "0,11,10,10,10,10,10,10,10,0,-1\nb"},
-
       {new int[]{0,0,0,0,0},"0,11,10,10,10,10,10,10,10,0,-1\n"+
                             "0,11,10,10,10,10,10,10,10,0,-1\nw"},
 
@@ -39,10 +27,7 @@ public class BoardTest2{
                                       "3,13,13,2,0,3,3,14,14,10,4\nw"},
 
       {new int[]{4,4,5,4,6,4,0,2,3},"13,12,1,3,2,15,12,12,11,14,-1\n"+
-                                    "2,12,12,1,0,2,2,13,13,10,4\nb"},
-
-      {new int[]{8,0,1,6,1,8},"1,11,11,11,11,11,1,2,1,10,-1\n"+
-                              "2,2,13,12,12,12,12,12,3,12,-1\nw"}});
+                                    "2,12,12,1,0,2,2,13,13,10,4\nb"}});
 
   }
 
@@ -50,10 +35,10 @@ public class BoardTest2{
   public int[] moves;
   private Board board;
 
-  public BoardTest2(int[] moves, String output){
-    moves = moves;
-    output = output;
-    board = new Board();
+  public NegativeBoardTest(int[] moves, String output){
+    this.moves = moves;
+    this.output = output;
+    this.board = new Board();
   }
 
   @Test
@@ -61,6 +46,6 @@ public class BoardTest2{
     if(moves != null)
       for(int i = 0; i< moves.length; i++)
          board.makeAMove(moves[i]);
-    assertTrue(board.toString().equals(output));
+    assertNotEquals(board.toString(),output);
   }
 }

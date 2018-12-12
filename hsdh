@@ -1,0 +1,1041 @@
+commit 25056f4a8c107f58cd8a922a1d99e773716e6954
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 12 14:56:04 2018 +0000
+
+    Fix a bug for BoardTest2
+
+commit 05e5e214bfc567e155c895772117a17a65c9fe69
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Tue Dec 11 17:39:06 2018 +0000
+
+    Refactor tests for Board class using runner package
+    
+    Refactored the test for Board class in the class BoardTest2
+    without deleting the old version. The test do not work yet.
+
+commit 7f86830b8893f0449456a5a04b9246ee22a1492b
+Merge: b8f03fb c6d0b34
+Author: Effsy <30322771+Effsy@users.noreply.github.com>
+Date:   Tue Dec 11 13:48:58 2018 +0000
+
+    Merge pull request #13 from AlvaroRausell/testing-frontend
+    
+    Integration and frontend tests
+
+commit c6d0b34cfca608fc63cdd59624901cb087ca79f5
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Tue Dec 11 13:34:45 2018 +0000
+
+    Fix incompatible tests
+    
+    Fix broken tests from the added player and ai choice screens. Added
+    additional tests for code coverage.
+
+commit 39a6e8a4b08cccf4d235f7c9bab771de95fd13b2
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Tue Dec 11 12:31:59 2018 +0000
+
+    Fix two-player game with input not working
+
+commit d5f66cc6125094debffc9964c71c993f18eeb4e1
+Merge: 053e587 b8f03fb
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Tue Dec 11 12:01:05 2018 +0000
+
+    Merge master into testing-frontend
+
+commit b8f03fb62d0740916ae69ec62dcfaf4b4b4a3189
+Merge: ae919cf fbfaf6e
+Author: Effsy <30322771+Effsy@users.noreply.github.com>
+Date:   Mon Dec 10 17:43:30 2018 +0000
+
+    Merge pull request #12 from AlvaroRausell/add-ai-choice-gui
+    
+    Add choice for number of players and difficult of AI
+
+commit fbfaf6e025e3c3edba33fa54e9d52c510a659632
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Mon Dec 10 17:07:07 2018 +0000
+
+    Add choice for number of players
+
+commit 354c66ee6da71608d07d1c7f17bce14d77e5b058
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Mon Dec 10 15:11:17 2018 +0000
+
+    Add ai choice screen
+
+commit ae919cf0eb7b6636c3edb156843fbe7e31912a44
+Merge: b84523c 3dbd12d
+Author: Author Name <alvaro.rausellg@gmail.com>
+Date:   Thu Dec 6 17:22:09 2018 +0000
+
+    Merge branch 'master' of github.com:AlvaroRausell/Agile-Project
+
+commit b84523c8c1bd7c976b9607174db2cf719443d690
+Author: Author Name <alvaro.rausellg@gmail.com>
+Date:   Thu Dec 6 17:14:30 2018 +0000
+
+    Add comments for backend classes
+
+commit 3dbd12d6d1cd714a354bd681b3407a4b31a60b53
+Author: Alvaro Rausell <alvarorausell@Alvaros-MacBook-Pro.local>
+Date:   Thu Dec 6 17:14:30 2018 +0000
+
+    Add comments for backend classes
+
+commit 053e5876d0b3409a92f7307fe12ea0d7b685d211
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Wed Dec 5 23:11:13 2018 +0000
+
+    Add extensive testing for frontend
+
+commit 2e7257a5d6511ff349e8862f3fac85fd6585eda5
+Merge: 94ca46e b43fc90
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 19:35:00 2018 +0000
+
+    Merge pull request #11 from AlvaroRausell/smartAI
+    
+    Implement smart AI (Minimax + alpha-beta pruning)
+
+commit b43fc90a23b2e0fb37d91a66bbe6fc0a368af61a
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Dec 5 19:21:16 2018 +0000
+
+    AI Fix and Win screen
+
+commit 54e0b49ae16722924750eb77b3c12c669bc3244c
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Dec 5 18:58:28 2018 +0000
+
+    Fix merge conflicts
+
+commit b3cb47797f8fe47c7ddc8589e4668631a4057b1a
+Merge: 0b95622 b683f88
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 18:48:58 2018 +0000
+
+    Merge branch 'smartAI' of github.com:AlvaroRausell/Agile-Project into smartAI
+    
+    Conflicts:
+    	src/main/java/backend/AIBoard.java
+    	src/main/java/backend/Board.java
+    	src/main/java/frontend/BoardGUI.java
+
+commit 0b956224dddd1c853512100744e1758fd64f398a
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 18:47:26 2018 +0000
+
+    Make it work
+
+commit 03e6439a0d45da64f65c1e2560c1f8e3815a45fe
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 17:54:52 2018 +0000
+
+    AI is a kind of complete
+
+commit 364652c3309367fa30e31e1e1efb48d919707c21
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 17:02:57 2018 +0000
+
+    Add indication for smartAI  moves
+
+commit e51cf5b610d6e7323927087f0e793f0878857909
+Author: nickpezzotti1 <nicholas.p.pezzotti@gmail.com>
+Date:   Sun Dec 2 14:21:20 2018 +0000
+
+    build working AI for black
+
+commit 5b66dacdd363cbf3c98fe6cea666bd841a9d3d2e
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 16:56:30 2018 +0000
+
+    Refactor AI Player
+    
+    created a basic structure for different levels of hardness on AI player
+
+commit e72288955935f0c44179f880d0a917f24ae87f72
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 16:32:08 2018 +0000
+
+    makeAMove returns a True if current player has won
+
+commit 80452bb511346857ca761d5aaf9476a32c564412
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 13:20:37 2018 +0000
+
+    Fix bug that tuzzes same player's hole
+
+commit 9aef934749124b3902a93e9e917913ef39a1c178
+Author: nickpezzotti1 <nicholas.p.pezzotti@gmail.com>
+Date:   Sat Dec 1 21:34:16 2018 +0000
+
+    fix printing bug
+
+commit fbe07f364caed79f291f380b1e0c3fa39bfd0915
+Author: nickpezzotti1 <nicholas.p.pezzotti@gmail.com>
+Date:   Sat Dec 1 20:31:43 2018 +0000
+
+    Debug the make a move method
+
+commit 27ee9e6c7fdc4715b502c86ed5afd7846eddf744
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 28 17:31:08 2018 +0000
+
+    Complete the feature a player with no korgools skip their turn
+
+commit 3a66582cacf7c62ae7fc121f6e608ae513ec72bf
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 28 16:29:23 2018 +0000
+
+    Bug fix
+
+commit 43837545a46aef58115457f20cf7b900f806375d
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 28 16:26:39 2018 +0000
+
+    Add hasAMove method in Player class
+    
+    Added method so that if the player does not have possible moves, he
+    skips turn
+
+commit bfe1fd5a9e2b9b51a10d37fd658fd2ac85dc52d2
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 28 16:21:43 2018 +0000
+
+    Add hasAMove method
+    
+    Added method so that if the player does not have any possible moves, he
+    skips turn
+
+commit ccd7328f2fd26a8c91ad7dbde701f6aef59c3f48
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 28 16:18:57 2018 +0000
+
+    Revert "Add hasAMove method"
+    
+    This reverts commit 1809ad93a3556f38bdaab85395a8616026468717.
+    The commits belonged to Rausell, but he pushed them on my machine, so they've been associated to the wrong person
+
+commit d00189c83244be5b9b44a07f204c55ab6483ba85
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 28 16:10:58 2018 +0000
+
+    Add hasAMove method
+    
+    Added method so that if the current player does not have possible moves, he skips the turn
+
+commit 63a9f9cfaa13819603534759cd50145fd1162245
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 28 15:33:52 2018 +0000
+
+    Basic AI improvements
+
+commit b683f88f9944848802be33098fda87387deec293
+Merge: aa46f8b 7ed1817
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 17:18:46 2018 +0000
+
+    Merge MiniMaxAI branch into SmartAI
+
+commit aa46f8b1fa7af69793484af6a6567b56582fb13c
+Merge: e41ec54 a49f8d5
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 17:17:25 2018 +0000
+
+    Merge MiniMaxAI branch into SmartAI
+
+commit 94ca46ec31b336999f444f02007fe54acc2ac61b
+Merge: ae5a6c6 0033c52
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 17:08:57 2018 +0000
+
+    Merge pull request #10 from AlvaroRausell/input-game
+    
+    Add basic GUI tests
+
+commit 0033c52d0e4a23c69a65e77597bff315bcced72e
+Merge: 76fd203 ae5a6c6
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 17:08:47 2018 +0000
+
+    Merge branch 'master' into input-game
+
+commit 7ed1817222778423652478efd60ae7cab7937753
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 17:02:57 2018 +0000
+
+    Add indication for smartAI  moves
+
+commit a49f8d564291d611823b98432b43c8ab43a15087
+Author: nickpezzotti1 <nicholas.p.pezzotti@gmail.com>
+Date:   Sun Dec 2 14:21:20 2018 +0000
+
+    build working AI for black
+
+commit 76fd2033d429cd3bc9a48b7f669dc54047895672
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Wed Dec 5 16:57:46 2018 +0000
+
+    Add basic GUI tests
+
+commit e41ec54e6ace8d0d96ac957a69b65c8c325ea27c
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 16:56:30 2018 +0000
+
+    Refactor AI Player
+    
+    created a basic structure for different levels of hardness on AI player
+
+commit ae5a6c60d2604cfc452f8b6dce62af77ca687d41
+Merge: 9d4ad0e d183ac5
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 16:54:48 2018 +0000
+
+    Merge pull request #9 from AlvaroRausell/gui-game-mechanics-tests
+    
+    Add gui tests for different game scenarios
+
+commit d183ac5317d07ae70da4b01e1cedd06d95239767
+Merge: f6475bd 9d4ad0e
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 16:54:38 2018 +0000
+
+    Merge branch 'master' into gui-game-mechanics-tests
+
+commit 9d4ad0ebc37b183e27d1381f557b22e530ecc50b
+Merge: 02d14f7 c2c29be
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 16:52:10 2018 +0000
+
+    Merge pull request #8 from AlvaroRausell/input-game
+    
+    Add Input game functionality
+
+commit c2c29bed40b4b3aac7d56849320b61e5addbf9f0
+Merge: e0d9a17 02d14f7
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 16:51:51 2018 +0000
+
+    Merge branch 'master' into input-game
+
+commit 02d14f786a210a9d57999d1ad7bad4d132f21aec
+Merge: cfab0f5 50894f3
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 16:39:30 2018 +0000
+
+    Merge pull request #2 from AlvaroRausell/adding-save-state
+    
+    Add save state
+
+commit 50894f31c421a563a65100553635af15eab2fcab
+Merge: 2069ca2 cfab0f5
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Dec 5 16:38:54 2018 +0000
+
+    Merge branch 'master' into adding-save-state
+
+commit 3cbd2f0842c80d835bc6fccc725fcb4f670f2ffd
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 16:32:08 2018 +0000
+
+    makeAMove returns a True if current player has won
+
+commit 296bc1eadf806dc6a92837e349acf08f8e565e3a
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Dec 5 13:20:37 2018 +0000
+
+    Fix bug that tuzzes same player's hole
+
+commit f6475bd3d044dca9fce340eb835a5fd7683ccd72
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Sun Dec 2 04:12:13 2018 +0000
+
+    Add gui tests for different game scenarios
+    
+    Gui tests for: scoring on even korgools, tuz claiming and scoring, korgool movement, winning the
+    game
+
+commit f3e9009bde55e71e2828e7d37180d1b45252b870
+Author: nickpezzotti1 <nicholas.p.pezzotti@gmail.com>
+Date:   Sat Dec 1 21:34:16 2018 +0000
+
+    fix printing bug
+
+commit 4b09f850f97979d0ee1b85266d7b6189bbff69c2
+Author: nickpezzotti1 <nicholas.p.pezzotti@gmail.com>
+Date:   Sat Dec 1 20:31:43 2018 +0000
+
+    Debug the make a move method
+
+commit e0d9a172f53745e90cb56a7732a053726c6d8949
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Wed Nov 28 19:54:44 2018 +0000
+
+    Add Input game functionality
+
+commit f26d238487016f785b11468cc3377c25349517d7
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 28 17:31:08 2018 +0000
+
+    Complete the feature a player with no korgools skip their turn
+
+commit c3b35bb812f80484a42d3996165b01410b8d0847
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 28 16:29:23 2018 +0000
+
+    Bug fix
+
+commit 6a11b8b443ee3f904b3cb7044b61e125314b7130
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 28 16:26:39 2018 +0000
+
+    Add hasAMove method in Player class
+    
+    Added method so that if the player does not have possible moves, he
+    skips turn
+
+commit 716a0f9cebe86c1f4295fc8ac4c4d5206246e08e
+Merge: 68e46c4 75ff21c
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 28 16:22:49 2018 +0000
+
+    Merge branch 'smartAI' of github.com:AlvaroRausell/Agile-Project into smartAI
+
+commit 68e46c494c418b8fcbeac1886a06720abf8db2ab
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 28 16:21:43 2018 +0000
+
+    Add hasAMove method
+    
+    Added method so that if the player does not have any possible moves, he
+    skips turn
+
+commit 75ff21ce598f965545b49bbe6f1141a04b2cd602
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 28 16:18:57 2018 +0000
+
+    Revert "Add hasAMove method"
+    
+    This reverts commit 1809ad93a3556f38bdaab85395a8616026468717.
+    The commits belonged to Rausell, but he pushed them on my machine, so they've been associated to the wrong person
+
+commit 1809ad93a3556f38bdaab85395a8616026468717
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 28 16:10:58 2018 +0000
+
+    Add hasAMove method
+    
+    Added method so that if the current player does not have possible moves, he skips the turn
+
+commit 370ff324610868dafcbde757c97adb5b1294c0a0
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 28 15:33:52 2018 +0000
+
+    Basic AI improvements
+
+commit cfab0f5c1538fd8350439047167aa829376fdfef
+Merge: ff82281 d43fcd5
+Author: Amantini1997 <43547703+Amantini1997@users.noreply.github.com>
+Date:   Wed Nov 28 15:03:06 2018 +0000
+
+    Merge pull request #5 from AlvaroRausell/AI
+    
+    Ai
+
+commit ff822817fd251e6e6ef1ad14e5a5d61a8a76a658
+Merge: 1400ee4 acdcc55
+Author: mateusznowak98 <43570736+mateusznowak98@users.noreply.github.com>
+Date:   Wed Nov 28 14:59:17 2018 +0000
+
+    Merge pull request #4 from AlvaroRausell/AdvancedFrontEnd
+    
+    Add blocking functionality
+
+commit acdcc555f82052920e61385d5140001f7b1cac50
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Wed Nov 28 14:47:51 2018 +0000
+
+    Revert "Add basic animation"
+    
+    This reverts commit d3700fee6a0d5b4ac254dad680f55ba6e106857b.
+
+commit d43fcd5a3c85bb130038097320c9883a5be158b2
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Mon Nov 26 22:13:02 2018 +0000
+
+    Add tests for Board class
+
+commit 7cacdd637884bdc2c3682579565bd821ed2ebb1e
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Mon Nov 26 20:55:17 2018 +0000
+
+    Fix bug when pressing last hole + Refactor PlayerTest.java
+    
+    Fixed a bug that didn't empty the last hole when pressed,
+    plus refactored the test in PlayerTest.java
+
+commit d301e1610c02e9b560af69a65a02e6e06347e68b
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Mon Nov 26 20:34:13 2018 +0000
+
+    Refactor Kazan tests
+    
+    Refactored KazanTest.java using @Before and making each
+     assertion having its own method
+
+commit 77427144946bb659d30268029df804a15f8ab84f
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Mon Nov 26 20:26:09 2018 +0000
+
+    Refactor tests for HoleTest.java
+    
+    The tests in HoleTest.java have been refactored so that
+    they the annotation @Before is now used, and each
+    assertion constitutes a method on its own
+
+commit d3700fee6a0d5b4ac254dad680f55ba6e106857b
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Sat Nov 24 22:46:53 2018 +0000
+
+    Add basic animation
+
+commit 1055ae0d96e97878374a22a169d54631b38e9bdd
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Sat Nov 24 19:05:56 2018 +0000
+
+    Add button blocking functionality.
+    
+    Buttons are blocked when player cannot make a move due to the lack of
+    kargools in the hole or opponent's turn. Button show their indices underneath them.
+
+commit f6800e562001963301884d425297db15fc3f0480
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Thu Nov 22 21:06:41 2018 +0000
+
+    Add steal korgools feature
+    
+    Add the featurea ccording to which when the final hole is an opponent one, and
+     the number of korgools contained is now even, those korgools are stolen.
+
+commit 2069ca279c12fe91008d66b176aa84fba47774d9
+Author: nickpezzotti1 <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 21 21:14:27 2018 +0000
+
+    Add GUI Testing for game saving functionality
+
+commit 56fb89aebcdb7ebf00934f933865724eb5f217d0
+Author: nickpezzotti1 <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 21 20:24:49 2018 +0000
+
+    Implement saving mechanic for loading most recent game
+
+commit 99edaa2082496f5e85f31add02fd806e560fbf24
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Wed Nov 21 17:44:40 2018 +0000
+
+    Improve Board class
+
+commit 1400ee415c94fae38cd989dc34a94f6ffd58404e
+Merge: ba49381 5e23917
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 21 16:28:36 2018 +0000
+
+    Merge pull request #1 from AlvaroRausell/merging-ui-backend
+    
+    V1.0 of the game
+    
+    See Trello board for future improvements
+
+commit 5e23917fd099cf971e7cd845bcba3c5981ab8eed
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Wed Nov 21 16:24:36 2018 +0000
+
+    Update GUI during the game
+
+commit c2c12bfa47462036e252f546203c616c426efc51
+Merge: 6af2736 1ab0fea
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Wed Nov 21 16:20:03 2018 +0000
+
+    Merge changes
+
+commit 6af273640a8bc6743a566a95ff4804eff0ff3ced
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Wed Nov 21 16:17:55 2018 +0000
+
+    Add stupid AI player
+
+commit 1ab0fea0588897cd376ba2249ff9020032b0e6f8
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Wed Nov 21 15:44:15 2018 +0000
+
+    Refresh the GUI look
+
+commit 76939abc31bbdf9570d1ecacb66ea361fc47788c
+Merge: e901c6d e7d16c3
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Wed Nov 21 14:39:33 2018 +0000
+
+    Merge branch 'merging-ui-backend' of https://github.com/AlvaroRausell/Agile-Project into merging-ui-backend
+
+commit e901c6dd1cfeaa9cb61f9cabf8fdbf64e258d43e
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Wed Nov 21 14:38:11 2018 +0000
+
+    Make grapich better
+    
+    The first panel always appear in the centre of the screen, and the hole are
+    stretched to fit better in the space
+
+commit e7d16c374ed79d742c31f310853333bb7013aa60
+Merge: 9ac0ea2 8804bfc
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Tue Nov 20 16:29:07 2018 +0000
+
+    Merge branch 'merging-ui-backend' of https://github.com/AlvaroRausell/Agile-Project into merging-ui-backend
+    
+    Conflicts:
+    	src/main/java/backend/Player.java
+
+commit 9ac0ea2af4b5587480d68b7d2575e1bc78973e9c
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Tue Nov 20 16:26:55 2018 +0000
+
+    Add the rule for holes with 1 korgools
+    
+    If a player press a hole containing just one korgool, that hole is going to be emptied, and the korgool moved to the next hole
+
+commit 8804bfcae66d158ef36036054762dcd4671db191
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Tue Nov 20 16:14:26 2018 +0000
+
+    Refractor BoardTest
+
+commit e6bdd7ce2c6d05dcb8b30d6a585ed1ece3a642cb
+Merge: 65e2313 97c61d5
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Tue Nov 20 16:12:38 2018 +0000
+
+    Merge branch 'merging-ui-backend' of https://github.com/AlvaroRausell/Agile-Project into merging-ui-backend
+    
+    Conflicts:
+    	src/main/java/backend/Player.java
+
+commit 65e231352cc0060c18b36f9b5b522fb4b64055d5
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Tue Nov 20 16:10:50 2018 +0000
+
+    Fix Bug
+    
+    Fixed a bug that didn't displayed the proper board
+
+commit 97c61d5a42a92365082e01edf8edd8ad8bc5fcb5
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Tue Nov 20 16:00:03 2018 +0000
+
+    Fix act method
+
+commit 10a568385bc4888be074ab00fe73353274c2db0a
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Wed Nov 14 22:58:25 2018 +0000
+
+    Add Tests for Player class
+
+commit 6642b0b8e60b1eaa69263f85b281862b560c043d
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 14 18:50:36 2018 +0000
+
+    refactor code and set up some print statements for testing
+
+commit 427789c9907806cf0dc19f24c46cc5548a034103
+Merge: 21323bc 95213a0
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 14 18:08:50 2018 +0000
+
+    remove print tests
+
+commit 21323bc55a9121e85bfec0dc23066c6881b075f1
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 14 18:04:47 2018 +0000
+
+    Create BoardParser
+
+commit 95213a04c10bbc689c97be26c2527873cb4b9f95
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 14 17:57:11 2018 +0000
+
+    Fix a bug
+
+commit 78ead2d06dd694ccb6747b2a47310e600592c83a
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 14 16:56:23 2018 +0000
+
+    Make BackEnd GUI friendly
+    
+    Retouched some classes from the back end so that the interaction with the GUI is easier
+
+commit 69cdcf874ff176f3c18d73e990ee9828684882a0
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 14 16:24:36 2018 +0000
+
+    delete duplicate file
+
+commit 436f983be839c66482f6b3155254840e58be832f
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 14 16:07:48 2018 +0000
+
+    Make naming of Korgools consistent in test files
+
+commit 4f72cbc510fbd601ebbc1fb4f44b9c78173353b0
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 14 16:05:51 2018 +0000
+
+    Make naming of Korgools consistent
+
+commit 01075f54d175dc44b92ba1c0583c0477916c5d28
+Merge: 9d2fbc4 e389809
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 14 15:59:37 2018 +0000
+
+    Correct filenames and packages
+
+commit 9d2fbc437cc3df82c6dbd53872a985ff03e265be
+Merge: 8932e1b 358966c
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 14 15:49:22 2018 +0000
+
+    Merge branch 'frontend' of https://github.com/AlvaroRausell/Agile-Project into merging-ui-backend
+
+commit 358966cb7cca5021ce8cfb4e40f039514fa8cfbb
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Wed Nov 14 15:48:40 2018 +0000
+
+    Add googleJavaFormat to build.gradle
+
+commit 8932e1b662c485fb9ffdc8a62dfba3a0fdc64bb0
+Merge: ba49381 2c68a02
+Author: Nicholas Pezzotti <nicholas.p.pezzotti@gmail.com>
+Date:   Wed Nov 14 15:40:59 2018 +0000
+
+    Merge branch 'frontend' into merging-ui-backend
+
+commit 607b7bf3458796692841a78fb1e62cba10c320ff
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Wed Nov 14 15:39:37 2018 +0000
+
+    Add package for frontend
+
+commit e389809ef2c9585a7ae99c75e9da47b60611ba14
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 14 15:34:58 2018 +0000
+
+    Fix bugs
+
+commit 5ef56ed6d59697a0d743d8ffbfb079fc1e65e543
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 14 15:28:06 2018 +0000
+
+    Add comment TO DO above the endGame method
+
+commit 35cacb32fce36d5dd1e5036e1881eff09fc20767
+Merge: 915810a 96ba9e3
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 14 15:26:27 2018 +0000
+
+    Merged conflicts
+
+commit 915810a5193c458fadf2b37e22a99df86fff2dd7
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 14 15:24:57 2018 +0000
+
+    Add methods in Player class
+    
+    Updated addKorgoolsToKazan and added emptyTuz
+
+commit 96ba9e3d4c1f5dd3f18fd053e24cdd68b356dde1
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 14 15:22:33 2018 +0000
+
+    Implement the complete Tuz feature
+
+commit 2c68a0261350ad51ce3962ccd8f49063303b6949
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Wed Nov 14 15:09:47 2018 +0000
+
+    Change one array implementation to two arrays
+    
+    Change implementation to fit better to back-end
+
+commit 5ed591e850de43610e8f1997625b1d2b9c5809d1
+Merge: 000024b fa4bd97
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 14 15:04:15 2018 +0000
+
+    Merge branch 'Back-end' of https://github.com/AlvaroRausell/Agile-Project into Back-end
+    
+    Conflicts:
+    	src/main/java/Hole.java
+
+commit 000024bd967e7b2072d420de4aad62fb3f040d5d
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 14 15:00:37 2018 +0000
+
+    Fix Bugs
+
+commit fa4bd97e7348ae6d3530e96550e26dbebdecc9bd
+Merge: c276095 e242cfa
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 14 14:51:22 2018 +0000
+
+    Merge Changes
+
+commit c276095dee011aedce3532e6b516caa014ea1673
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 14 14:50:46 2018 +0000
+
+    Add addKorgoolsToKazan
+
+commit e242cfa656e57b72e756ece52fd519901fe6c351
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 14 14:36:10 2018 +0000
+
+    Fix bug
+
+commit 9a37ecb7b871ab54bfec82a6ec601909f9c83db6
+Merge: 76400ae c477f6d
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 14 14:34:04 2018 +0000
+
+    Merge branch 'Back-end' of github.com:AlvaroRausell/Agile-Project into Back-end
+
+commit 76400aea992a42efc42a1fb46c599caffc6d1db6
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 14 14:33:57 2018 +0000
+
+    Hole Test
+
+commit c477f6dd48bffa98d0e4537c6a1efaf8d5fb107a
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Mon Nov 12 18:57:21 2018 +0000
+
+    Implement Board class
+    
+    Implemented board class, added a small feature to the Player class concerning the Tuz option, but not completed yet
+
+commit 8871bed3fbecf1b40dc710c5ebc942a50d60c5e0
+Merge: 11897e5 efb41d1
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Mon Nov 12 18:40:55 2018 +0000
+
+    Merge branch 'Back-end' of https://github.com/AlvaroRausell/Agile-Project into Back-end
+    
+    Update Test classes
+
+commit 11897e5cc4e2746952dfd1d49936535a57a88987
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Mon Nov 12 18:37:26 2018 +0000
+
+    Change Board class to Player
+    
+    The new Player class is alike the old Board class but each player has their own array of holes, a tuz and a kazan without creating a collection for each type of variable necessary. Some bugs have also been fixed to allow this new class to work properly
+
+commit efb41d1350a0e844b50ba25f15a38f6f4a7c14a6
+Merge: bf823c1 d1a6e9b
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Mon Nov 12 18:08:34 2018 +0000
+
+    Merged changes
+
+commit bf823c1a45e70cfdd2bbb2174d4396ab3b114e6f
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Mon Nov 12 18:06:55 2018 +0000
+
+    Implemented getCurrentPlayer
+    
+    Added method to check current player in Board.java
+
+commit 0e40343e7560b0982d40f6c49e139c8fd85ab97d
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Mon Nov 12 18:04:37 2018 +0000
+
+    Add tests for methods in Board class
+    
+    Added tests for increaseKorgools and setPlayerTurn
+
+commit d1a6e9b2d7b30c85b47c6bf926b4462a6178afd9
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Mon Nov 12 17:48:41 2018 +0000
+
+    Refactor basic classes
+    
+    Refactored basi classes for the back end in order to remove the side from Cell class and its children, also added a new class Player that contains all the Cells(Kazan and Holes)
+
+commit c951fd4665106cdb3fe61b1d6e17b6059d6bf972
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Mon Nov 12 17:16:16 2018 +0000
+
+    Filled methods in Board class
+    
+    Completed increaseKazanKorgools, setPlayerTurn, and getCurrentPlayer
+
+commit 422d114140270f6329e0959dc6203872889d5ce0
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Mon Nov 12 17:11:43 2018 +0000
+
+    Create Player class
+    
+    Created player class to hold information such as tuzes and holes
+
+commit 292d57ea7cd7f9e8b4ed6da4c43e57b9cd45f8a8
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Mon Nov 12 16:35:35 2018 +0000
+
+    Create new methods in Board class
+    
+    Added methods to increase the korgools in the kazan and set the player's
+    turn
+
+commit 194ee10f3459d8acaf323138a614f26014fe8c38
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Mon Nov 12 16:16:04 2018 +0000
+
+    Create basic structure for Board class
+    
+    Created the main fields and a couple of methods for Board class
+
+commit 1da148c99fa2a40d9911ef50398f785c6048b50b
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Sun Nov 11 15:07:00 2018 +0000
+
+    Add tuz feature to Hole.java
+    
+    Added the field isTuz with related methods
+
+commit 849187ad98496123d93777b4a887e03d69b84c8a
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Sat Nov 10 23:05:05 2018 +0000
+
+    Add ChoiceGUI panel
+    
+    Add initial panel, which enables the user to choose the appropriate game mode.
+    The panel is not fully implemented yet.
+
+commit 2c253f7c63fa79d7008803407929936ade01f3be
+Author: k1763930 <k1763930@kcl.ac.uk>
+Date:   Sat Nov 10 18:50:41 2018 +0000
+
+    Add test to the Hole class
+
+commit 204971c4779d54706536230ddbd3bacff546ad0b
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Sat Nov 10 18:26:35 2018 +0000
+
+    Create Hole class with tests
+    
+    Created Hole class and HoleTest class, so doing, Kazan class
+    has been change to better distinguish between Kazans from holes
+
+commit 5e5cde9644961a15a83322e7d6ce0a6dcc4bbd98
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Sat Nov 10 18:00:07 2018 +0000
+
+    Fill Kazan class and create its test class
+    
+    Kazan class now is complete and can be used, its methods
+    are tested in the KazanTest class
+
+commit dbfd78bc8aecdd1b29e87b2ca26f2e430a905566
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Sat Nov 10 17:53:45 2018 +0000
+
+    Create test directory
+    
+    Created test directory with two void test files for Kazan and Board.
+    (Cell has no methods but getters and setters, so creating a test class
+    for it is useless)
+
+commit 8e24341ca0d8bff46e617f167d8e807f629beba7
+Author: Alessandro <ale.amantini1997@gmail.com>
+Date:   Sat Nov 10 17:45:29 2018 +0000
+
+    Create content for class Cell
+    
+    Created fields and methods for class Cell:
+     this class is gonna be a basic one that other classes can extend to
+     make more specific
+
+commit 618ab9cb64be98a602ad37fb09c49e620bd49bdb
+Author: “Nicholas <nicholas.pezzotti@kcl.ac.adfas>
+Date:   Sat Nov 10 17:17:20 2018 +0000
+
+    Implement tuz feature into GUI
+
+commit dd1b81e7e12984910434041f7ceba854412f3d1f
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Sat Nov 10 16:27:59 2018 +0000
+
+    Add eventListener for holes
+    
+    On click, calls backend to update game state
+
+commit 39c8f10eb1f0337cb42da3a56f05099969bc94c9
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Sat Nov 10 16:27:32 2018 +0000
+
+    Change main class
+
+commit 2142be84c3c96f7965f8fcabda0b227cb81ddc45
+Author: Effsy <jardinomidvaran@hotmail.co.uk>
+Date:   Sat Nov 10 16:23:24 2018 +0000
+
+    Add hole class
+    
+    Add class for the hole buttons containing indentifiers
+
+commit bfa5829ad8e0019101de0aafc566cbe49a4eb54d
+Author: mateusznowak98 <mateusz.michal.nowak98@gmail.com>
+Date:   Sat Nov 10 15:07:46 2018 +0000
+
+    Create inital GUI and Player classes
+    
+    Simple implementation of User Interface with minor Player class.
+
+commit bab5954c7d4153303c9739f2a4807d7ba8e3f016
+Author: Alessandro <k1763585@kcl.ac.uk>
+Date:   Wed Nov 7 18:06:54 2018 +0000
+
+    Add basic structure for classes
+    
+    Added the empty classes to create the basic structure for the game
+
+commit ba4938138d72dad10dcf0de0130841c1c4febcf1
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 7 17:51:50 2018 +0000
+
+    Update .gitignore
+    
+    .idea directory added to .gitignore
+
+commit 882d356d74c645287bc14df5de608ac197644d62
+Author: mateusznowak98 <mateusznowak98>
+Date:   Wed Nov 7 17:32:16 2018 +0000
+
+    Add Gradle setup
+
+commit 2b390dcc011131e7501425565ac09175c8e1a956
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 7 16:53:58 2018 +0000
+
+    Add .gitignore
+    
+    Added .gitignore with all basic files and directories to ignore
+
+commit 60c433e5898ce8709dede473d31819f3adf88b3d
+Author: AlvaroRausell <alvaro.rausellg@gmail.com>
+Date:   Wed Nov 7 16:51:34 2018 +0000
+
+    Initial commit
+    
+    Added simple README.md

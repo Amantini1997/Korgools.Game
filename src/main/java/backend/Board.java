@@ -63,13 +63,10 @@ public class Board {
       if(initKorgools > 1){
         initKorgools--;
       }
-      if(initKorgools==0){
-        return currentPlayerHasWon(currentPlayer);
-      }
-      int kargoolsLeft = currentPlayer.act(pressedHole);
+      int kargoolsLeft = currentPlayer.act(pressedHole, getOppositePlayersTuz());
       while(kargoolsLeft>0){
         currentPlayer = (currentPlayer == black)?white:black;
-        kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer());
+        kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer(), getOppositePlayersTuz());
       }
       //checking that the ending hole is an opponent's one
       if( !hasMoveStartedFromThisPlayer()){//(currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
@@ -90,7 +87,10 @@ public class Board {
         setCurrentPlayer();
       }
       return false;
+  }
 
+  private int getOppositePlayersTuz(){
+    return (currentPlayer == white)?black.getTuz():white.getTuz();
   }
 
    /**
