@@ -1,14 +1,14 @@
 package frontend;
 
-import backend.Board;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.*;
+
+/**
+ * Gui that allows the player to input a game state and start from that board. Allows the user to practice certain game
+ * scenarios and also practice game scenarios that are unreachable with a normal playthrough
+ */
 public class InputGUI extends JPanel{
   private InputReversedPlayer black;
 	private InputNormalPlayer white;
@@ -16,6 +16,7 @@ public class InputGUI extends JPanel{
   private InputHoleListener mouseClickBlack = new InputHoleListener(null);
   private JLabel errorText = new JLabel();
   private JButton startButton = new JButton("START GAME");
+
   public InputGUI()
   {
     startButton.addActionListener(e->startGame(e));
@@ -35,6 +36,10 @@ public class InputGUI extends JPanel{
     this.add(startButton, BorderLayout.PAGE_END);
   }
 
+    /**
+     * Tries to create the board and start the game, checking that it matches certain requirements like that the total
+     * number of kargoolz is smaller or equal to 162.
+     */
   private void startGame(ActionEvent e)
   {
     try{

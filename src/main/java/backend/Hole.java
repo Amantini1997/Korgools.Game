@@ -1,8 +1,8 @@
 package backend;
 /**
-*Hole class that inherits from Cell. It contains korgools
-and adds the functionality of a Hole in the game
-*/
+ * Hole class that inherits from Cell. It contains korgools
+ * and adds the functionality of a Hole in the game
+ */
 public class Hole extends Cell{
 	private boolean isTuz;
 	private static final int STARTING_KORGOOLS = 9;

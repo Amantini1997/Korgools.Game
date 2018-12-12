@@ -25,15 +25,15 @@ public class AIChoiceGUI extends JPanel
     this.add(setCenter(), BorderLayout.CENTER);
   }
 
-    public AIChoiceGUI(String boardString)
-    {
-        this();
-        this.boardString = boardString;
-    }
+  public AIChoiceGUI(String boardString)
+  {
+      this();
+      this.boardString = boardString;
+  }
 
   /**
-  *Set center of this panel with two buttons in the middle
-  **/
+   *Set center of this panel with two buttons in the middle
+   **/
   private JPanel setCenter()
   {
     JPanel center = new JPanel();
@@ -87,8 +87,8 @@ public class AIChoiceGUI extends JPanel
   }
 
   /**
-  *Create new button with ActionListener.
-  **/
+   *Create new button with ActionListener.
+   **/
   private JButton creatOptionButton(String text)
   {
     JButton button = new JButton(text);

@@ -1,17 +1,16 @@
 package frontend;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ComponentAdapter;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.util.Collections;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.*;
-import java.util.*;
 import java.awt.event.MouseAdapter;
+
+/**
+ * The player who's cells are numbered 9-1 instead of 1-9. Default it's the computer using it.
+ */
 public class ReversedPlayer extends Player{
   protected int number= -1;
   public ReversedPlayer(int numberOfKorgools, MouseAdapter listener)
@@ -26,6 +25,7 @@ public class ReversedPlayer extends Player{
     Collections.reverse(holes);
     setNames();
   }
+
  private void addHoles()
  {
    for(Hole hole: holes)

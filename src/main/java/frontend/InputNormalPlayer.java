@@ -1,12 +1,10 @@
 package frontend;
-import backend.Board;
-import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.Color;
-import java.awt.event.MouseEvent;
+
+/**
+ * Input the player that user is playing, default as white.
+ */
 public class InputNormalPlayer extends NormalPlayer{
   public InputNormalPlayer(MouseAdapter listener)
   {

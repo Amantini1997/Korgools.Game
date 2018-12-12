@@ -8,9 +8,10 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import javax.swing.SwingUtilities;
+
 /**
-* Panel with initial screen, which lets the player choose game type
-**/
+ * Panel with initial screen, which lets the player choose game type
+ **/
 public class ChoiceGUI extends JPanel
 {
   private static final String NEW_BUTTON_TEXT = "New Game";
@@ -24,8 +25,8 @@ public class ChoiceGUI extends JPanel
   }
 
   /**
-  *Set center of this panel with two buttons in the middle
-  **/
+   *Set center of this panel with two buttons in the middle
+   **/
   private JPanel setCenter()
   {
     JPanel center = new JPanel();
@@ -37,9 +38,9 @@ public class ChoiceGUI extends JPanel
   }
 
   /**
-  * Update the window content based on button press.
-  * It may create new game or it may show the board to input the game scenario.
-  **/
+   * Update the window content based on button press.
+   * It may create new game or it may show the board to input the game scenario.
+   **/
   private void getNewScreen(ActionEvent e)
   {
       JFrame frame = (JFrame) SwingUtilities.getRoot(this);
@@ -83,8 +84,8 @@ public class ChoiceGUI extends JPanel
   }
 
   /**
-  *Create new button with ActionListener.
-  **/
+   *Create new button with ActionListener.
+   **/
   private JButton creatOptionButton(String text)
   {
     JButton button = new JButton(text);

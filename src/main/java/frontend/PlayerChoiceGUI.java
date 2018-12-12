@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import javax.swing.SwingUtilities;
+
 /**
 * Panel with initial screen, which lets the player choose the number of players
 **/

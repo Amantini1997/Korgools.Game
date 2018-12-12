@@ -1,7 +1,7 @@
 package backend;
 /**
-*Implementation of a player in the game.
-*/
+ *Implementation of a player in the game.
+ */
 public class Player {
     private static final int N_HOLES = 9;
     private static final int UNTUZZABLE_HOLE = N_HOLES-1;//position in the array
@@ -20,10 +20,11 @@ public class Player {
       kazan = new Kazan();
       tuzIsAvailable = true;
     }
+
     /**
-    *Initialises the player with a given state
-    *@param playerString Initial state of the player
-    */
+     * Initialises the player with a given state
+     * @param playerString Initial state of the player
+     */
     public Player(String playerString) {
       holes = new Hole[N_HOLES];
 
@@ -40,22 +41,25 @@ public class Player {
         tuzIsAvailable = false;
       }
     }
+
     /**
-    *@return the korgools in the kazan
-    */
+     *@return the korgools in the kazan
+     */
     public int getKazanKorgools(){
       return kazan.getKorgools();
     }
+
     /**
-    *@return a collection of the player's holes
-    */
+     *@return a collection of the player's holes
+     */
     public Hole[] getHoles(){
       return holes;
     }
+
     /**
-    *Finds the player's tuz and returns it
-    *@return the tuz index if it exists, -1 otherwise
-    */
+     * Finds the player's tuz and returns it
+     * @return the tuz index if it exists, -1 otherwise
+     */
     public int getTuz() {
       for(int i = 0; i < holes.length; i++) {
         if(holes[i].isTuz()) {
@@ -88,14 +92,12 @@ public class Player {
 
     /**
      * Special case where is just one korgool contained in a holes
-     * @param startHole: the hole to empty
-     * @param moveStartedFromThisPlayer : True if the hole pressed this turn
-     *  belongs with the current player, False otherwise;
+     * @param pressedHole the number of the hole pressed in the
      * @return 1 if the hole is the last of the line,
-     * 0 otherwise
+     * 0 otherwise ( not a boolean because we decided to keep it consistent with the method it's called from)
      */
     private int moveOneKorgool(int pressedHole){
-      if(holes[pressedHole].getKorgools()==0)return 0;
+      if(holes[pressedHole].getKorgools()==0) return 0;
       else{
         holes[pressedHole].setKorgoolsToZero();
         if(pressedHole<N_HOLES-1){
@@ -110,26 +112,25 @@ public class Player {
 	  * When moveKorgools method is called from outside, it means it has to start from
 	  * the first hole, it only needs to know the korgoolsLeft
 	  * @param korgoolsLeft: The left korgools to be distributed on board
-    * @param moveStartedFromThisPlayer : True if the hole pressed this turn
-    *  belongs with the current player, False otherwise;
+      * @param moveStartedFromThisPlayer : True if the hole pressed this turn
+      *  belongs with the current player, False otherwise;
 	  * @return 0 if all the korgools left have been moved,
-    * otherwise return the remaining korgools;
-    */
+      * otherwise return the remaining korgools;
+      */
 	 public int moveKorgools(int korgoolsLeft, boolean moveStartedFromThisPlayer){
 		   return moveKorgools(korgoolsLeft,0,moveStartedFromThisPlayer);
 	 }
 
 	 /**
-    * Distribute the korgools taken from a hole into the following holes.
-    * @param korgoolsLeft: the korgools to redistribute.
-    * @param currentHole: the hole to start from to redistribute
-    * @param moveStartedFromThisPlayer : True if the hole pressed this turn
-    *  belongs with the current player, False otherwise;
-    * @return 0 if all the korgools have been redistributed, otherwise
-    * return the remaining korgools;
-    */
+      * Distribute the korgools taken from a hole into the following holes.
+      * @param korgoolsLeft: the korgools to redistribute.
+      * @param currentHole: the hole to start from to redistribute
+      * @param moveStartedFromThisPlayer : True if the hole pressed this turn
+      *  belongs with the current player, False otherwise;
+      * @return 0 if all the korgools have been redistributed, otherwise
+      * return the remaining korgools;
+      */
 	 private int moveKorgools(int korgoolsLeft,int currentHole, boolean moveStartedFromThisPlayer){
-
        while(korgoolsLeft>0){
           holes[currentHole].korgoolsPlusOne();
 		      korgoolsLeft--;
@@ -150,7 +151,7 @@ public class Player {
      * Check if the player can set a tuz on a hole,
      * @param currentHole : The hole to be tuzzed
      * @param moveStartedFromThisPlayer : True if the hole pressed this turn
-     *  belongs with the current player, False otherwise;
+     * belongs with the current player, False otherwise;
      * @return True if the player can tuz such hole, False
      * otherwise.
      */
@@ -160,9 +161,9 @@ public class Player {
     }
 
     /**
-    *Checks if the player has won
-    *@return if the player has has won
-    */
+     * Checks if the player has won
+     * @return if the player has has won
+     */
     public boolean hasWon(){
       return kazan.hasWon();
     }
@@ -190,23 +191,23 @@ public class Player {
     }
 
     /**
-        * If the player has no korgools left in their holes
-        * they can't make a move
-        * @return True if the player has at least one possible move,
-        *  False otherwise.
-        */
-       public boolean hasAMove(){
-         for(Hole hole : holes){
-           if(hole.getKorgools() != 0)
-             return true;
-         }
-         return false;
+     * If the player has no korgools left in their holes
+     * they can't make a move
+     * @return True if the player has at least one possible move,
+     *  False otherwise.
+     */
+     public boolean hasAMove(){
+       for(Hole hole : holes){
+         if(hole.getKorgools() != 0)
+           return true;
        }
+       return false;
+     }
 
     /**
-    *Gets the string representation of the player's state
-    *@return the player's current state
-    */
+     * Gets the string representation of the player's state
+     * @return the player's current state
+     */
     @Override
     public String toString() {
       String stringToReturn = "";
@@ -216,9 +217,7 @@ public class Player {
       }
 
       stringToReturn += kazan.getKorgools() + ",";
-
       stringToReturn += getTuz();
-
       return stringToReturn;
     }
 }

@@ -1,13 +1,11 @@
 package frontend;
 
-import backend.Board;
-import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.Color;
-import java.awt.event.MouseEvent;
+
+/**
+ * Input the player that needs to be reversed in the UI. The player who's holes need to be numbered 9-1 instead of 1-9.
+ */
 public class InputReversedPlayer extends ReversedPlayer{
 
   public InputReversedPlayer(MouseAdapter listener)

@@ -1,7 +1,7 @@
 package backend;
-import javafx.util.Pair;
 
 import java.lang.Math;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 
 public class AIBoard extends Board{
@@ -109,9 +109,9 @@ public class AIBoard extends Board{
    * @param beta Beta index
    * @param isBlackTurn whether it is the black player's turn
    **/
-  private Pair<Integer, String> alphabeta(String boardString, int depth, int alpha, int beta, boolean isBlackTurn) {
+  private SimpleEntry<Integer, String> alphabeta(String boardString, int depth, int alpha, int beta, boolean isBlackTurn) {
     if (depth == 0 || gameHasEnded(boardString)) {
-      return new Pair<Integer, String>(heuristicValue(boardString), boardString);
+      return new SimpleEntry<Integer, String>(heuristicValue(boardString), boardString);
     }
 
     ArrayList<String> possibleBoards = getPossibleMoves(boardString);
@@ -125,7 +125,7 @@ public class AIBoard extends Board{
         }
         if (beta <= alpha) break; // prune
       }
-      return new Pair<>(alpha, bestBoard);
+      return new SimpleEntry<>(alpha, bestBoard);
     }
     else { // minimize
       for (String newBoard : possibleBoards) {
@@ -136,7 +136,7 @@ public class AIBoard extends Board{
         }
         if (beta <= alpha) break; // prune
       }
-      return new Pair<>(beta, bestBoard);
+      return new SimpleEntry<>(beta, bestBoard);
     }
   }
 

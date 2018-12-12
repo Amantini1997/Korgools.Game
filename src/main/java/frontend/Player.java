@@ -1,19 +1,16 @@
 package frontend;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
-import java.awt.event.ComponentAdapter;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.util.Collections;
 import java.awt.Color;
 import java.awt.GridLayout;
-import javax.swing.*;
-import java.util.*;
 import java.awt.event.MouseAdapter;
 
-public class  Player {
+/**
+ * The player class is the class that the Normal player and Inverse player call from.
+ */
+public abstract class  Player {
   protected JPanel holesPanel =  new JPanel();
   protected ScoreGUI scoreLabel;
 

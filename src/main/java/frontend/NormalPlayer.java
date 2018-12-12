@@ -1,17 +1,15 @@
 package frontend;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ComponentAdapter;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.util.Collections;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.*;
-import java.util.*;
 import java.awt.event.MouseAdapter;
+
+/**
+ * The class that holds the logic and data for the player that the use is using
+ */
 public class NormalPlayer extends Player{
   protected int number=1;
   public NormalPlayer(int numberOfKorgools, MouseAdapter listener)

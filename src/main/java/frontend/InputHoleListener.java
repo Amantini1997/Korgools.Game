@@ -1,15 +1,18 @@
 package frontend;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+/**
+ * Mouse listener that listens for left and right clicks on buttons in the input selection screen.
+ */
 public class InputHoleListener extends MouseAdapter
 {
   private Player player;
   private Player secondPlayer;
+
   public InputHoleListener(Player player)
   {
     this.player = player;
-    this.secondPlayer = secondPlayer;
   }
   public void setPlayers(Player player1, Player player2)
   {
@@ -17,9 +20,11 @@ public class InputHoleListener extends MouseAdapter
     this.secondPlayer = player2;
   }
 
+  /**
+   * Checks what mouse button is clicked, where button3 is right-click and button1 is left-click
+   */
   public void mouseClicked(MouseEvent e)
   {
-
       Hole hole = (Hole) e.getSource();
       if(e.getButton()==MouseEvent.BUTTON3)
       {

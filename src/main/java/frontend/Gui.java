@@ -62,16 +62,18 @@ public class  Gui
     }
 
     /**
-    * Run the application
-    **/
+     * Run the application
+     **/
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                Gui gui = new Gui();
-            }
+        SwingUtilities.invokeLater(() -> {
+            Gui gui = new Gui();
         });
     }
 
+    /**
+     * Getter for the frame
+     * @return Frame
+     */
     public JFrame getFrame(){
         return this.frame;
     }
