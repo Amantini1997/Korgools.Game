@@ -1,6 +1,4 @@
 package frontend;
-
-import backend.AIBoard;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
@@ -30,15 +28,8 @@ public class Gui {
                             BoardGUI board = (BoardGUI) frame.getContentPane();
 
                             // Add ai difficulty
-                            String str = "";
-                            if (board.getBoard() instanceof AIBoard) {
-                                // AI game - save the difficulty
-                                str += ((AIBoard) board.getBoard()).getLevel() + "\n";
+                            String str = board.getLevel() + "\n";
 
-                            } else {
-                                // Two player game
-                                str += "-1\n";
-                            }
 
                             str += board.getBoardDisplayed().toString();
 

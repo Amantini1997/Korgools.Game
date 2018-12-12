@@ -230,4 +230,5 @@ public class AIBoard extends Board {
     public int getLevel() {
         return this.level;
     }
+
 }

@@ -3,7 +3,7 @@ package backend;
  * Cell class. It is in charge of storing and allowing access to the number of korgools present in
  * it.
  */
-public class Cell {
+public abstract class Cell {
     protected int korgools; // The number of korgools inside the cell
 
     /**

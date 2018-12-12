@@ -17,6 +17,7 @@ public class InputGUI extends JPanel {
     private InputHoleListener mouseClickBlack = new InputHoleListener(null);
     private JLabel errorText = new JLabel();
     private JButton startButton = new JButton("START GAME");
+    private static final int MAX_KARGOOLS = 162;
 
     public InputGUI() {
         startButton.addActionListener(e -> startGame(e));
@@ -45,15 +46,15 @@ public class InputGUI extends JPanel {
             int white1 = white.getAllHolesScores() + Integer.parseInt(white.getScore());
             int black2 = black.getAllHolesScores() + Integer.parseInt(black.getScore());
 
-            if (white1 + black2 > 162) {
+            if (white1 + black2 > MAX_KARGOOLS) {
                 errorText.setText(
                         "Incorrect number of balls: Please remove "
-                                + ((white1 + black2) - 162)
+                                + ((white1 + black2) - MAX_KARGOOLS)
                                 + " balls");
-            } else if (white1 + black2 < 162) {
+            } else if (white1 + black2 < MAX_KARGOOLS) {
                 errorText.setText(
                         "Incorrect number of balls: Please add "
-                                + (162 - (white1 + black2))
+                                + (MAX_KARGOOLS - (white1 + black2))
                                 + " balls");
             } else {
                 JFrame frame = (JFrame) SwingUtilities.getRoot(this);

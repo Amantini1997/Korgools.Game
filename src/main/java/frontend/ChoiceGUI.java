@@ -69,7 +69,7 @@ public class ChoiceGUI extends JPanel {
                         frame.setContentPane(boardGUI);
                     } catch (Exception e1) {
                         e1.printStackTrace();
-                        frame.setContentPane(new AIChoiceGUI());
+                        frame.setContentPane(new PlayerChoiceGUI());
                     }
 
                     break;

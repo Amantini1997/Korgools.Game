@@ -9,10 +9,10 @@ import javax.swing.*;
 
 /** Panel with the board game */
 public class BoardGUI extends JPanel {
-    private Board board;
+    private ToguzKorgoolGame board;
     private Player black;
     private Player white;
-
+    private int level;
     private MouseAdapter mouseClick =
             new MouseAdapter() {
                 public void mouseClicked(MouseEvent e) {
@@ -45,14 +45,14 @@ public class BoardGUI extends JPanel {
     /**
      * Creates a board given the difficulty selected from the user
      *
-     * @param hardness the difficulty of the game AI (0 for no AI (2 player), 1 easy (random), 2
+     * @param hardness the difficulty of the game AI (-1 for no AI (2 player), 1 easy (random), 2
      *     (medium), 3 (hard))
      */
     public BoardGUI(int hardness) {
         if (hardness == -1) {
-            board = new Board();
+            this.board = ToguzKorgoolGameFactory.getTwoPlayerToguzKorgoolGame();
         } else {
-            board = new AIBoard(hardness);
+            this.board = ToguzKorgoolGameFactory.getOnePlayerToguzKorgoolGame(hardness);
         }
         this.setLayout(new GridLayout(3, 1));
         black = new ReversedPlayer(9, mouseClick);
@@ -62,6 +62,7 @@ public class BoardGUI extends JPanel {
         this.add(white.showHoles());
         this.setName("boardGUI");
         updateGUI(board.toString());
+        this.level=hardness;
     }
 
     /**
@@ -73,11 +74,11 @@ public class BoardGUI extends JPanel {
     public BoardGUI(String boardString, int hardness) {
         this(hardness);
         if (hardness == -1) {
-            board = new Board(boardString);
+            this.board = ToguzKorgoolGameFactory.getTwoPlayerToguzKorgoolGame(boardString);
         } else {
-            this.board = new AIBoard(boardString, hardness);
+            this.board = ToguzKorgoolGameFactory.getOnePlayerToguzKorgoolGame(boardString, hardness);
         }
-
+        this.level=hardness;
         updateGUI(board.toString());
     }
 
@@ -117,8 +118,13 @@ public class BoardGUI extends JPanel {
      *
      * @return The board displayed
      */
-    public Board getBoardDisplayed() {
+    public ToguzKorgoolGame getBoardDisplayed() {
         return board;
+    }
+
+    public int getLevel()
+    {
+        return this.level;
     }
 
     /**
@@ -140,7 +146,7 @@ public class BoardGUI extends JPanel {
     }
 
     /** @return the instance of the board */
-    public Board getBoard() {
+    public ToguzKorgoolGame getBoard() {
         return board;
     }
 }

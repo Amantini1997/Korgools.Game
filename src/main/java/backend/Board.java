@@ -1,7 +1,8 @@
 package backend;
 
 /** This is board class that manages the game state and game logic */
-public class Board {
+public class Board implements ToguzKorgoolGame{
+
     protected Player white;
     protected Player black;
     protected Player currentPlayer;
