@@ -46,7 +46,7 @@ public class BoardTest2{
     public String output;
     public int[] moves;
     private Board board;
-  
+
   public BoardTest2(int[] moves, String output){
     moves = moves;
     output = output;

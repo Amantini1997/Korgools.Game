@@ -17,23 +17,18 @@ public class PlayerTest {
     /*
     @Test
     public void actTest(){
-
       p.act(3);
       int[] list = new int[]{9,9,9,1,10,10,10,10,10};
       assertEquals(Arrays.toString(list),getHolesList(p.getHoles()));
-
       p.act(0);
       list = new int[]{1,10,10,2,11,11,11,11,11};
       assertEquals(Arrays.toString(list),getHolesList(p.getHoles()));
-
       p.act(0);
       list = new int[]{1,10,10,2,11,11,11,11,11};
       assertEquals(Arrays.toString(list),getHolesList(p.getHoles()));
-
       p.act(7);
       list = new int[]{1,10,10,2,11,11,11,1,12};
       assertEquals(Arrays.toString(list),getHolesList(p.getHoles()));
-
       p.act(6);
       list = new int[]{1,10,10,2,11,11,1,2,13};
       assertEquals(Arrays.toString(list),getHolesList(p.getHoles()));
@@ -56,7 +51,6 @@ public class PlayerTest {
         p.act(0);// 1 x x x x x x 2 3
         assertEquals(false,p.hasTuzOption(8));//last hole can't be tuz
     }
-
     @Test
     public void hasTuzOptionTestShouldReturnFalse2(){
                  // 0 1 2 3 4 5 6 7 8
@@ -67,7 +61,6 @@ public class PlayerTest {
         p.act(5);// 1 x x x 1 1 3 2 7
         assertEquals(false,p.hasTuzOption(6));
     }
-
     @Test
     public void hasTuzOptionTestShouldReturnFalse3(){
                  // 0 1 2 3 4 5 6 7 8
