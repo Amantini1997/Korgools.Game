@@ -49,44 +49,39 @@ public class Board implements ToguzKorgoolGame{
         return isWhiteTurn && currentPlayer == white || !isWhiteTurn && currentPlayer == black;
     }
 
-    /**
-     * Move the korgools according to the pressed hole
-     *
-     * @param pressedHole: the hole pressed
-     * @return True if the current player has won, False otherwise
-     */
-    public boolean makeAMove(int pressedHole) {
-        // if the player presses a hole containing 0 korgools nothing happens
-        int initKorgools = getPlayerHole(pressedHole).getKorgools();
-        if (initKorgools > 1) {
-            initKorgools--;
+	/**
+	 * Move the korgools according to the pressed hole
+	 * @param pressedHole: the hole pressed
+   * @return True if the current player has won,
+   *    False otherwise
+	 */
+    public boolean makeAMove(int pressedHole){
+      //if the player presses a hole containing 0 korgools nothing happens
+      int initKorgools = getPlayerHole(pressedHole).getKorgools();
+      if(initKorgools > 1){
+        initKorgools--;
+      }
+      int kargoolsLeft = currentPlayer.act(pressedHole, getOppositePlayersTuz());
+      while(kargoolsLeft>0){
+        currentPlayer = (currentPlayer == black)?white:black;
+        kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer(), getOppositePlayersTuz());
+      }
+      //checking that the ending hole is an opponent's one
+      if( !hasMoveStartedFromThisPlayer()){//(currentPlayer == white && !isWhiteTurn)||(currentPlayer == black && isWhiteTurn)){
+        int finalHole = (pressedHole+initKorgools)%9;
+        if(getPlayerHole(finalHole).getKorgools()%2==0){
+          stealKorgools(finalHole);
         }
-        if (initKorgools == 0) {
-            return playerHasWon(currentPlayer);
-        }
-        int kargoolsLeft = currentPlayer.act(pressedHole);
-        while (kargoolsLeft > 0) {
-            currentPlayer = (currentPlayer == black) ? white : black;
-            kargoolsLeft = currentPlayer.moveKorgools(kargoolsLeft, hasMoveStartedFromThisPlayer());
-        }
-        // checking that the ending hole is an opponent's one
-        if (!hasMoveStartedFromThisPlayer()) { // (currentPlayer == white &&
-                                               // !isWhiteTurn)||(currentPlayer == black &&
-                                               // isWhiteTurn)){
-            int finalHole = (pressedHole + initKorgools) % 9;
-            if (getPlayerHole(finalHole).getKorgools() % 2 == 0) {
-                stealKorgools(finalHole);
-            }
-        }
-        isWhiteTurn = !isWhiteTurn;
-        setCurrentPlayer();
-        moveKorgoolsFromTuzzes();
-        if (playerHasWon(black) || playerHasWon(white)) return true;
-        if (!currentPlayer.hasAMove()) {
-            isWhiteTurn = !isWhiteTurn;
-            setCurrentPlayer();
-        }
-        return false;
+      }
+      isWhiteTurn = !isWhiteTurn;
+      setCurrentPlayer();
+      moveKorgoolsFromTuzzes();
+      if (playerHasWon(black) || playerHasWon(white)) return true;
+      if (!currentPlayer.hasAMove()) {
+          isWhiteTurn = !isWhiteTurn;
+          setCurrentPlayer();
+      }
+      return false;
     }
 
     /**
@@ -105,6 +100,10 @@ public class Board implements ToguzKorgoolGame{
     protected void moveKorgoolsFromTuzzes() {
         white.addKorgoolsToKazan(black.emptyTuz());
         black.addKorgoolsToKazan(white.emptyTuz());
+    }
+
+    private int getOppositePlayersTuz(){
+      return (currentPlayer == white)?black.getTuz():white.getTuz();
     }
 
     /**

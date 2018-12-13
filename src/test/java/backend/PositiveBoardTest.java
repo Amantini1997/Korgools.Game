@@ -9,7 +9,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class BoardTest2{
+public class PositiveBoardTest{
 
   @Parameters
   public static Collection<Object[]> data(){
@@ -26,31 +26,18 @@ public class BoardTest2{
       {new int[]{0,0,0},"1,10,10,10,10,10,10,10,10,0,-1\n"+
                         "0,11,10,10,10,10,10,10,10,0,-1\nb"},
 
-      {new int[]{0,0,0,0,0},"0,11,10,10,10,10,10,10,10,0,-1\n"+
-                            "0,11,10,10,10,10,10,10,10,0,-1\nw"},
-
-      {new int[]{4,4,5,4,6,4,0,2},"13,12,1,3,2,15,12,12,11,13,-1\n"+
-                                  "2,12,12,2,0,2,2,13,13,10,4\nw"},
-
-      {new int[]{4,4,5,4,6,4,0,2,3,5},"14,13,1,3,2,1,13,13,12,15,-1\n"+
-                                      "3,13,13,2,0,3,3,14,14,10,4\nw"},
-
-      {new int[]{4,4,5,4,6,4,0,2,3},"13,12,1,3,2,15,12,12,11,14,-1\n"+
-                                    "2,12,12,1,0,2,2,13,13,10,4\nb"},
-
       {new int[]{8,0,1,6,1,8},"1,11,11,11,11,11,1,2,1,10,-1\n"+
                               "2,2,13,12,12,12,12,12,3,12,-1\nw"}});
-
   }
 
     public String output;
     public int[] moves;
     private Board board;
 
-  public BoardTest2(int[] moves, String output){
-    moves = moves;
-    output = output;
-    board = new Board();
+  public PositiveBoardTest(int[] moves, String output){
+    this.moves = moves;
+    this.output = output;
+    this.board = new Board();
   }
 
   @Test
@@ -58,6 +45,6 @@ public class BoardTest2{
     if(moves != null)
       for(int i = 0; i< moves.length; i++)
          board.makeAMove(moves[i]);
-    assertTrue(board.toString().equals(output));
+    assertEquals(board.toString(),output);
   }
 }

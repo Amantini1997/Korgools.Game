@@ -146,5 +146,4 @@ public class BoardTest {
       assertEquals(board.toString(),"0,0,0,0,0,0,0,0,0,13,0\n"+
                                     "0,0,1,0,0,0,0,0,0,20,0\nw");
     }*/
-
 }

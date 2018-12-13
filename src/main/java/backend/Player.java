@@ -38,22 +38,24 @@ public class Player {
             tuzIsAvailable = false;
         }
     }
-
-    /** @return the korgools in the kazan */
-    public int getKazanKorgools() {
-        return kazan.getKorgools();
-    }
-
-    /** @return a collection of the player's holes */
-    public Hole[] getHoles() {
-        return holes;
+    /**
+    * @return the korgools in the kazan
+    */
+    public int getKazanKorgools(){
+      return kazan.getKorgools();
     }
 
     /**
-     * Finds the player's tuz and returns it
-     *
-     * @return the tuz index if it exists, -1 otherwise
-     */
+    * @return a collection of the player's holes
+    */
+    public Hole[] getHoles(){
+      return holes;
+    }
+
+    /**
+    * Finds the player's tuz and returns it
+    * @return the tuz index if it exists, -1 otherwise
+    */
     public int getTuz() {
         for (int i = 0; i < holes.length; i++) {
             if (holes[i].isTuz()) {
@@ -73,16 +75,16 @@ public class Player {
      * @return 0 if all the korgools moveble from the starting hole have been moved, otherwise
      *     return the remaining korgools;
      */
-    public int act(int startHole, boolean moveStartedFromThisPlayer) {
-        if (holes[startHole].getKorgools() <= 1) {
-            return moveOneKorgool(startHole);
-        }
-        int movebleKorgools = holes[startHole].setKorgoolsToZero();
-        return moveKorgools(movebleKorgools, startHole, moveStartedFromThisPlayer);
+    public int act(int startHole, boolean moveStartedFromThisPlayer,int opponentTuz){
+      if(holes[startHole].getKorgools()<=1){
+        return moveOneKorgool(startHole);
+      }
+      int movebleKorgools = holes[startHole].setKorgoolsToZero();
+		  return moveKorgools(movebleKorgools,startHole,moveStartedFromThisPlayer,opponentTuz);
     }
 
-    public int act(int startHole) {
-        return act(startHole, true);
+    public int act(int startHole, int opponentTuz){
+      return act(startHole,true, opponentTuz);
     }
 
     /**
@@ -103,40 +105,42 @@ public class Player {
         }
     }
 
-    /**
-     * When moveKorgools method is called from outside, it means it has to start from the first
-     * hole, it only needs to know the korgoolsLeft
-     *
-     * @param korgoolsLeft: The left korgools to be distributed on board
-     * @param moveStartedFromThisPlayer : True if the hole pressed this turn belongs with the
-     *     current player, False otherwise;
-     * @return 0 if all the korgools left have been moved, otherwise return the remaining korgools;
-     */
-    public int moveKorgools(int korgoolsLeft, boolean moveStartedFromThisPlayer) {
-        return moveKorgools(korgoolsLeft, 0, moveStartedFromThisPlayer);
-    }
+  /**
+   * When moveKorgools method is called from outside, it means it has to start from the first
+   * hole, it only needs to know the korgoolsLeft
+   *
+   * @param korgoolsLeft: The left korgools to be distributed on board
+   * @param moveStartedFromThisPlayer : True if the hole pressed this turn belongs with the
+   *     current player, False otherwise;
+   * @param opponentTuz: the hole containing opponent's tuz
+   * @return 0 if all the korgools left have been moved, otherwise return the remaining korgools;
+   */
+	 public int moveKorgools(int korgoolsLeft, boolean moveStartedFromThisPlayer, int opponentTuz){
+		   return moveKorgools(korgoolsLeft,0,moveStartedFromThisPlayer, opponentTuz);
+	 }
 
-    /**
-     * Distribute the korgools taken from a hole into the following holes.
-     *
-     * @param korgoolsLeft: the korgools to redistribute.
-     * @param currentHole: the hole to start from to redistribute
-     * @param moveStartedFromThisPlayer : True if the hole pressed this turn belongs with the
-     *     current player, False otherwise;
-     * @return 0 if all the korgools have been redistributed, otherwise return the remaining
-     *     korgools;
-     */
-    private int moveKorgools(int korgoolsLeft, int currentHole, boolean moveStartedFromThisPlayer) {
-        while (korgoolsLeft > 0) {
-            holes[currentHole].korgoolsPlusOne();
-            korgoolsLeft--;
-            if (currentHole == N_HOLES - 1) {
-                return korgoolsLeft;
-            }
-            currentHole++;
-        }
-        currentHole--;
-        if (hasTuzOption(currentHole, moveStartedFromThisPlayer)) {
+   /**
+    * Distribute the korgools taken from a hole into the following holes.
+    *
+    * @param korgoolsLeft: the korgools to redistribute.
+    * @param currentHole: the hole to start from to redistribute
+    * @param moveStartedFromThisPlayer : True if the hole pressed this turn belongs with the
+    *     current player, False otherwise;
+    * @return 0 if all the korgools have been redistributed, otherwise return the remaining
+    *     korgools;
+    */
+	 private int moveKorgools(int korgoolsLeft,int currentHole, boolean moveStartedFromThisPlayer,int opponentTuz){
+
+       while(korgoolsLeft>0){
+          holes[currentHole].korgoolsPlusOne();
+		      korgoolsLeft--;
+          if(currentHole == N_HOLES-1){
+            return korgoolsLeft;
+          }
+          currentHole++;
+       }
+       currentHole--;
+       if(hasTuzOption(currentHole,moveStartedFromThisPlayer, opponentTuz)){
             holes[currentHole].setTuz();
             tuzIsAvailable = false;
         }
@@ -151,11 +155,12 @@ public class Player {
      *     current player, False otherwise;
      * @return True if the player can tuz such hole, False otherwise.
      */
-    public boolean hasTuzOption(int currentHole, boolean moveStartedFromThisPlayer) {
-        return (tuzIsAvailable
-                && holes[currentHole].isTuzzable()
-                && currentHole != UNTUZZABLE_HOLE
-                && !moveStartedFromThisPlayer);
+    public boolean hasTuzOption(int currentHole, boolean moveStartedFromThisPlayer, int opponentTuz){
+      return (tuzIsAvailable
+              && holes[currentHole].isTuzzable()
+              && currentHole != UNTUZZABLE_HOLE
+              && !moveStartedFromThisPlayer
+              && currentHole != N_HOLES-1-currentHole);
     }
 
     /**

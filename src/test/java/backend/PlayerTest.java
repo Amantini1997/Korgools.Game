@@ -1,5 +1,3 @@
-package backend;
-
 import java.util.Arrays;
 import org.junit.Before;
 
