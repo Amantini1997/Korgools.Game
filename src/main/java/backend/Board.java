@@ -27,7 +27,7 @@ public class Board implements ToguzKorgoolGame{
         black = new Player(lines[0]);
         white = new Player(lines[1]);
 
-        if (lines[2].equals("w")) {
+        if (lines[2].equals("w") && white.hasAMove()) {
             isWhiteTurn = true;
         } else {
             isWhiteTurn = false;

@@ -36,7 +36,7 @@ public class AIBoard extends Board {
      */
     @Override
     public boolean makeAMove(int pressedHole) {
-        if (isWhiteTurn) if (super.makeAMove(pressedHole)) return true;
+        if (isWhiteTurn && super.makeAMove(pressedHole)) return true;
         if (!isWhiteTurn) return makeAIMove();
         return false;
     }
@@ -55,7 +55,7 @@ public class AIBoard extends Board {
             case 3:
                 return hardMove();
             default:
-                System.err.println("Hardness level not Allowed");
+                //unreachable statement
                 return true;
         }
     }
@@ -226,7 +226,9 @@ public class AIBoard extends Board {
         return -1;
     }
 
-    /** @return the difficulty level of the game */
+    /**
+     * @return the difficulty level of the game
+     */
     public int getLevel() {
         return this.level;
     }
