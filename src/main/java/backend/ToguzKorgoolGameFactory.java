@@ -1,10 +1,10 @@
 package backend;
 
 public class ToguzKorgoolGameFactory {
-    
-    
 
-    //use getShape method to get object of type shape 
+
+
+    //use getShape method to get object of type shape
     public static ToguzKorgoolGame getOnePlayerToguzKorgoolGame(int difficulty){
         return new AIBoard(difficulty);
     }

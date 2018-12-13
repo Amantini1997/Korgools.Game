@@ -2,7 +2,7 @@ package backend;
 
 public interface ToguzKorgoolGame {
 
-    boolean makeAMove(int pressedHole);
+    String makeAMove(int pressedHole);
 
     @Override
     public String toString();

@@ -35,10 +35,10 @@ public class AIBoard extends Board {
      * @return True if the current player has won, False otherwise
      */
     @Override
-    public boolean makeAMove(int pressedHole) {
-        if (isWhiteTurn && super.makeAMove(pressedHole)) return true;
+    public String makeAMove(int pressedHole) {
+        if (isWhiteTurn && super.makeAMove(pressedHole) == "White") return "White";
         if (!isWhiteTurn) return makeAIMove();
-        return false;
+        return null;
     }
 
     /**
@@ -46,7 +46,7 @@ public class AIBoard extends Board {
      *
      * @return True if the current player has won, False otherwise
      */
-    private boolean makeAIMove() {
+    private String makeAIMove() {
         switch (level) {
             case 1:
                 return easyMove();
@@ -56,16 +56,17 @@ public class AIBoard extends Board {
                 return hardMove();
             default:
                 //unreachable statement
-                return true;
+                return null;
         }
     }
 
     /**
      * AI makes a move based on randomness
      *
-     * @return if the player has won
+     * @return null if none of the player has won,
+     * else the color of the winning player.
      */
-    private boolean easyMove() {
+    private String easyMove() {
         int randomHole = evaluate();
         while (!isValidMove(randomHole)) {
             randomHole = evaluate();
@@ -95,9 +96,10 @@ public class AIBoard extends Board {
     /**
      * AI makes a move based on a basic logic
      *
-     * @return if the player has won
+     * @return null if none of the player has won,
+     * else the color of the winning player.
      */
-    private boolean mediumMove() {
+    private String mediumMove() {
         int a = getBestMoveForBlack(FORESEEN_MOVES * 2);
         System.out.println("Moving " + a);
         return super.makeAMove(a);
@@ -114,7 +116,7 @@ public class AIBoard extends Board {
      */
     private SimpleEntry<Integer, String> alphabeta(
             String boardString, int depth, int alpha, int beta, boolean isBlackTurn) {
-        if (depth == 0 || gameHasEnded(boardString)) {
+        if (depth == 0 || gameHasEnded(boardString) != null) {
             return new SimpleEntry<Integer, String>(heuristicValue(boardString), boardString);
         }
 
@@ -146,9 +148,10 @@ public class AIBoard extends Board {
     /**
      * Determines if the game has finished
      *
-     * @return if the game has ended
+     * @return null if none of the player has won,
+     * else the color of the winning player.
      */
-    private boolean gameHasEnded(String boardString) {
+    private String gameHasEnded(String boardString) {
         return (new Board(boardString)).gameHasEnded();
     }
 
@@ -157,7 +160,7 @@ public class AIBoard extends Board {
      *
      * @return if the player has won
      */
-    private boolean hardMove() {
+    private String hardMove() {
         return super.makeAMove(getBestMoveForBlack(FORESEEN_MOVES * 2));
     }
 

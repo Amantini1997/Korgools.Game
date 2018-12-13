@@ -33,24 +33,24 @@ public class BoardTest{
   }
 
   @Test
-  public void gameHasEndedShouldReturnFalse(){
+  public void gameHasEndedShouldReturnNull(){
     board = new Board("0,0,0,0,0,0,0,0,0,81,0\n"+
                       "0,0,0,0,0,0,0,1,0,81,0\nb");
-    assertFalse(board.makeAMove(7));
+    assertEquals(null,board.makeAMove(7));
   }
 
   @Test
-  public void gameHasEndedTestShouldReturnTrueForWhite(){
-    board = new Board("0,0,0,0,0,0,0,1,0,77,-1\n"+
-                      "0,0,0,0,0,0,0,0,3,81,0\nw");
-    assertFalse(board.gameHasEnded());
+  public void gameHasEndedTestShouldReturnWhite(){
+    board = new Board("0,1,0,0,0,0,0,0,0,77,-1\n"+
+                      "0,0,0,0,0,0,0,0,3,82,0\nw");
+    assertEquals("White",board.gameHasEnded());
   }
 
   @Test
-  public void gameHasEndedTestShouldReturnTrueForBlack(){
-    board = new Board("2,0,0,0,0,0,0,1,0,82,0\n"+
-                      "0,0,0,0,0,0,0,0,0,80,-1\nb");
-    assertTrue(board.gameHasEnded());
+  public void gameHasEndedTestShouldReturnBlack(){
+    board = new Board("0,0,0,0,0,0,0,0,1,82,0\n"+
+                      "1,0,0,0,0,0,0,0,0,80,-1\nb");
+    assertEquals("Black",board.gameHasEnded());
   }
 
   @Test

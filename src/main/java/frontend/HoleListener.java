@@ -22,13 +22,13 @@ public class HoleListener extends MouseAdapter {
 
             // get necessary information from backend to update the state of the
             // game/GUI
-            boolean hasWon = (board.getBoard()).makeAMove(indexOfHole);
+            String winningPlayer = (board.getBoard()).makeAMove(indexOfHole);
             //board.updateGUI(board.toString());
             System.out.println("This is the board after the move:");
             System.out.println("BUTTON PRESSED: " + indexOfHole);
             System.out.println(board);
-            if (hasWon) {
-                JOptionPane.showMessageDialog(null, "Congratulations, you won!");
+            if (winningPlayer != null) {
+                JOptionPane.showMessageDialog(null, winningPlayer + " player won!");
                 JFrame frame = (JFrame) SwingUtilities.getRoot((Hole) e.getSource());
                 frame.setContentPane(new ChoiceGUI());
                 frame.pack();

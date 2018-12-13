@@ -55,7 +55,7 @@ public class Board implements ToguzKorgoolGame{
    * @return True if the current player has won,
    *    False otherwise
 	 */
-    public boolean makeAMove(int pressedHole){
+    public String makeAMove(int pressedHole){
       //if the player presses a hole containing 0 korgools nothing happens
       int initKorgools = getPlayerHole(pressedHole).getKorgools();
       if(initKorgools > 1){
@@ -76,12 +76,15 @@ public class Board implements ToguzKorgoolGame{
       isWhiteTurn = !isWhiteTurn;
       setCurrentPlayer();
       moveKorgoolsFromTuzzes();
-      if (playerHasWon(black) || playerHasWon(white)) return true;
+      String winningPlayer = gameHasEnded();
+      if(winningPlayer != null){
+        return winningPlayer;
+      }
       if (!currentPlayer.hasAMove()) {
           isWhiteTurn = !isWhiteTurn;
           setCurrentPlayer();
       }
-      return false;
+      return winningPlayer;
     }
 
     /**
@@ -139,9 +142,12 @@ public class Board implements ToguzKorgoolGame{
     /**
      * Checks if the game has ended
      *
-     * @return if the game has finished
+     * @return null if none of the player has won,
+     * else the color of the winning player.
      */
-    public boolean gameHasEnded() {
-        return white.hasWon() || black.hasWon();
+    public String gameHasEnded() {
+        if (white.hasWon()) return "White";
+        else if (black.hasWon()) return "Black";
+        else return null;
     }
 }
