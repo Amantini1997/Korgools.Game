@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-
 /**
  * Gui that allows the player to input a game state and start from that board. Allows the user to
  * practice certain game scenarios and also practice game scenarios that are unreachable with a
@@ -15,13 +14,14 @@ public class InputGUI extends JPanel {
     private InputNormalPlayer white;
     private InputHoleListener mouseClickWhite = new InputHoleListener(null);
     private InputHoleListener mouseClickBlack = new InputHoleListener(null);
-    private JLabel errorText = new JLabel();
+    private JLabel errorText = new JLabel("<html><div style='text-align:center;'><b>Instuctions:</b> <br> Left Click -> Add Kargools <br> Right Click -> Substruct Kargools or make tuz if hole is empty <br></div> </html>");
     private JButton startButton = new JButton("START GAME");
     private static final int MAX_KARGOOLS = 162;
 
     public InputGUI() {
         startButton.addActionListener(e -> startGame(e));
         startButton.setName("startGame");
+        errorText.setHorizontalAlignment(SwingConstants.CENTER);
         this.setLayout(new BorderLayout());
         JPanel game = new JPanel();
         game.setLayout(new GridLayout(3, 1));
