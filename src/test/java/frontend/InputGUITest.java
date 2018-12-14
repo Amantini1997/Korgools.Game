@@ -34,25 +34,25 @@ public class InputGUITest {
     public void createBoardWithNotEnoughBalls() {
         new Gui();
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
-        swinger.pause(200)
+        swinger.pause(500)
                 .clickOn("text:Input Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole1", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole3", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-3", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:whiteInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:startGame", Speed.MAX_VALUE)
-                .pause(200);
+                .pause(500);
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(InputGUI.class));
@@ -73,31 +73,31 @@ public class InputGUITest {
     public void createBoardFromInputScenarioWithTuzOnWhiteSide() {
         new Gui();
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
-        swinger.pause(200)
+        swinger.pause(500)
                 .clickOn("text:Input Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole1", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole3", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-3", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:whiteInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:blackInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:startGame", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(200);
+                .pause(500);
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(BoardGUI.class));
@@ -118,31 +118,31 @@ public class InputGUITest {
     public void createBoardFromInputScenarioWithTuzOnBlackSide() {
         new Gui();
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
-        swinger.pause(200)
+        swinger.pause(500)
                 .clickOn("text:Input Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole-1", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole-3", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole3", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:whiteInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:blackInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:startGame", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(200);
+                .pause(500);
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(BoardGUI.class));
@@ -163,26 +163,26 @@ public class InputGUITest {
     public void createBoardWithTooManyBalls() {
         new Gui();
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
-        swinger.pause(200)
+        swinger.pause(500)
                 .clickOn("text:Input Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole1", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole3", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-3", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:whiteInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("85")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:blackInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("85")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:startGame", Speed.MAX_VALUE)
-                .pause(200);
+                .pause(500);
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(InputGUI.class));
@@ -203,19 +203,19 @@ public class InputGUITest {
     public void testGUIForHandlingIncorrectValues() {
         new Gui();
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
-        swinger.pause(200)
+        swinger.pause(500)
                 .clickOn("text:Input Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:whiteInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("xxxxxxxx")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:blackInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("sahjbsacghsahc")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:startGame", Speed.MAX_VALUE)
-                .pause(200);
+                .pause(500);
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(InputGUI.class));
@@ -225,30 +225,30 @@ public class InputGUITest {
     public void testTuzRedistribution() {
         new Gui();
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
-        swinger.pause(200)
+        swinger.pause(500)
                 .clickOn("text:Input Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole1", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole1", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:startGame", Speed.MAX_VALUE)
-                .pause(200);
+                .pause(500);
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel = (JPanel) frame.getContentPane();
         Hole hole1 = (Hole) swinger.getAt("name:Hole1");
@@ -267,38 +267,38 @@ public class InputGUITest {
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel;
 
-        swinger.pause(200)
+        swinger.pause(500)
                 .clickOn("text:Input Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole1", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole3", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-3", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:whiteInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:blackInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:startGame", Speed.MAX_VALUE)
-                .pause(200);
+                .pause(500);
 
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(PlayerChoiceGUI.class));
 
-        swinger.clickOn("name:One Player", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:One Player", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(AIChoiceGUI.class));
 
-        swinger.clickOn("name:Easy", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:Easy", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(BoardGUI.class));
     }
@@ -311,38 +311,38 @@ public class InputGUITest {
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel;
 
-        swinger.pause(200)
+        swinger.pause(500)
                 .clickOn("text:Input Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole1", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole3", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-3", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:whiteInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:blackInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:startGame", Speed.MAX_VALUE)
-                .pause(200);
+                .pause(500);
 
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(PlayerChoiceGUI.class));
 
-        swinger.clickOn("name:One Player", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:One Player", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(AIChoiceGUI.class));
 
-        swinger.clickOn("name:Medium", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:Medium", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(BoardGUI.class));
     }
@@ -355,38 +355,38 @@ public class InputGUITest {
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel;
 
-        swinger.pause(200)
+        swinger.pause(500)
                 .clickOn("text:Input Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-1", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole1", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole3", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .moveTo("name:Hole-3", Speed.MAX_VALUE)
                 .rightClick()
-                .pause(200)
+                .pause(500)
                 .clickOn("name:whiteInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:blackInput", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .enterText("80")
-                .pause(200)
+                .pause(500)
                 .clickOn("name:startGame", Speed.MAX_VALUE)
-                .pause(200);
+                .pause(500);
 
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(PlayerChoiceGUI.class));
 
-        swinger.clickOn("name:One Player", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:One Player", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(AIChoiceGUI.class));
 
-        swinger.clickOn("name:Hard", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:Hard", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(BoardGUI.class));
     }

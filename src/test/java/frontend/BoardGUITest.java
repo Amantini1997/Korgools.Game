@@ -31,14 +31,14 @@ public class BoardGUITest {
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
         swinger.pause(500)
                 .clickOn("text:New Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole9", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole-9", Speed.MAX_VALUE)
-                .pause(200)
-                .pause(200);
+                .pause(500)
+                .pause(500);
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(BoardGUI.class));
@@ -49,20 +49,20 @@ public class BoardGUITest {
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
         swinger.pause(500)
                 .clickOn("text:New Game", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole9", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole-9", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole7", Speed.MAX_VALUE)
-                .pause(200)
+                .pause(500)
                 .clickOn("name:Hole-9", Speed.MAX_VALUE)
-                .pause(200)
-                .pause(200);
+                .pause(500)
+                .pause(500);
         String holeString = ((Hole) swinger.getAt("name:Hole-9")).getText();
-        swinger.clickOn("name:Hole-9", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:Hole-9", Speed.MAX_VALUE).pause(500);
         String holeStringClick = ((Hole) swinger.getAt("name:Hole-9")).getText();
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel = (JPanel) frame.getContentPane();
@@ -76,16 +76,16 @@ public class BoardGUITest {
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel;
 
-        swinger.pause(500).clickOn("text:New Game", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("text:New Game", Speed.MAX_VALUE).pause(500);
 
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(PlayerChoiceGUI.class));
 
-        swinger.clickOn("name:One Player", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:One Player", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(AIChoiceGUI.class));
 
-        swinger.clickOn("name:Easy", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:Easy", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(BoardGUI.class));
     }
@@ -96,16 +96,16 @@ public class BoardGUITest {
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel;
 
-        swinger.pause(500).clickOn("text:New Game", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("text:New Game", Speed.MAX_VALUE).pause(500);
 
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(PlayerChoiceGUI.class));
 
-        swinger.clickOn("name:One Player", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:One Player", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(AIChoiceGUI.class));
 
-        swinger.clickOn("name:Medium", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:Medium", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(BoardGUI.class));
     }
@@ -116,16 +116,16 @@ public class BoardGUITest {
         JFrame frame = (JFrame) swinger.getAt("name:frame");
         JPanel panel;
 
-        swinger.pause(500).clickOn("text:New Game", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("text:New Game", Speed.MAX_VALUE).pause(500);
 
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(PlayerChoiceGUI.class));
 
-        swinger.clickOn("name:One Player", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:One Player", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(AIChoiceGUI.class));
 
-        swinger.clickOn("name:Hard", Speed.MAX_VALUE).pause(200);
+        swinger.pause(500).clickOn("name:Hard", Speed.MAX_VALUE).pause(500);
         panel = (JPanel) frame.getContentPane();
         assertThat(panel, instanceOf(BoardGUI.class));
     }
