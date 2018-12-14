@@ -55,23 +55,23 @@ public class AIBoardTest{
   }
 
   @Test
-  public void notAIPlayerWins(){
-    board = new AIBoard("1,0,0,0,0,0,0,0,0,60,0\n"+
-                        "0,0,0,0,0,0,0,0,1,81,-1\nw",2);
-    assertTrue(board.makeAMove(8));
+  public void playerWins(){
+    board = new AIBoard("1,0,0,0,0,0,0,0,0,81,-1\n"+
+                        "1,0,0,0,0,0,0,0,2,80,-1\nw",2);
+    assertEquals("White",board.makeAMove(8));
   }
 
   @Test
   public void AIWins(){
     board = new AIBoard("0,0,0,0,0,0,0,0,3,81,-1\n"+
-                        "1,0,0,0,0,0,0,0,0,60,-1\nw",2);
-    assertTrue(board.makeAMove(0));
+                        "0,1,0,0,0,0,0,0,1,60,-1\nw",2);
+    assertEquals("Black",board.makeAMove(8));
   }
 
   @Test
-  public void nooneWins(){
+  public void noOneWins(){
     board = new AIBoard("1,0,0,0,0,0,0,0,0,81,-1\n"+
                         "1,0,0,0,0,0,0,0,0,60,-1\nw",2);
-    assertFalse(board.makeAMove(0));
+    assertEquals(null,board.makeAMove(0));
   }
 }
