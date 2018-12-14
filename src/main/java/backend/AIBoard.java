@@ -32,7 +32,8 @@ public class AIBoard extends Board {
      * Move the korgools according to the pressed hole
      *
      * @param pressedHole: the hole pressed
-     * @return True if the current player has won, False otherwise
+     * @return null if none of the player has won, else
+     *  the color of the winning player as a String
      */
     @Override
     public String makeAMove(int pressedHole) {
@@ -44,7 +45,8 @@ public class AIBoard extends Board {
     /**
      * Called to make the AI oponent make a move based on the difficulty selected.
      *
-     * @return True if the current player has won, False otherwise
+     * @return null if none of the player has won, else
+     *  the color of the winning player as a String
      */
     private String makeAIMove() {
         switch (level) {
@@ -63,8 +65,8 @@ public class AIBoard extends Board {
     /**
      * AI makes a move based on randomness
      *
-     * @return null if none of the player has won,
-     * else the color of the winning player.
+     * @return null if none of the player has won, else
+     *  the color of the winning player as a String
      */
     private String easyMove() {
         int randomHole = evaluate();
@@ -81,7 +83,8 @@ public class AIBoard extends Board {
      * @return The hole selected
      */
     private int evaluate() {
-        return (int) (Math.random() * 8);
+        return (int) (Math.ran@return null if none of the player has won, else
+     *  the color of the winning player as a Stringdom() * 8);
     }
 
     /**
@@ -96,8 +99,8 @@ public class AIBoard extends Board {
     /**
      * AI makes a move based on a basic logic
      *
-     * @return null if none of the player has won,
-     * else the color of the winning player.
+     * @return null if none of the player has won, else
+     *  the color of the winning player as a String
      */
     private String mediumMove() {
         int a = getBestMoveForBlack(FORESEEN_MOVES * 2);
@@ -148,8 +151,8 @@ public class AIBoard extends Board {
     /**
      * Determines if the game has finished
      *
-     * @return null if none of the player has won,
-     * else the color of the winning player.
+     * @return null if none of the player has won, else
+     *  the color of the winning player as a String
      */
     private String gameHasEnded(String boardString) {
         return (new Board(boardString)).gameHasEnded();
@@ -158,7 +161,8 @@ public class AIBoard extends Board {
     /**
      * Uses the min max algorithm to find the next move
      *
-     * @return if the player has won
+     * @return null if none of the player has won, else
+     *  the color of the winning player as a String
      */
     private String hardMove() {
         return super.makeAMove(getBestMoveForBlack(FORESEEN_MOVES * 2));

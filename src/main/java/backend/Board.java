@@ -35,7 +35,9 @@ public class Board implements ToguzKorgoolGame{
         setCurrentPlayer();
     }
 
-    /** Sets the currentPlayer according to isWhiteTurn */
+    /**
+     * Sets the currentPlayer according to isWhiteTurn
+     */
     private void setCurrentPlayer() {
         currentPlayer = (isWhiteTurn) ? white : black;
     }
@@ -52,8 +54,8 @@ public class Board implements ToguzKorgoolGame{
 	/**
 	 * Move the korgools according to the pressed hole
 	 * @param pressedHole: the hole pressed
-   * @return True if the current player has won,
-   *    False otherwise
+   * @return null if none of the player has won, else
+   *  the color of the winning player as a String
 	 */
     public String makeAMove(int pressedHole){
       //if the player presses a hole containing 0 korgools nothing happens
@@ -99,7 +101,9 @@ public class Board implements ToguzKorgoolGame{
         currentPlayer.addKorgoolsToKazan(stolenKorgools);
     }
 
-    /** Remove the korgools from the tuz hole in the kazan they belong to */
+    /**
+     * Remove the korgools from the tuz hole in the kazan they belong to
+     */
     protected void moveKorgoolsFromTuzzes() {
         white.addKorgoolsToKazan(black.emptyTuz());
         black.addKorgoolsToKazan(white.emptyTuz());
@@ -119,7 +123,9 @@ public class Board implements ToguzKorgoolGame{
         return player.hasWon();
     }
 
-    /** @return a visual representation of the board */
+    /**
+     * @return a visual representation of the board
+     */
     @Override
     public String toString() {
         String line1 = black.toString();
