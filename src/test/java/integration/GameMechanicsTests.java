@@ -26,20 +26,20 @@ public class GameMechanicsTests {
     // public void testWinGame(){
     //     // Check score for white player
 
-    //     swinger.clickOn("name:New Game").pause(250);
+    //     swinger.pause(500).clickOn("name:New Game").pause(500);
 
     //     ScoreGUILabel whiteScoreLabel = (ScoreGUILabel)swinger.getAt("name:whiteScore");
 
-    //     swinger.clickOn("name:Hole3").pause(250).clickOn("name:Hole-7").pause(250)
-    //     .clickOn("name:Hole5").pause(250).clickOn("name:Hole-5").pause(250)
-    //     .clickOn("name:Hole7").pause(250).clickOn("name:Hole-9").pause(250)
-    //     .clickOn("name:Hole2").pause(250).clickOn("name:Hole-7").pause(250)
-    //     .clickOn("name:Hole4").pause(250).clickOn("name:Hole-6").pause(250)
-    //     .clickOn("name:Hole1").pause(250).clickOn("name:Hole-7").pause(250)
-    //     .clickOn("name:Hole7").pause(250).clickOn("name:Hole-4").pause(250)
-    //     .clickOn("name:Hole9").pause(250).clickOn("name:Hole-4").pause(250)
-    //     .clickOn("name:Hole8").pause(250).clickOn("name:Hole-4").pause(250)
-    //     .clickOn("name:Hole3").pause(250);
+    //     swinger.pause(500).clickOn("name:Hole3").pause(500).clickOn("name:Hole-7").pause(500)
+    //     .clickOn("name:Hole5").pause(500).clickOn("name:Hole-5").pause(500)
+    //     .clickOn("name:Hole7").pause(500).clickOn("name:Hole-9").pause(500)
+    //     .clickOn("name:Hole2").pause(500).clickOn("name:Hole-7").pause(500)
+    //     .clickOn("name:Hole4").pause(500).clickOn("name:Hole-6").pause(500)
+    //     .clickOn("name:Hole1").pause(500).clickOn("name:Hole-7").pause(500)
+    //     .clickOn("name:Hole7").pause(500).clickOn("name:Hole-4").pause(500)
+    //     .clickOn("name:Hole9").pause(500).clickOn("name:Hole-4").pause(500)
+    //     .clickOn("name:Hole8").pause(500).clickOn("name:Hole-4").pause(500)
+    //     .clickOn("name:Hole3").pause(500);
 
     //     // TODO: assert win
     // }
@@ -49,18 +49,18 @@ public class GameMechanicsTests {
     public void testNoScoringOnOdd() {
         // Check score for white player
 
-        swinger.clickOn("name:New Game", Speed.MAX_VALUE)
-                .pause(250)
+        swinger.pause(500).clickOn("name:New Game", Speed.MAX_VALUE)
+                .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(250);
+                .pause(500);
 
         ScoreGUILabel whiteScoreLabel = (ScoreGUILabel) swinger.getAt("name:whiteScore");
         ScoreGUILabel blackScoreLabel = (ScoreGUILabel) swinger.getAt("name:blackScore");
 
-        swinger.clickOn("name:Hole3", Speed.MAX_VALUE)
-                .pause(250)
+        swinger.pause(500).clickOn("name:Hole3", Speed.MAX_VALUE)
+                .pause(500)
                 .clickOn("name:Hole-7", Speed.MAX_VALUE)
-                .pause(250);
+                .pause(500);
 
         int blackScoreAfter = Integer.parseInt(blackScoreLabel.getScore());
 
@@ -69,7 +69,7 @@ public class GameMechanicsTests {
 
         // Check score for black player
 
-        swinger.clickOn("name:Hole1", Speed.MAX_VALUE).pause(250);
+        swinger.pause(500).clickOn("name:Hole1", Speed.MAX_VALUE).pause(500);
         int whiteScoreAfter = Integer.parseInt(whiteScoreLabel.getScore());
 
         assertEquals(((Hole) swinger.getAt("name:Hole2")).getNumberOfKorgools(), 11);
@@ -81,15 +81,15 @@ public class GameMechanicsTests {
     public void testScoringOnEven() {
         // Check score for white player
 
-        swinger.clickOn("name:New Game", Speed.MAX_VALUE)
-                .pause(250)
+        swinger.pause(500).clickOn("name:New Game", Speed.MAX_VALUE)
+                .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(250);
+                .pause(500);
 
         ScoreGUILabel whiteScoreLabel = (ScoreGUILabel) swinger.getAt("name:whiteScore");
         ScoreGUILabel blackScoreLabel = (ScoreGUILabel) swinger.getAt("name:blackScore");
 
-        swinger.clickOn("name:Hole3", Speed.MAX_VALUE).pause(250);
+        swinger.pause(500).clickOn("name:Hole3", Speed.MAX_VALUE).pause(500);
 
         int whiteScoreAfter = Integer.parseInt(whiteScoreLabel.getScore());
 
@@ -98,7 +98,7 @@ public class GameMechanicsTests {
 
         // Check score for black player
 
-        swinger.clickOn("name:Hole-3", Speed.MAX_VALUE).pause(250);
+        swinger.pause(500).clickOn("name:Hole-3", Speed.MAX_VALUE).pause(500);
         int blackScoreAfter = Integer.parseInt(blackScoreLabel.getScore());
 
         assertEquals(((Hole) swinger.getAt("name:Hole2")).getNumberOfKorgools(), 0);
@@ -111,34 +111,34 @@ public class GameMechanicsTests {
      */
     @Test
     public void testWhiteScoreInTuz() {
-        swinger.clickOn("name:New Game", Speed.MAX_VALUE)
-                .pause(250)
+        swinger.pause(500).clickOn("name:New Game", Speed.MAX_VALUE)
+                .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(250)
+                .pause(500)
                 .clickOn("name:Hole3", Speed.MAX_VALUE)
-                .pause(250)
+                .pause(500)
                 .clickOn("name:Hole-7", Speed.MAX_VALUE)
-                .pause(250)
+                .pause(500)
                 .clickOn("name:Hole9", Speed.MAX_VALUE)
-                .pause(250)
+                .pause(500)
                 .clickOn("name:Hole-8", Speed.MAX_VALUE)
-                .pause(250);
+                .pause(500);
 
         ScoreGUILabel whiteScoreLabel = (ScoreGUILabel) swinger.getAt("name:whiteScore");
 
         // Tuz is claimed on black side
         int scoreBeforeTuz = Integer.parseInt(whiteScoreLabel.getScore());
-        swinger.clickOn("name:Hole5", Speed.MAX_VALUE).pause(250);
+        swinger.pause(500).clickOn("name:Hole5", Speed.MAX_VALUE).pause(500);
         int scoreAfterTuz = Integer.parseInt(whiteScoreLabel.getScore());
 
         assertTrue(((Hole) swinger.getAt("name:Hole-7")).isTuz());
         assertEquals(scoreAfterTuz, scoreBeforeTuz + 3); // 3 korgools needed for tuz
 
         // Make two more moves - check korgool is added to kazan from tuz
-        swinger.clickOn("name:Hole-9", Speed.MAX_VALUE).pause(250);
+        swinger.pause(500).clickOn("name:Hole-9", Speed.MAX_VALUE).pause(500);
 
         int scoreBeforeKorgoolInTuz = Integer.parseInt(whiteScoreLabel.getScore());
-        swinger.clickOn("name:Hole8", Speed.MAX_VALUE).pause(250);
+        swinger.pause(500).clickOn("name:Hole8", Speed.MAX_VALUE).pause(500);
         int scoreAfterKorgoolInTuz = Integer.parseInt(whiteScoreLabel.getScore());
 
         assertEquals(((Hole) swinger.getAt("name:Hole-7")).getNumberOfKorgools(), 0);
@@ -151,32 +151,32 @@ public class GameMechanicsTests {
      */
     @Test
     public void testBlackScoreInTuz() {
-        swinger.clickOn("name:New Game", Speed.MAX_VALUE)
-                .pause(250)
+        swinger.pause(500).clickOn("name:New Game", Speed.MAX_VALUE)
+                .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(250)
+                .pause(500)
                 .clickOn("name:Hole3", Speed.MAX_VALUE)
-                .pause(250)
+                .pause(500)
                 .clickOn("name:Hole-7", Speed.MAX_VALUE)
-                .pause(250)
+                .pause(500)
                 .clickOn("name:Hole4", Speed.MAX_VALUE)
-                .pause(250);
+                .pause(500);
 
         ScoreGUILabel blackScoreLabel = (ScoreGUILabel) swinger.getAt("name:blackScore");
 
         // Tuz is claimed on white side
         int scoreBeforeTuz = Integer.parseInt(blackScoreLabel.getScore());
-        swinger.clickOn("name:Hole-3", Speed.MAX_VALUE).pause(250);
+        swinger.pause(500).clickOn("name:Hole-3", Speed.MAX_VALUE).pause(500);
         int scoreAfterTuz = Integer.parseInt(blackScoreLabel.getScore());
 
         assertTrue(((Hole) swinger.getAt("name:Hole3")).isTuz());
         assertEquals(scoreAfterTuz, scoreBeforeTuz + 3); // 3 korgools needed for tuz
 
         // Make two more moves - check korgool is added to kazan from tuz
-        swinger.clickOn("name:Hole8", Speed.MAX_VALUE).pause(250);
+        swinger.pause(500).clickOn("name:Hole8", Speed.MAX_VALUE).pause(500);
 
         int scoreBeforeKorgoolInTuz = Integer.parseInt(blackScoreLabel.getScore());
-        swinger.clickOn("name:Hole-8", Speed.MAX_VALUE).pause(250);
+        swinger.pause(500).clickOn("name:Hole-8", Speed.MAX_VALUE).pause(500);
         int scoreAfterKorgoolInTuz = Integer.parseInt(blackScoreLabel.getScore());
 
         assertEquals(((Hole) swinger.getAt("name:Hole3")).getNumberOfKorgools(), 0);
@@ -188,10 +188,10 @@ public class GameMechanicsTests {
     public void testKorgoolsMoveCorrectly() {
 
         // White turn 1
-        swinger.clickOn("name:New Game", Speed.MAX_VALUE)
+        swinger.pause(500).clickOn("name:New Game", Speed.MAX_VALUE)
                 .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(250)
+                .pause(500)
                 .clickOn("name:Hole3", Speed.MAX_VALUE)
                 .pause(500);
 
@@ -206,7 +206,7 @@ public class GameMechanicsTests {
         assertEquals(((frontend.Hole) swinger.getAt("name:Hole-2")).getNumberOfKorgools(), 0);
 
         // Black turn 1
-        swinger.clickOn("name:Hole-1", Speed.MAX_VALUE).pause(500);
+        swinger.pause(500).clickOn("name:Hole-1", Speed.MAX_VALUE).pause(500);
 
         assertEquals(((frontend.Hole) swinger.getAt("name:Hole-1")).getNumberOfKorgools(), 1);
         assertEquals(((frontend.Hole) swinger.getAt("name:Hole-2")).getNumberOfKorgools(), 1);
@@ -220,7 +220,7 @@ public class GameMechanicsTests {
         assertEquals(((frontend.Hole) swinger.getAt("name:Hole1")).getNumberOfKorgools(), 0);
 
         // White turn 2
-        swinger.clickOn("name:Hole5", Speed.MAX_VALUE).pause(500);
+        swinger.pause(500).clickOn("name:Hole5", Speed.MAX_VALUE).pause(500);
 
         assertEquals(((frontend.Hole) swinger.getAt("name:Hole5")).getNumberOfKorgools(), 1);
         assertEquals(((frontend.Hole) swinger.getAt("name:Hole6")).getNumberOfKorgools(), 11);

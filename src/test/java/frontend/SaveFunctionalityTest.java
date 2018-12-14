@@ -22,10 +22,11 @@ public class SaveFunctionalityTest {
     public void testSave() {
         JFrame frame = new frontend.Gui().getFrame();
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
-        swinger.clickOn("name:New Game", Speed.MAX_VALUE)
+        swinger.pause(500)
+                .clickOn("name:New Game", Speed.MAX_VALUE)
                 .pause(500)
                 .clickOn("name:Two Player", Speed.MAX_VALUE)
-                .pause(250);
+                .pause(500);
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 
         String boardState = "";
@@ -66,7 +67,7 @@ public class SaveFunctionalityTest {
 
         JFrame frame = new frontend.Gui().getFrame();
         Swinger swinger = Swinger.getUserWith(Window.getWindows()[Window.getWindows().length - 1]);
-        swinger.clickOn("name:Load Game", Speed.MAX_VALUE);
+        swinger.clickOn("name:Load Game", Speed.MAX_VALUE).pause(500);
         frame.dispose();
 
         String boardState = "";

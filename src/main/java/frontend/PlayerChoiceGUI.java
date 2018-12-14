@@ -50,6 +50,8 @@ public class PlayerChoiceGUI extends JPanel {
                         frame.setContentPane(new AIChoiceGUI(boardString));
                     }
 
+
+
                     break;
                 }
             case (TWO_PLAYER_TEXT):
@@ -70,7 +72,6 @@ public class PlayerChoiceGUI extends JPanel {
     /** Create new button with ActionListener. */
     private JButton creatOptionButton(String text) {
         JButton button = new JButton(text);
-        button.setName(text);
         button.addActionListener(e -> getNewScreen(e));
         button.setName(text);
         return button;
