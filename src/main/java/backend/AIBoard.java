@@ -79,12 +79,12 @@ public class AIBoard extends Board {
 
     /**
      * Return the hole to move for the AI Player The selection is done randomly
-     *
+     * @return null if none of the player has won, else
+     * the color of the winning player as a String
      * @return The hole selected
      */
     private int evaluate() {
-        return (int) (Math.ran@return null if none of the player has won, else
-     *  the color of the winning player as a Stringdom() * 8);
+        return (int) (Math.random() * 8);
     }
 
     /**
