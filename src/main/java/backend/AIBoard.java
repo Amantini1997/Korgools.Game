@@ -16,7 +16,7 @@ public class AIBoard extends Board {
         super();
         level = hardness;
     }
-
+  
     /**
      * Initialises the AI board with the given level of difficulty and setup
      *
