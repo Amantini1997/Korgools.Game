@@ -1,19 +1,29 @@
 package frontend;
-import java.awt.event.ActionListener;
-import java.util.*;
-import javax.swing.*;
+
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
+import javax.swing.*;
 
-public class Hole extends JButton{
+/**
+ * This class represents the Hole object, which in this version is just a button with some
+ * meta-information about the hole.
+ */
+public class Hole extends JButton {
     private int index;
     private int numberOfKorgools;
-    private static int number;
-    private boolean isTuz=false;
-    public Hole(int index, int numberOfKorgools, MouseAdapter listener){
+    private boolean isTuz = false;
+
+    /**
+     * Constructor for the hole
+     *
+     * @param index Index of the hole (a player has 9 holes default)
+     * @param numberOfKorgools Number of korgools in that hole
+     * @param listener What listener must be called upon clicking this button
+     */
+    public Hole(int index, int numberOfKorgools, MouseAdapter listener) {
         this.index = index;
         this.numberOfKorgools = numberOfKorgools;
-        this.setText(numberOfKorgools+"");
+        this.setText(numberOfKorgools + "");
         this.setName("name:hole" + index);
         this.addMouseListener(listener);
     }
@@ -22,40 +32,41 @@ public class Hole extends JButton{
         return this.index;
     }
 
-    public int getNumberOfKorgools()
-    {
-      return this.numberOfKorgools;
+    public int getNumberOfKorgools() {
+        return this.numberOfKorgools;
     }
 
-    private void setNumberOfKorgools(int number)
-    {
-      numberOfKorgools=number;
+    private void setNumberOfKorgools(int number) {
+        numberOfKorgools = number;
     }
 
-    public boolean isTuz()
-    {
-      return isTuz;
+    public boolean isTuz() {
+        return isTuz;
     }
 
-    public void unTuz()
-    {
-      this.isTuz=false;
-      this.setBackground(null);
-      this.setOpaque(false);
-      this.setBorderPainted(true);
+    /** Set a hole that was previously tuz to a normal non-tuz hole */
+    public void unTuz() {
+        this.isTuz = false;
+        this.setBackground(null);
+        this.setOpaque(false);
+        this.setBorderPainted(true);
     }
 
-    public void makeTuz()
-    {
-      this.isTuz=true;
-      this.setBackground(Color.RED);
-      this.setOpaque(true);
-      this.setBorderPainted(false); // this is to make it work on mac
+    /** Make a hole tuz */
+    public void makeTuz() {
+        this.isTuz = true;
+        this.setBackground(Color.RED);
+        this.setOpaque(true);
+        this.setBorderPainted(false); // this is to make it work on mac
     }
 
-    public void update(int number){
+    /**
+     * Set the number of kargoolz in the hole to a certain value
+     *
+     * @param number The number of kargoolz now in that hole
+     */
+    public void update(int number) {
         setNumberOfKorgools(number);
-        this.setText(numberOfKorgools+"");
+        this.setText(numberOfKorgools + "");
     }
-
 }

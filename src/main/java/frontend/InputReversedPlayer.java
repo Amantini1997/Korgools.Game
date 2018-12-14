@@ -1,58 +1,49 @@
 package frontend;
 
-import backend.Board;
-import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
 import java.awt.Color;
-import java.awt.event.MouseEvent;
-public class InputReversedPlayer extends ReversedPlayer{
+import java.awt.event.MouseAdapter;
 
-  public InputReversedPlayer(MouseAdapter listener)
-  {
-    super(0,listener);
-    scoreLabel=new ScoreGUITextField();
-    scoreLabel.setName("blackInput");
-    super.setBackground(Color.BLACK);
-  }
+/**
+ * Input the player that needs to be reversed in the UI. The player who's holes need to be numbered
+ * 9-1 instead of 1-9.
+ */
+public class InputReversedPlayer extends ReversedPlayer {
 
-  public String playerString()
-  {
-    String returnString = "";
-    for(Hole hole: holes)
-    {
-        returnString+=hole.getNumberOfKorgools()+",";
+    public InputReversedPlayer(MouseAdapter listener) {
+        super(0, listener);
+        scoreLabel = new ScoreGUITextField();
+        scoreLabel.setName("blackInput");
+        super.setBackground(Color.BLACK);
     }
-    returnString+=getScore()+",";
-    returnString+=addTuz();
-    return returnString;
-  }
 
-  public int addTuz()
-  {
-    for(Hole hole: holes)
-    {
-      if(hole.isTuz())
-      {
-        return hole.getIndex();
-      }
+    public String playerString() {
+        String returnString = "";
+        for (Hole hole : holes) {
+            returnString += hole.getNumberOfKorgools() + ",";
+        }
+        returnString += getScore() + ",";
+        returnString += addTuz();
+        return returnString;
     }
-    return -1;
-  }
 
-  public int getAllHolesScores()
-  {
-    int sum=0;
-    for(Hole hole: holes)
-    {
-      sum+=(hole.getNumberOfKorgools());
+    public int addTuz() {
+        for (Hole hole : holes) {
+            if (hole.isTuz()) {
+                return hole.getIndex();
+            }
+        }
+        return -1;
     }
-    return sum;
-  }
-  public String getScore()
-  {
-    return scoreLabel.getScore();
-  }
+
+    public int getAllHolesScores() {
+        int sum = 0;
+        for (Hole hole : holes) {
+            sum += (hole.getNumberOfKorgools());
+        }
+        return sum;
+    }
+
+    public String getScore() {
+        return scoreLabel.getScore();
+    }
 }

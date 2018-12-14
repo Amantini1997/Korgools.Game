@@ -4,13 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Arrays;
 
+
+ 
 @RunWith(Parameterized.class)
 public class PositiveBoardTest{
 
@@ -33,9 +34,9 @@ public class PositiveBoardTest{
                               "2,2,13,12,12,12,12,12,3,12,-1\nw"}});
   }
 
-  public String output;
-  public int[] moves;
-  private Board board;
+    public String output;
+    public int[] moves;
+    private Board board;
 
   public PositiveBoardTest(int[] moves, String output){
     this.moves = moves;
